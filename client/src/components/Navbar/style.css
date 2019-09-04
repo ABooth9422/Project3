@@ -1,0 +1,12 @@
+.myNavbar{
+    border: 1px solid #000a;
+    background: #0008;
+}
+
+.myNavs a{
+    color: #fff;
+}
+
+.myNavs a:hover{
+    color: #fff5;
+}
