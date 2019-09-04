@@ -1,7 +1,7 @@
 {
-  "name": "mern",
+  "name": "project3",
   "version": "0.1.0",
-  "description": "Mern Demo",
+  "description": "project3",
   "private": true,
   "proxy": "http://localhost:3001/",
   "dependencies": {
