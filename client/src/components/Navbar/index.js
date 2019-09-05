@@ -1,5 +1,5 @@
 import React from 'react'
-import GoogleSignIn from '../GoogleSignIn'
+
 import './style.css'
 
 function Navbar(props) {
@@ -26,17 +26,9 @@ function Navbar(props) {
                     <li className="nav-item">
                         <a className="nav-link" href="/viewProfile">View Profile</a>
                     </li>
-                    <li>
-                    <GoogleSignIn>Test</GoogleSignIn>
-                    </li>
                     
                 </ul>
-                <form className="form-inline my-2 my-lg-0">
-                    <input className="form-control mr-sm-2" id="accountName"type="text" placeholder="Account Name" label="Account"/>
-                    <input className="form-control mr-sm-2"id="password"type="password" placeholder="Password" label="Account"/>
-                    <input className="btn btn-dark my-2 mx-2" id="clientLogin" type="button" value="Client Login"></input>
-                    <input className="btn btn-dark my-2 mx-2 my-sm-0" data-toggle="modal" type="button" value="Register"></input>
-                </form>
+                {props.children}
             </div>
         </nav>
     )
