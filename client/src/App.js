@@ -7,6 +7,23 @@ import Container from './components/Container'
 import "./App.css";
 
 class App extends Component {
+
+  state={
+    location:[]
+  }
+
+   getLocation=()=> {
+      navigator.geolocation.getCurrentPosition(this.showPosition);
+  }
+    showPosition=(position)=>{
+      this.setState({location:{position}})
+      console.log(this.state.location)
+    }
+   componentDidMount(){
+     this.getLocation()
+   } 
+  
+
   render() {
     return (
       <div className="App">
