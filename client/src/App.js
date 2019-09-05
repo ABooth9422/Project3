@@ -57,9 +57,11 @@ class App extends React.Component {
   }
 
   render(){
+    console.log(this.state.user)
     let button;
     let routes;
     if(this.isObjEmpty(this.state.user)){
+      console.log(this.state.user)
       button = <GoogleLogin
       clientId="21724966650-6sae44jffah2o9mrni7lrhgjq3vh39vm.apps.googleusercontent.com"
       buttonText="Login"
@@ -73,11 +75,12 @@ class App extends React.Component {
       <Route component={LogIn} />
     </Switch>
     }else{
+      console.log(this.state.user)
       button = <><GoogleLogout
       clientId="658977310896-knrl3gka66fldh83dao2rhgbblmd4un9.apps.googleusercontent.com"
       buttonText="Logout"
       onLogoutSuccess={this.logOut}
-      /><img src={this.state.user.imageUrl}/></>
+      /><a href="/viewProfile"><img className="rounded-circle ml-3"width="50px"height="50px"alt="logon"src={this.state.user.imageUrl}/></a></>
 
       routes = 
       <Switch>
@@ -89,7 +92,7 @@ class App extends React.Component {
 
     return (
       <Router>
-         <Navbar>
+         <Navbar auth={this.isObjEmpty(this.state.user)}>
             {button}
           </Navbar>
           {routes}

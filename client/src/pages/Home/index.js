@@ -1,7 +1,6 @@
 import React from "react";
 import Wrapper from '../../components/Wrapper'
 import Jumbotron from '../../components/Jumbotron'
-import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
 import Container from '../../components/Container'
 
