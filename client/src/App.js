@@ -1,43 +1,22 @@
-import React, { Component } from "react";
-import Wrapper from './components/Wrapper'
-import Jumbotron from './components/Jumbotron'
-import Navbar from './components/Navbar'
-import Footer from './components/Footer'
-import Container from './components/Container'
-import "./App.css";
+import React from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Home from "./pages/Home"
+import NoMatch from "./pages/NoMatch";
+import Navbar from "./components/Navbar";
 
-class App extends Component {
-
-  state={
-    location:[]
-  }
-
-   getLocation=()=> {
-      navigator.geolocation.getCurrentPosition(this.showPosition);
-  }
-    showPosition=(position)=>{
-      this.setState({location:{position}})
-      console.log(this.state.location)
-    }
-   componentDidMount(){
-     this.getLocation()
-   } 
-  
-
-  render() {
-    return (
-      <div className="App">
-        <Wrapper>
-          <Navbar/>
-          <Jumbotron/>
-          <Container>
-            
-          </Container>
-        </Wrapper>
-        <Footer/>
+function App() {
+  return (
+    <Router>
+      <div>
+        <Navbar />
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route component={NoMatch} />
+        </Switch>
       </div>
-    );
-  }
+    </Router>
+  );
 }
 
 export default App;
+
