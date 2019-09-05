@@ -1,7 +1,8 @@
 import React from 'react'
+import GoogleSignIn from '../GoogleSignIn'
 import './style.css'
 
-function Navbar() {
+function Navbar(props) {
     return (
         <nav className="navbar navbar-dark bg-dark fixed-top navbar-expand-lg myNavbar">
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -24,6 +25,9 @@ function Navbar() {
                     </li>
                     <li className="nav-item">
                         <a className="nav-link" href="/viewProfile">View Profile</a>
+                    </li>
+                    <li>
+                    <GoogleSignIn>Test</GoogleSignIn>
                     </li>
                     
                 </ul>

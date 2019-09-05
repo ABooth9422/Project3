@@ -21,7 +21,10 @@ class Home extends React.Component {
    componentDidMount(){
      this.getLocation()
    } 
-  
+
+   signInHandle(code){
+    console.log(code)
+   }
 
   render() {
     return (
