@@ -4,34 +4,27 @@ import Jumbotron from '../../components/Jumbotron'
 import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
 import Container from '../../components/Container'
+
+
 import "./style.css"
 
 class Home extends React.Component {
 
-  state={
-    location:[]
-  }
+  constructor(){
+    super()
 
-   getLocation() {
-      navigator.geolocation.getCurrentPosition(this.showPosition);
-  }
-    showPosition = (position)=>{
-      this.setState({location: position})
-      console.log(this.state.location)
+    this.state={
+      user: {},
+      location:[]
     }
-   componentDidMount(){
-     this.getLocation()
-   } 
+  }
 
-   signInHandle(code){
-    console.log(code)
-   }
-
+  
   render() {
+
     return (
       <div className="home">
         <Wrapper>
-          <Navbar/>
           <Jumbotron/>
             <Container>
             
@@ -44,3 +37,11 @@ class Home extends React.Component {
 }
 
 export default Home;
+
+
+
+
+ 
+ 
+
+ 
