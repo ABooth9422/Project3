@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import {GoogleLogin, GoogleLogout} from 'react-google-login'
 import Home from "./pages/Home/index"
 import NoMatch from "./pages/NoMatch/index";
+
 import LogIn from "./pages/LogIn/index"
 import Navbar from "./components/Navbar";
 
@@ -95,6 +96,7 @@ class App extends React.Component {
       </Router>
     );
   }
+
 }
 
 export default App;

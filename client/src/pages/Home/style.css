@@ -1,0 +1,19 @@
+.head{
+    text-decoration:underline;
+    text-shadow:crimson -5px -5px 20px; 
+    width:fit-content;
+    margin:0 auto;
+}
+#sense{
+    color:crimson;
+}
+#intro{
+    padding:0px 75px;
+}
+p{
+    text-shadow:#000a 4px 4px 10px;
+    font-weight:bold;
+}
+.testimonial{
+    background:#fff4;
+}
