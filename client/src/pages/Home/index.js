@@ -34,7 +34,9 @@ class Home extends React.Component {
           <Navbar/>
           <Jumbotron/>
             <Container>
-            
+              <div id="mainContent">
+              <h1 className="display-1 underline text-black">Welcome to GymSense</h1>
+              </div>
           </Container>
         </Wrapper>
         <Footer/>

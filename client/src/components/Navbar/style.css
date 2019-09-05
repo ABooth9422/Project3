@@ -1,9 +1,11 @@
 .myNavbar{
     border: 1px solid #000a;
-    background: #0008;
+    background: #000;
     text-shadow:black 10px 10px 10px;
 }
-
+#badge{
+    padding:0 !important
+}
 .myNavs a{
     color: #fff;
 }
