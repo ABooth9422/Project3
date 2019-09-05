@@ -1,12 +1,13 @@
 import React from "react";
-import Container from "../components/Container";
-import Jumbotron from "../components/Jumbotron";
+import Container from "../../components/Container";
+import Jumbotron from "../../components/Jumbotron";
+import "./style.css"
 
 function NoMatch() {
   return (
     <Container>
-      <div className='row mt-5'>
-        <div className='cool-md-12'>
+      <div id="noMatch"className='row mt-5'>
+        <div className='col-md-12'>
           
             <h1>404 Page Not Found</h1>
             <h1>
