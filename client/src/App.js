@@ -11,8 +11,8 @@ class App extends Component {
     return (
       <div className="App">
         <Wrapper>
-          <Jumbotron/>
           <Navbar/>
+          <Jumbotron/>
           <Container>
             
           </Container>

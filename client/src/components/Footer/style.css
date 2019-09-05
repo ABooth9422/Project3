@@ -1,5 +1,14 @@
 .footer{
-    height: 50px;
     border: 1px solid #000a;
-    background: #0008;
+    background-color:black;
+    font-weight:bold;
+    box-shadow:black 3px 3px 3px 3px;
+
+}
+
+a{
+    color:white;
+}
+a:hover{
+    color: #fff5;
 }

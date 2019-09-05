@@ -1,6 +1,7 @@
 .myNavbar{
     border: 1px solid #000a;
     background: #0008;
+    text-shadow:black 10px 10px 10px;
 }
 
 .myNavs a{
@@ -9,4 +10,7 @@
 
 .myNavs a:hover{
     color: #fff5;
+}
+#accountName,#password{
+    width:fit-content;
 }

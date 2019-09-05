@@ -5,10 +5,7 @@ function Jumbotron() {
     return (
         
             <div className="jumbotron myJumbotron mb-0 text-center">
-                <h1 className="display-4">Gym Sense</h1>
-                <p className="lead">Temporary</p>
-                <hr className="my-4"></hr>
-                <p>...</p>
+                <img className="d-flex justify-content-start"src={require('./images/gymsense.png')} width="800px"height="250px"alt="logo"></img>
             </div>
         
     )
