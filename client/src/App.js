@@ -1,13 +1,13 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import {GoogleLogin, GoogleLogout} from 'react-google-login'
+
 import Home from './pages/Home'
 import NoMatch from './pages/NoMatch'
 import Forums from './pages/Forums'
 import Gyms from './pages/Gyms'
 import Profile from './pages/Profile'
 import Routines from './pages/Routines'
-
 import Navbar from "./components/Navbar";
 
 class App extends React.Component {
