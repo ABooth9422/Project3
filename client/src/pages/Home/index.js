@@ -26,7 +26,7 @@ class Home extends React.Component {
         <Wrapper>
           <Jumbotron/>
             <Container>
-              <div id="mainContent">
+              <div id="mainContent my-5">
               <h1 className="head display-3 rounded text-center my-5 text-black">Welcome to GymSense</h1>
               <p id="intro"className="my-1 mb-5 text-center">We are a very intuitive app that will provide you with all of the tools you need with your day to day workout routine.
                  If you’re having trouble finding a gym near your area, GymSense will give you the opportunity to narrow those results and find the best gym that’s suitable for you! 
@@ -52,7 +52,7 @@ class Home extends React.Component {
                     <img style={{"left":"-100%"}}className="rounded-circle mr-5 position-relative "alt="test"width="200px" height="200px"src={require('./images/jbpic.jpg')}></img>
                     </div>
                     <div className="col-lg-9 col-12 justify-content-end align-self-center">
-                    <p className="text-center" style={{"white-space": "pre-line"}}>{["I found a daily routine thanks to Gymsense!","-Jarvis"].join('\n')}</p>
+                    <p className="text-center" style={{"whiteSpace": "pre-line"}}>{["I found a daily routine thanks to Gymsense!","-Jarvis"].join('\n')}</p>
                     </div>
 
                     </div>
