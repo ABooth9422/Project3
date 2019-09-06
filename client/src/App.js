@@ -1,8 +1,13 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import {GoogleLogin, GoogleLogout} from 'react-google-login'
-import Home from "./pages/Home/index"
-import NoMatch from "./pages/NoMatch/index";
+
+import Home from './pages/Home'
+import NoMatch from './pages/NoMatch'
+import Forums from './pages/Forums'
+import Gyms from './pages/Gyms'
+import Profile from './pages/Profile'
+import Routines from './pages/Routines'
 import Navbar from "./components/Navbar";
 
 class App extends React.Component {
@@ -37,7 +42,7 @@ class App extends React.Component {
   }
 
   logInFailed(){
-
+    
   }
 
   logOut(){
@@ -57,7 +62,6 @@ class App extends React.Component {
   render(){
     console.log(this.state.user)
     let button;
-    let routes;
     if(this.isObjEmpty(this.state.user)){
       console.log(this.state.user)
       button = <GoogleLogin
@@ -67,24 +71,13 @@ class App extends React.Component {
       onFailure={this.loginFailed}
       cookiePolicy={'single_host_origin'}
     />
-
-    routes =  
-    <Switch>
-      <Route component={Home} />
-    </Switch>
     }else{
       console.log(this.state.user)
       button = <><GoogleLogout
       clientId="658977310896-knrl3gka66fldh83dao2rhgbblmd4un9.apps.googleusercontent.com"
       buttonText="Logout"
       onLogoutSuccess={this.logOut}
-      /><a href="/viewProfile"><img className="rounded-circle ml-3"width="50px"height="50px"alt="logon"src={this.state.user.imageUrl}/></a></>
-
-      routes = 
-      <Switch>
-        <Route exact path="/" component={Home} />
-        <Route component={NoMatch} />
-    </Switch>
+      /><Link to="/viewProfile"><img className="rounded-circle ml-3"width="50px"height="50px"alt="logon"src={this.state.user.imageUrl}/></Link></>
     }
 
 
@@ -93,7 +86,15 @@ class App extends React.Component {
          <Navbar auth={this.isObjEmpty(this.state.user)}>
             {button}
           </Navbar>
-          {routes}
+          <Switch>
+        <Route exact path="/" component={Home} />
+        <Route exact path="/home" component={Home} />
+        <Route exact path="/gyms" component={Gyms} />
+        <Route exact path="/routines" component={Routines} />
+        <Route exact path="/forums" component={Forums} />
+        <Route exact path="/profile" component={Profile} />
+        <Route component={NoMatch} />
+    </Switch>
       </Router>
     );
   }

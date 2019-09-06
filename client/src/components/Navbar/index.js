@@ -12,16 +12,16 @@ function Navbar(props) {
             <Link className="nav-link" to="/">Home <span className="sr-only">(current)</span></Link>
             </li>
             <li className="nav-item">
-            <Link className="nav-link" to="/find">Find A Gym</Link>
+            <Link className="nav-link" to="/gyms">Find A Gym</Link>
             </li>
             <li className="nav-item">
-            <Link className="nav-link" to="/exercise">Find an Excercise</Link>
+            <Link className="nav-link" to="/routines">My Routines</Link>
             </li>
             <li className="nav-item">
-            <Link className="nav-link" to="/visitForums">Visit Forums</Link>
+            <Link className="nav-link" to="/forums">Visit Forums</Link>
             </li>
             <li className="nav-item">
-            <Link className="nav-link" to="/viewProfile">View Profile</Link>
+            <Link className="nav-link" to="/profile">View Profile</Link>
             </li>
             </>
     }else{
