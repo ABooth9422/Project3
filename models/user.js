@@ -19,10 +19,11 @@ module.exports = function(sequelize, DataTypes) {
       },
       img: {
           type: DataTypes.STRING,
-          validate: {
-              isURL: true
-          }
+          
       }
+    }, 
+    {
+      timestamps: false
     });
     return User;
   };
