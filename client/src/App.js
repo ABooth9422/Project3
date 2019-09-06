@@ -3,8 +3,6 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import {GoogleLogin, GoogleLogout} from 'react-google-login'
 import Home from "./pages/Home/index"
 import NoMatch from "./pages/NoMatch/index";
-
-import LogIn from "./pages/LogIn/index"
 import Navbar from "./components/Navbar";
 
 class App extends React.Component {
@@ -72,7 +70,7 @@ class App extends React.Component {
 
     routes =  
     <Switch>
-      <Route component={LogIn} />
+      <Route component={Home} />
     </Switch>
     }else{
       console.log(this.state.user)

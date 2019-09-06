@@ -4,7 +4,7 @@ import './style.css'
 function Wrapper(props) {
     return (
         
-    <div className="wrapper bg-secondary" {...props}>
+    <div className="wrapper" {...props}>
         {props.children}
     </div>
         

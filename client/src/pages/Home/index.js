@@ -36,33 +36,34 @@ class Home extends React.Component {
                 <h3 className="text-center mb-5">Are you ready for: <span id="sense">GYMSENSE!</span></h3>
               </div>
               <h1 className="head display-3 mb-3 rounded text-center my-5 text-black">Testimonials</h1> 
-              <div className="testimonial container py-3 my-5">
+              <div style={{"margin":"40%"}}className="testimonial d-flex rounded container py-3 my-5">
                 <div className='row'>
-                    <div className="col-lg-3 col-12 d-flex flex-wrap justify-content-end">
-                    <img alt="test"width="200px" height="200px"src={require('./test.png')}></img>
+                    <div className="col-lg-9 col-12 justify-content-end align-self-center">
+                    <p className="text-center"style={{"whiteSpace": "pre-line"}}>{["Gymsense made getting back to the gym so much easier","-Mark"].join('\n')}</p>
                     </div>
-                    <div className="col-lg-9 col-12 d-flex text-left align-self-center">
-                    <p style={{"white-space": "pre-line"}}>{["Gymsense made getting back to the gym so much easier","-Jarvis"].join('\n')}</p>
-                    </div>
-                    </div>
-                </div>  
-                <div className="testimonial rounded container py-3 my-5">
-                <div className='row'>
-                    <div className="col-lg-9 col-12 d-flex justify-content-end align-self-center">
-                    <p style={{"white-space": "pre-line"}}>{["Gymsense made getting back to the gym so much easier","-Mark"].join('\n')}</p>
-                    </div>
-                    <div className="col-lg-3 col-12 d-flex justify-content-start">
+                    <div className="col-lg-3 col-12 justify-content-start">
                     <img alt="test"width="200px" height="200px"src={require('./test.png')}></img>
                     </div>
                     </div>
                 </div>  
-                <div className="testimonial rounded container py-3 my-5">
-                <div className='row'>
-                    <div className="col-lg-3 col-12 d-flex justify-content-end">
-                    <img alt="test"width="200px" height="200px"src={require('./test.png')}></img>
+                <div style={{"margin":"10%"}}className="testimonial  rounded container py-3 my-5">
+                <div className='row d-flex'>
+                    <div className="col-lg-3 col-12 justify-content-start">
+                    <img style={{"left":"-100%"}}className="rounded-circle mr-5 position-relative "alt="test"width="200px" height="200px"src={require('./images/jbpic.jpg')}></img>
                     </div>
-                    <div className="col-lg-9 col-12 d-flex text-left align-self-center">
-                    <p style={{"white-space": "pre-line"}}>{["Gymsense made getting back to the gym so much easier","-Mark"].join('\n')}</p>
+                    <div className="col-lg-9 col-12 justify-content-end align-self-center">
+                    <p className="text-center" style={{"white-space": "pre-line"}}>{["I found a daily routine thanks to Gymsense!","-Jarvis"].join('\n')}</p>
+                    </div>
+
+                    </div>
+                </div> 
+                <div style={{"margin":"40%"}}className="testimonial d-flex rounded container py-3 my-5">
+                <div className='row'>
+                    <div className="col-lg-9 col-12 justify-content-end align-self-center">
+                    <p className="text-center"style={{"whiteSpace": "pre-line"}}>{["Loved the workout suggestions and the feedback from other users","-Louis"].join('\n')}</p>
+                    </div>
+                    <div className="col-lg-3 col-12 justify-content-start">
+                    <img className="rounded-circle"alt="test"width="200px" height="200px"src={require('./images/louis.jpg')}></img>
                     </div>
                     </div>
                 </div>  
