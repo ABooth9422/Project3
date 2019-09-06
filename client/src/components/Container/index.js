@@ -4,7 +4,7 @@ import './style.css'
 function Container(props) {
     return (
         
-    <div className="container" {...props}>
+    <div className="container rounded bg-secondary" {...props}>
         {props.children}
     </div>
         
