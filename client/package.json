@@ -5,11 +5,13 @@
   "private": true,
   "proxy": "http://localhost:3001/",
   "dependencies": {
+    "rc-calendar": "^9.15.5",
     "react": "^16.6.3",
+    "react-calendar": "^2.19.2",
     "react-dom": "^16.6.3",
     "react-google-login": "^5.0.5",
     "react-router-dom": "^5.0.1",
-    "react-scripts": "^2.1.1"
+    "react-scripts": "^3.1.1"
   },
   "scripts": {
     "start": "react-scripts start",

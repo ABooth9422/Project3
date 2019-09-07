@@ -1,6 +1,7 @@
 .container{
     position:relative;
     height:100%;
+   opacity:.90;
 }
 h2{
     font-style:italic;

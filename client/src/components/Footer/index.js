@@ -3,7 +3,7 @@ import './style.css'
 
 function Footer() {
     return (
-        <footer className='footer rounded text-white'>
+        <footer className='footer text-white'>
             <div className="container d-flex justify-content-center">
                 <div className="row mt-1">
                 <a href="/contact">Contact Us</a>

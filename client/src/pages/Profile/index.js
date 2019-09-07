@@ -12,7 +12,7 @@ function Profile() {
     <Jumbotron/>
       <Container>
       <div id="noMatch"className='container d-flex justify-content-center p-5'>    
-            <h1>Profile Page</h1>
+            <h1>Create Profile</h1>
             
       </div>
       </Container>
