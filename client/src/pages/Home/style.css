@@ -28,10 +28,15 @@ p,h3{
 
 @media screen and (max-width:1007px){
     .testimonial{
-        margin:0px 0px 10px 0px !important;
+        /* margin:0px 0px 10px 0px !important; */
+        margin:auto auto 20px !important;
         width:400px;
         flex-wrap:wrap;
     
+    }
+    .imgTest{
+        display:flex;
+        justify-content:center;
     }
     #jarvis{
         left:0% !important;

@@ -10,3 +10,17 @@
     background-repeat: no-repeat;
     border-radius:0 !important
 }
+@media screen and (max-width:1007px){
+    .myJumbotron{
+        background-position-y:0;
+    }
+    #logo{
+        width:600px;
+    }
+}
+@media screen and (max-width:504px){
+    #logo{
+        width:500px;
+        align-self:baseline;
+    }
+}
