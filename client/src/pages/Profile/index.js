@@ -38,7 +38,11 @@ class Profile extends React.Component {
     console.log(this.props)
     if(!this.state.submit){
       profile=
-      
+      <>
+      <div className="row d-flex justify-content-center">
+      <h3>Hello {this.props.user.name}! Lets make your profile!</h3>
+      </div>
+     
         <form className="text-white font-weight-bold ">
       <div className="row my-3 d-flex justify-content-center">
         <div className="col-6">
@@ -55,7 +59,7 @@ class Profile extends React.Component {
         <div className="row d-flex my-3 justify-content-center">
           <div className="col-3">
           <label >Email</label>
-          <input id="email"type="text" className="form-control" placeholder="Email"/>
+          <input id="email"type="email" className="form-control" placeholder="Email"/>
           </div>
           <div className="col-3">
           <label >Favorite Exercise</label>
@@ -66,7 +70,7 @@ class Profile extends React.Component {
         <button  onClick={this.profileCreate}className="btn btn-secondary my-5">Submit</button>
         </div>
         </form>
-      
+      </>
     }else{
       profile=
       <>
@@ -99,9 +103,7 @@ class Profile extends React.Component {
       <div className="row d-flex justify-content-center">
       <h2 className="head display-1 rounded">{this.state.heading}</h2> 
       </div>
-      <div className="row d-flex justify-content-center">
-      <h3>Hello {this.props.user.name}! Lets make your profile!</h3>
-      </div>
+      
       </div>
       
       {profile}

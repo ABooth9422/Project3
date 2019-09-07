@@ -1,4 +1,6 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
+
 import './style.css'
 
 function Footer() {
@@ -6,9 +8,9 @@ function Footer() {
         <footer className='footer text-white'>
             <div className="container d-flex justify-content-center">
                 <div className="row mt-1">
-                <a href="/contact">Contact Us</a>
+                <Link to="/contact">Contact Us</Link>
                 <p className="mx-4">|</p>
-                <a href="/about">About Us</a>
+                <Link to="/about">About Us</Link>
                 </div>
                 
             </div>

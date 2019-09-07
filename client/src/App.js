@@ -9,6 +9,8 @@ import Gyms from './pages/Gyms'
 import Profile from './pages/Profile'
 import Routines from './pages/Routines'
 import Navbar from "./components/Navbar";
+import About from "./pages/About"
+import Contact from "./pages/Contact"
 
 class App extends React.Component {
   
@@ -92,9 +94,11 @@ class App extends React.Component {
         <Route exact path="/gyms" component={Gyms} />
         <Route exact path="/routines" component={Routines} />
         <Route exact path="/forums" component={Forums} />
+        <Route exact path="/contact" component={Contact}/>
+        <Route exact path="/about" component={About}/>
         <Route exact path="/profile" render={(props) => <Profile {...props} user={this.state.user} />}/>
         <Route component={NoMatch} />
-    </Switch>
+        </Switch>
       </Router>
     );
   }
