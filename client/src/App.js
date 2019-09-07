@@ -24,6 +24,7 @@ class App extends React.Component {
     this.logInFailed = this.logInFailed.bind(this);
     this.logOut = this.logOut.bind(this);
   }
+ 
   getLocation() {
     navigator.geolocation.getCurrentPosition(this.showPosition);
   }
@@ -60,7 +61,6 @@ class App extends React.Component {
   }
 
   render(){
-    console.log(this.state.user)
     let button;
     if(this.isObjEmpty(this.state.user)){
       console.log(this.state.user)
@@ -92,7 +92,7 @@ class App extends React.Component {
         <Route exact path="/gyms" component={Gyms} />
         <Route exact path="/routines" component={Routines} />
         <Route exact path="/forums" component={Forums} />
-        <Route exact path="/profile" component={Profile} />
+        <Route exact path="/profile" render={(props) => <Profile {...props} user={this.state.user} />}/>
         <Route component={NoMatch} />
     </Switch>
       </Router>

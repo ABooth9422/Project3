@@ -33,9 +33,9 @@ class Profile extends React.Component {
 
 
 
-  render(){
+  render(props){
     let profile
-
+    console.log(this.props)
     if(!this.state.submit){
       profile=
       
@@ -95,9 +95,15 @@ class Profile extends React.Component {
     <Jumbotron/>
       <Container>
       
-      <div id="noMatch"className='container d-flex justify-content-center p-5'> 
-      <h2 className="head display-1 rounded text-center text-black">{this.state.heading}</h2> 
+      <div className="container my-3 p-5">
+      <div className="row d-flex justify-content-center">
+      <h2 className="head display-1 rounded">{this.state.heading}</h2> 
       </div>
+      <div className="row d-flex justify-content-center">
+      <h3>Hello {this.props.user.name}! Lets make your profile!</h3>
+      </div>
+      </div>
+      
       {profile}
       
     
