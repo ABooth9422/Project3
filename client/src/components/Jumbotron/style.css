@@ -3,13 +3,14 @@
     background-color:slategrey;
     box-shadow:black 3px 3px 3px;
     position:relative;
-    background-image:url("./images/backdrop.jpg");
-    background-size:cover;
+    /* background-image:url("./images/backdrop.jpg");  */
+     background-size:cover;
     background-position-y:-200px;
     height:350px;
     background-repeat: no-repeat;
-    border-radius:0 !important
-}
+    border-radius:0 !important  
+} 
+
 @media screen and (max-width:1007px){
     .myJumbotron{
         background-position-y:0;

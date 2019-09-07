@@ -14,10 +14,9 @@ function Contact(){
           <Container>
           <div className="page mx-5 my-5">
           <div className="ml-5 mr-5 mt-3 text-white" id="contact">
-            
             <h1 style={{"textDecoration":"underline","padding":"0"}}className="font-weight-bold display-1">Contact</h1>
             <p className="my-5 text-center">Feel free to drop us a line and we'll get back to you!</p>
-            <form action="https://formspree.io/abooth9422@gmail.com" method="POST">
+            <form action="https://formspree.io/gymsensePROJECT@gmail.com" method="POST">
                 <div className="d-flex justify-content-center">
                     <div className="form-group row">
                         <label  className="col-md-2 col-form-label">Name</label>
