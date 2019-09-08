@@ -1,4 +1,8 @@
 .test{
     font-weight:bold;
-    box-shadow:black 3px 3px 3px;
+    box-shadow:black 10px 10px 10px;
+    font-family:'Roboto', sans-serif;
+    color:red;
+    border:3px solid crimson !important;
+    border-radius: 10px;;
 }

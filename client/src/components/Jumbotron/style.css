@@ -21,7 +21,9 @@
 }
 @media screen and (max-width:504px){
     #logo{
-        width:500px;
+        width:200px;
+        height:100px;
         align-self:baseline;
+        content:url(./images/GS.png)
     }
 }

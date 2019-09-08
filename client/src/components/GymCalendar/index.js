@@ -13,7 +13,7 @@ class GymCalendar extends Component {
     return (
       <div>
         <Calendar
-          className={"test bg-dark"}
+          className={"test bg-secondary"}
           onChange={this.onChange}
           value={this.state.date}
         />
