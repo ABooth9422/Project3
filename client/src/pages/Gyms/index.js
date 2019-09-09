@@ -4,6 +4,7 @@ import Jumbotron from "../../components/Jumbotron";
 import Wrapper from "../../components/Wrapper"
 import Footer from "../../components/Footer"
 import GymCard from "../../components/GymCard"
+import SimpleMap from "../../components/SimpleMap"
 import "./style.css"
 import API from "../../utils/API"
 
@@ -24,7 +25,7 @@ class Gyms extends Component{
     let location= document.getElementById("location").value
     console.log(location)
     let useLocation=document.getElementById("useLocation").checked
-    API.getGyms()
+    // API.getGyms()
     this.setState({searched:true})
     if(useLocation){
       this.getLocation()
@@ -114,8 +115,9 @@ class Gyms extends Component{
           <h1 className="display-1">Gyms for you!</h1>
           </div>
           <div className="row d-flex justify-content-center text-center">
-            <GymCard />
-            </div>
+            {/* <GymCard /> */}
+            <SimpleMap/>
+          </div>
         </>
       }
     
@@ -126,7 +128,7 @@ class Gyms extends Component{
       <Container>
       <div id="noMatch"className='text-white my-5 p-5'>    
           {page}
-          </div>
+      </div>
         
       </Container>
     </Wrapper>
