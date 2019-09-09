@@ -29,7 +29,7 @@ class Home extends React.Component {
               <div id="mainContent my-5">
               <header className="my-5 rounded">
               <div className="header__bg "></div>
-              <h1 className="display-1 rounded mt-5 text-black">GymSense</h1>
+              <h1 id="gymsenseMain"className="display-1 rounded mt-5 text-black">GymSense</h1>
               </header>
               
               <p id="intro"className="my-1 mb-5 text-center">We are a very intuitive app that will provide you with all of the tools you need with your day to day workout routine.
@@ -64,7 +64,9 @@ class Home extends React.Component {
                 <div style={{"margin":"40%"}}className="testimonial d-flex rounded container py-3 my-5">
                 <div className='row'>
                     <div className="col-lg-9 col-12 justify-content-end align-self-center">
+                      
                     <p className="text-center"style={{"whiteSpace": "pre-line"}}>{["Loved the workout suggestions and the feedback from other users","-Louis"].join('\n')}</p>
+                    
                     </div>
                     <div className="col-lg-3 col-12 justify-content-start">
                     <img className="testImg rounded-circle"alt="test"width="200px" height="200px"src={require('./images/louis.jpg')}></img>

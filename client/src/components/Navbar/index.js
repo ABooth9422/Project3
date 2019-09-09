@@ -34,7 +34,7 @@ function Navbar(props) {
     return (
         <nav className="navbar navbar-dark navbar-expand-lg myNavbar">
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span className="navbar-toggler-icon"></span>
+            <img height="50"className="bg-secondary rounded" alt="logo"width="50"src={require("../Jumbotron/images/GS.png")}/>
             </button>
             <div className="collapse navbar-collapse" id="navbarNav">
                 <h2><span id="badge"className="badge badge-dark"><img alt="logo"height="50px"src={require("../Jumbotron/images/gymsense.png")}></img></span></h2>

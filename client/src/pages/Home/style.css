@@ -22,8 +22,15 @@ p,h3{
     position:relative;
     
 }
+.testImg{
+    opacity:85;
+    filter: alpha(opacity=85)
+}
 .testImg:hover{
     transform: scale(1.2);
+    cursor:pointer;
+    filter: alpha(opacity=1);
+    opacity:1;
 }
 
 @media screen and (max-width:1007px){
@@ -69,9 +76,9 @@ header {
   .container{
       padding:0px;
   }
-  h1 {
+  #gymsenseMain {
     margin: 0;
-    padding: 75px 0;
+    padding: 75px 0 !important;
     text-align: center;
     font-style:italic;
     text-shadow:black 10px 10px 10px;
