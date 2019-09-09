@@ -4,3 +4,13 @@
     font-weight:bold;
     text-shadow:black 3px 3px 3px;
  }
+ #profilePic{
+    opacity:85;
+    filter: alpha(opacity=85)
+}
+#profilePic:hover{
+    transform: scale(1.2);
+    cursor:pointer;
+    filter: alpha(opacity=1);
+    opacity:1;
+}

@@ -1,11 +1,12 @@
+
 import React from "react";
 import Container from "../../components/Container";
 import Jumbotron from "../../components/Jumbotron";
 import Wrapper from "../../components/Wrapper"
 import Footer from "../../components/Footer"
-// import db from "../../../../models"
-
 import "./style.css"
+import API from "../../utils/API"
+
 
 class Profile extends React.Component {
   
@@ -29,17 +30,18 @@ class Profile extends React.Component {
     this.setState({movement:fav})
     let email=document.getElementById("email").value
     this.setState({email:email})
-    // let profileObj={
-    //   image:image,
-    //   email:this.props.user.email,
-    //   name:UserName,
-    //   googleid:this.props.user.googleId
-
-    // }
-
-    // db.create({profileObj}).then(function(response){
-    //   console.log("success")
-    // })
+     
+    
+    let profileObj={
+      img:image,
+      email:this.props.user.email,
+      name:UserName,
+      googleid:this.props.user.googleId
+     }
+  
+   API.createComment(profileObj).then(function(resp){
+      console.log(resp)
+    })
   }
 
 
@@ -87,14 +89,14 @@ class Profile extends React.Component {
       profile=
       <>
       <div className="container text-white">
-      <h1 style={{"textDecoration":"underline"}}className="display-1">Welcome {this.state.username}</h1>
+      <h1 style={{"textDecoration":"underline"}}className="display-1 text-center">Welcome {this.state.username}</h1>
       <div className="row row d-flex justify-content-center">
-      <img className="rounded-circle mb-2"src={this.state.profile} height="200px" width="200px" alt="main profile pic"></img>
+      <img id="profilePic"className="rounded-circle my-2"src={this.state.profile} height="200px" width="200px" alt="main profile pic"></img>
       </div>
-      <div className="row d-flex mb-2 justify-content-center">
+      <div className="row d-flex my-2 justify-content-center">
       <h3>Your Email is: {this.state.email}</h3>
       </div>
-      <div className="row d-flex mb-2 justify-content-center">
+      <div className="row d-flex my-2 justify-content-center">
       <h3>Favorite exercise: {this.state.movement}</h3>
       </div>
       </div>
@@ -111,9 +113,10 @@ class Profile extends React.Component {
     <Jumbotron/>
       <Container>
       
-      <div className="container my-3 p-5">
+      <div className="container my-3 p-3">
       <div className="row d-flex justify-content-center">
       <h2 className="head display-1 rounded">{this.state.heading}</h2> 
+      
       </div>
       
       </div>
