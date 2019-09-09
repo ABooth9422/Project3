@@ -27,16 +27,16 @@ class App extends React.Component {
     this.logOut = this.logOut.bind(this);
   }
   
-  // getLocation() {
-  //   navigator.geolocation.getCurrentPosition(this.showPosition);
-  // }
-  // showPosition = (position)=>{
-  //   this.setState({location: position})
-  //   console.log(this.state.location)
-  // }
-  // componentDidMount(){
-  //   this.getLocation()
-  // } 
+  getLocation() {
+    navigator.geolocation.getCurrentPosition(this.showPosition);
+  }
+  showPosition = (position)=>{
+    this.setState({location: position})
+    console.log(this.state.location)
+  }
+  componentDidMount(){
+    this.getLocation()
+  } 
 
   logInSuccess(response){
       this.setState({user : response.profileObj}, ()=>{
