@@ -3,7 +3,9 @@ import Container from "../../components/Container";
 import Jumbotron from "../../components/Jumbotron";
 import Wrapper from "../../components/Wrapper"
 import Footer from "../../components/Footer"
+import GymCard from "../../components/GymCard"
 import "./style.css"
+import API from "../../utils/API"
 
 class Gyms extends Component{
   constructor(){
@@ -18,7 +20,9 @@ class Gyms extends Component{
 
   checkInput=()=>{
     let location= document.getElementById("location").value
+    console.log(location)
     let useLocation=document.getElementById("useLocation").checked
+    API.getGyms()
     if(useLocation){
       this.getLocation()
     }

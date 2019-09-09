@@ -3,6 +3,7 @@ import Container from "../../components/Container";
 import Jumbotron from "../../components/Jumbotron";
 import Wrapper from "../../components/Wrapper"
 import Footer from "../../components/Footer"
+// import db from "../../../../models"
 
 import "./style.css"
 
@@ -28,6 +29,17 @@ class Profile extends React.Component {
     this.setState({movement:fav})
     let email=document.getElementById("email").value
     this.setState({email:email})
+    // let profileObj={
+    //   image:image,
+    //   email:this.props.user.email,
+    //   name:UserName,
+    //   googleid:this.props.user.googleId
+
+    // }
+
+    // db.create({profileObj}).then(function(response){
+    //   console.log("success")
+    // })
   }
 
 
