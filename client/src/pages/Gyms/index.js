@@ -16,16 +16,20 @@ class Gyms extends Component{
     disabled:false,
     checked:false,
     searched:false,
-    optionsState:"Type of Gym"
+    optionsState:"Type of Gym",
+    gymArray:[]
   }
   this.getLocation = this.getLocation.bind(this);
   }
 
   checkInput=()=>{
     let location= document.getElementById("location").value
-    console.log(location)
+ 
     let useLocation=document.getElementById("useLocation").checked
-    // API.getGyms()
+    API.getGyms((data)=>{
+      this.setState({gymArray:data.data.results})
+      console.log(data)
+    })
     this.setState({searched:true})
     if(useLocation){
       this.getLocation()
@@ -115,8 +119,18 @@ class Gyms extends Component{
           <h1 className="display-1">Gyms for you!</h1>
           </div>
           <div className="row d-flex justify-content-center text-center">
-            {/* <GymCard /> */}
-            <SimpleMap/>
+            {this.state.gymArray.map((element,index)=>{
+           
+              const gymDEETS={
+                name:element.name,
+               // image:,
+                rating:element.rating,
+                address:element.vicinity
+              }
+              
+              return <GymCard key={index} details={gymDEETS} />
+            })}
+            
           </div>
         </>
       }
