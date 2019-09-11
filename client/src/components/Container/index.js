@@ -4,7 +4,7 @@ import './style.css'
 function Container(props) {
     return (
         
-    <div className="container rounded" {...props} style={{"backgroundColor":"#343A40"}}>
+    <div className="container myContainer rounded" {...props}>
         {props.children}
     </div>
         
