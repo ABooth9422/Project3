@@ -1,12 +1,15 @@
 import React,{Component} from "react";
 import Container from "../../components/Container";
 import Jumbotron from "../../components/Jumbotron";
-import Wrapper from "../../components/Wrapper"
-import Footer from "../../components/Footer"
-import GymCard from "../../components/GymCard"
-import SimpleMap from "../../components/SimpleMap"
-import "./style.css"
-import API from "../../utils/API"
+import Wrapper from "../../components/Wrapper";
+import Footer from "../../components/Footer";
+import GymCard from "../../components/GymCard";
+import Form from '../../components/Form';
+import TextInput from '../../components/TextInput';
+import Button from '../../components/Button';
+import SimpleMap from "../../components/SimpleMap";
+import "./style.css";
+import API from "../../utils/API";
 
 class Gyms extends Component{
   constructor(){
@@ -66,7 +69,7 @@ class Gyms extends Component{
 
   render(){
     let page;
-      if(!this.state.searched){
+      // if(!this.state.searched){
         page=
         <>
           <div className="row d-flex justify-content-center text-center">
@@ -81,7 +84,8 @@ class Gyms extends Component{
           </h3>
           </div>
           <div className="container-fluid d-flex justify-content-center">
-          <form className="text-white font-weight-bold ">
+          
+          {/* <form className="text-white font-weight-bold ">
           <div className="row my-5 d-flex justify-content-center">
           <div className="col-3">
               <div className="dropdown">
@@ -94,7 +98,7 @@ class Gyms extends Component{
                 </select>
        
             </div>
-            </div>
+          </div>
           <div className="col-4">
           <input type="text" placeholder="Enter your location"  disabled = {this.state.disabled} id="location"className="form-control disabled"/>
           </div>
@@ -109,41 +113,51 @@ class Gyms extends Component{
               <button type="button" style={{"boxShadow":"black 3px 3px 3px"}} id="locationSubmit" onClick={this.checkInput} className="btn btn-secondary btn-lg my-2">Submit</button>
               </div>
     
-            </form>
+            </form> */}
         </div>
         </>
-      }else{
-        page=
-        <>
-           <div className="row d-flex justify-content-center text-center">
-          <h1 className="display-1">Gyms for you!</h1>
-          </div>
-          <div className="row d-flex justify-content-center text-center">
-            {this.state.gymArray.map((element,index)=>{
+      // }else{
+      //   page=
+      //   <>
+      //      <div className="row d-flex justify-content-center text-center">
+      //     <h1 className="display-1">Gyms for you!</h1>
+      //     </div>
+      //     <div className="row d-flex justify-content-center text-center">
+      //       {this.state.gymArray.map((element,index)=>{
            
-              const gymDEETS={
-                name:element.name,
-               // image:,
-                rating:element.rating,
-                address:element.vicinity
-              }
+      //         const gymDEETS={
+      //           name:element.name,
+      //          // image:,
+      //           rating:element.rating,
+      //           address:element.vicinity
+      //         }
               
-              return <GymCard key={index} details={gymDEETS} />
-            })}
+      //         return <GymCard key={index} details={gymDEETS} />
+      //       })}
             
-          </div>
-        </>
-      }
+      //     </div>
+      //   </>
+      // }
     
   return (
     <>
     <Wrapper>
     <Jumbotron/>
-      <Container>
-      <div id="noMatch"className='text-white my-5 p-5'>    
-          {page}
-      </div>
-        
+      <Container className='container myContainer  rounded p-3 my-5'>
+        {page}
+        <div className='row text-center justify-content-center'>
+            <div className='col-12 col-md-6 '>
+              <Form>
+                <TextInput id='gymSearch' label='Enter Address' onChange={this.handleChange}>Enter your location</TextInput>
+                <Button type='button' bootType='danger'>GO</Button>
+              </Form>
+            </div>
+        </div>
+        <div className='row text-center justify-content-center'>
+            <div className='col-12 col-md-6 my-3'>
+              <SimpleMap></SimpleMap>
+            </div>
+        </div>
       </Container>
     </Wrapper>
     <Footer/>

@@ -11,6 +11,7 @@ import Routines from './pages/Routines'
 import Navbar from "./components/Navbar";
 import About from "./pages/About"
 import Contact from "./pages/Contact"
+import './App.css'
 
 class App extends React.Component {
   
