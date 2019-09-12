@@ -3,3 +3,10 @@
     background-color: red;
 
 }
+
+.myMap{
+    overflow: hidden;
+    border: 5px solid #0005;
+    border-radius: 25px; 
+    
+}

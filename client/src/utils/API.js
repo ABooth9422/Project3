@@ -17,9 +17,9 @@ export default {
             //         address:gym.vicinity
             //       }
             //     if("photos" in gym){
-            //         axios.get(`https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${gym.photos[0].photo_reference}&key=AIzaSyAr9PzQqMpjaO5J9DqQxj1PfR2W2XwhORA`).then(function(res){
+            //         axios.get(`https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${gym.photos[0].photo_reference}&key=API-KEY`).then(function(res){
             //             gymDEETS.photo=res
-            //             //https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${gym.photos[0].photo_reference}&key=AIzaSyAr9PzQqMpjaO5J9DqQxj1PfR2W2XwhORA
+            //             //https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${gym.photos[0].photo_reference}&key=API-KEY
             //          })
 
             //     }

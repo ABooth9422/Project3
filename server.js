@@ -4,7 +4,6 @@ const PORT = process.env.PORT || 3001;
 const app = express();
 const routes = require("./routes");
 const db = require("./models");
-require("dotenv").config()
 
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
@@ -16,15 +15,11 @@ if (process.env.NODE_ENV === "production") {
 
 app.use(routes);
 
-
 // Send every other request to the React app
 // Define any API routes before this runs
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "./client/build/index.html"));
 });
-
-
-
 
 db.sequelize.sync({ force: true }).then(function() {
   app.listen(PORT, function() {
