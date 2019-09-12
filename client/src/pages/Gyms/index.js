@@ -15,6 +15,7 @@ class Gyms extends Component{
   constructor(){
     super()
   this.state={
+    query: '',
     location:[],
     disabled:false,
     checked:false,
@@ -67,12 +68,23 @@ class Gyms extends Component{
       
   }
 
+  formSubmit = (event) =>{
+    console.log(this.state.query);
+    this.setState({query: ''});
+  }
+
+  inputChange = (event) =>{
+    this.setState({query: event.target.value});
+  }
+
   render(){
-    let page;
-      // if(!this.state.searched){
-        page=
-        <>
-          <div className="row d-flex justify-content-center text-center">
+  
+  return (
+    <>
+    <Wrapper>
+    <Jumbotron/>
+      <Container className='container myContainer  rounded p-3 my-5'>
+      <div className="row d-flex justify-content-center text-center">
           <h1 className="display-1">Find your Gym!</h1>
           </div>
           <div className="row d-flex my-5 justify-content-center text-center">
@@ -85,77 +97,18 @@ class Gyms extends Component{
           </div>
           <div className="container-fluid d-flex justify-content-center">
           
-          {/* <form className="text-white font-weight-bold ">
-          <div className="row my-5 d-flex justify-content-center">
-          <div className="col-3">
-              <div className="dropdown">
-            
-              <select value={this.optionsState} className="custom-select" id="gymPref" style={{"width":"100%"}}>
-
-                <option value="All">All Gyms</option>
-                <option value="Alone">Workout Alone</option>
-                <option value="Group">Workout with a group</option>
-                </select>
-       
-            </div>
-          </div>
-          <div className="col-4">
-          <input type="text" placeholder="Enter your location"  disabled = {this.state.disabled} id="location"className="form-control disabled"/>
-          </div>
-
-            <div className="col-5">
-              <label style={{"fontSize":"20px"}}><input type="checkbox" onClick={this.useLocation} checked={this.state.checked}
-              onChange={this.checkboxLocation} id="useLocation"/>Click to use your location</label>
-              </div>
-
-              </div>
-              <div className="row d-flex justify-content-center">
-              <button type="button" style={{"boxShadow":"black 3px 3px 3px"}} id="locationSubmit" onClick={this.checkInput} className="btn btn-secondary btn-lg my-2">Submit</button>
-              </div>
-    
-            </form> */}
         </div>
-        </>
-      // }else{
-      //   page=
-      //   <>
-      //      <div className="row d-flex justify-content-center text-center">
-      //     <h1 className="display-1">Gyms for you!</h1>
-      //     </div>
-      //     <div className="row d-flex justify-content-center text-center">
-      //       {this.state.gymArray.map((element,index)=>{
-           
-      //         const gymDEETS={
-      //           name:element.name,
-      //          // image:,
-      //           rating:element.rating,
-      //           address:element.vicinity
-      //         }
-              
-      //         return <GymCard key={index} details={gymDEETS} />
-      //       })}
-            
-      //     </div>
-      //   </>
-      // }
-    
-  return (
-    <>
-    <Wrapper>
-    <Jumbotron/>
-      <Container className='container myContainer  rounded p-3 my-5'>
-        {page}
         <div className='row text-center justify-content-center'>
             <div className='col-12 col-md-6 '>
               <Form>
-                <TextInput id='gymSearch' label='Enter Address' onChange={this.handleChange}>Enter your location</TextInput>
-                <Button type='button' bootType='danger'>GO</Button>
+                <TextInput id='gymSearch' label='Enter Address' changeHandle={this.inputChange}>{this.state.query}</TextInput>
+                <Button type='button' bootType='danger' clickHandle={this.formSubmit} >GO</Button>
               </Form>
             </div>
         </div>
         <div className='row text-center justify-content-center'>
             <div className='col-12 col-md-6 my-3'>
-              <SimpleMap></SimpleMap>
+              {/* <SimpleMap></SimpleMap> */}
             </div>
         </div>
       </Container>
