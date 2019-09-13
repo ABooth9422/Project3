@@ -4,13 +4,21 @@ module.exports = function(sequelize, DataTypes) {
         type: DataTypes.STRING,
         allowNull: false
       },
-      slug: {
+      user: {
           type: DataTypes.STRING,
-          
+          allowNull: false
+      },
+      likes: {
+        type: DataTypes.INTEGER
       }
     }, 
     {
       timestamps: false
     });
+    Forum.associate = (models) =>{
+      Forum.hasMany(models.Comment, {
+        onDelete: "cascade"
+      })
+    }
     return Forum;
   };
