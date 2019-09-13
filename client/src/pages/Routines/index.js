@@ -12,7 +12,7 @@ function Routine() {
     <>
     <Wrapper>
       <Container>
-      <Logo style={{"boxShadow":"black 3px 3px 3px"}}class={"bg-white rounded"}image={require("./images/GYMSENSEi.png")}/>  
+      <Logo style={{"boxShadow":"black 3px 3px 3px"}}class={"bg-white rounded mt-5"}image={require("./images/GYMSENSEi.png")}/>  
 
           
             <h1 className="text-center my-5 display-1 text-white">Build a Routine!</h1> 
