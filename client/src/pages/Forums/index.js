@@ -11,9 +11,8 @@ function Forum() {
     <Wrapper>
     <Jumbotron/>
       <Container>
-      <div id="noMatch"className='container d-flex justify-content-center p-5'>    
-            <h1>Forum Page</h1>
-            
+      <div className='container justify-content-center p-5'>    
+            <h1>Forum Page</h1>         
       </div>
       </Container>
     </Wrapper>

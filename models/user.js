@@ -19,6 +19,9 @@ module.exports = function(sequelize, DataTypes) {
       },
       img: {
           type: DataTypes.STRING,
+      },
+      favWorkout: {
+        type: DataTypes.STRING
       }
     }, 
     {
