@@ -14,49 +14,25 @@ import API from "../../utils/API";
 class Gyms extends Component{
   constructor(){
     super()
-  this.state={
-    location:[],
-    disabled:false,
-    checked:false,
-    searched:false,
-    optionsState:"Type of Gym",
-    gymArray:[]
-  }
-  this.getLocation = this.getLocation.bind(this);
-  }
 
-  checkInput=()=>{
-    let location= document.getElementById("location").value
- 
-    let useLocation=document.getElementById("useLocation").checked
-    API.getGyms((data)=>{
-      this.setState({gymArray:data.data.results})
-      console.log(data)
-    })
-    this.setState({searched:true})
-    if(useLocation){
-      this.getLocation()
-    }
+  this.state={
+    query: '',
+    center:{lat: 0, lng: 0},
+    gyms:[]
+
   }
-  getLocation() {
+}
+ 
+  
+  getLocation = () => {
     navigator.geolocation.getCurrentPosition(this.showPosition);
   }
+
   showPosition = (position)=>{
     this.setState({location: position})
     console.log(this.state.location)
   }
-  checkboxLocation = () =>{
-    let useLocation=document.getElementById("useLocation").checked
-    console.log(useLocation)
-    if(!this.state.checked){
-      this.setState({checked:true})
-      console.log(useLocation)
-    }else{
-      this.setState({checked:false})
-      console.log(useLocation)
-      
-    }
-  }
+  
 
   useLocation=()=>{
     if(!this.state.disabled){
@@ -67,12 +43,29 @@ class Gyms extends Component{
       
   }
 
+  formSubmit = () => {
+    if(this.state.query){
+      API.getGymsWithoutLocation(this.state.query).then(res =>{
+        this.setState({center: res.data.center, gyms: res.data.gyms});
+        console.log(this.state);
+      }).catch(err => console.log(err))
+    }
+  }
+
+  inputChange = (event) => {
+    this.setState({query: event.target.value});
+  }
+
   render(){
-    let page;
-      // if(!this.state.searched){
-        page=
-        <>
-          <div className="row d-flex justify-content-center text-center">
+
+
+  
+  return (
+    <>
+    <Wrapper>
+    <Jumbotron/>
+      <Container className='container myContainer  rounded p-3 my-5'>
+      <div className="row d-flex justify-content-center text-center">
           <h1 className="display-1">Find your Gym!</h1>
           </div>
           <div className="row d-flex my-5 justify-content-center text-center">
@@ -85,77 +78,19 @@ class Gyms extends Component{
           </div>
           <div className="container-fluid d-flex justify-content-center">
           
-          {/* <form className="text-white font-weight-bold ">
-          <div className="row my-5 d-flex justify-content-center">
-          <div className="col-3">
-              <div className="dropdown">
-            
-              <select value={this.optionsState} className="custom-select" id="gymPref" style={{"width":"100%"}}>
-
-                <option value="All">All Gyms</option>
-                <option value="Alone">Workout Alone</option>
-                <option value="Group">Workout with a group</option>
-                </select>
-       
-            </div>
-          </div>
-          <div className="col-4">
-          <input type="text" placeholder="Enter your location"  disabled = {this.state.disabled} id="location"className="form-control disabled"/>
-          </div>
-
-            <div className="col-5">
-              <label style={{"fontSize":"20px"}}><input type="checkbox" onClick={this.useLocation} checked={this.state.checked}
-              onChange={this.checkboxLocation} id="useLocation"/>Click to use your location</label>
-              </div>
-
-              </div>
-              <div className="row d-flex justify-content-center">
-              <button type="button" style={{"boxShadow":"black 3px 3px 3px"}} id="locationSubmit" onClick={this.checkInput} className="btn btn-secondary btn-lg my-2">Submit</button>
-              </div>
-    
-            </form> */}
         </div>
-        </>
-      // }else{
-      //   page=
-      //   <>
-      //      <div className="row d-flex justify-content-center text-center">
-      //     <h1 className="display-1">Gyms for you!</h1>
-      //     </div>
-      //     <div className="row d-flex justify-content-center text-center">
-      //       {this.state.gymArray.map((element,index)=>{
-           
-      //         const gymDEETS={
-      //           name:element.name,
-      //          // image:,
-      //           rating:element.rating,
-      //           address:element.vicinity
-      //         }
-              
-      //         return <GymCard key={index} details={gymDEETS} />
-      //       })}
-            
-      //     </div>
-      //   </>
-      // }
-    
-  return (
-    <>
-    <Wrapper>
-    <Jumbotron/>
-      <Container className='container myContainer  rounded p-3 my-5'>
-        {page}
         <div className='row text-center justify-content-center'>
             <div className='col-12 col-md-6 '>
               <Form>
-                <TextInput id='gymSearch' label='Enter Address' onChange={this.handleChange}>Enter your location</TextInput>
-                <Button type='button' bootType='danger'>GO</Button>
+                <TextInput id='gymSearch' label='Enter Address' changeHandle={this.inputChange}>{this.state.query}</TextInput>
+                <Button type='button' bootType='danger' clickHandle={this.formSubmit} >GO</Button>
               </Form>
             </div>
         </div>
         <div className='row text-center justify-content-center'>
             <div className='col-12 col-md-6 my-3'>
-              <SimpleMap></SimpleMap>
+              {/* {this.state.center.hasOwnProperty('lat') ?  : <></>}  */}
+              <SimpleMap center={this.state.center}></SimpleMap>
             </div>
         </div>
       </Container>

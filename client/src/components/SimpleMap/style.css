@@ -1,6 +1,8 @@
 .mapMarker{
+    z-index: 100;
     color: black;
-    background-color: red;
+    width: 25px;
+    height: 25px;
 
 }
 

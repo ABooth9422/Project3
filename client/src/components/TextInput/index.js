@@ -5,8 +5,8 @@ function TextInput(props){
 
     return (
         <div className="form-group">
-            <label for={props.id}>{props.label}</label>
-            <input className="form-control" id={props.id} type='text' onChange={props.changeHandle} placeholder={props.children}/>
+            <label htmlFor={props.id}>{props.label}</label>
+            <input className="form-control" id={props.id} type='text' onChange={props.changeHandle} value={props.children}/>
         </div>
     )
 }
