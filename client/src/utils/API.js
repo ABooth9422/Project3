@@ -3,13 +3,16 @@ import axios from "axios";
 
 
 export default {
-    
-    //Find Gym
-    getGyms: function() {
-        return axios.get('/places');
+
+    getGymsWithoutLocation: function(query) {
+        return axios.get(`/placesAPI/places/noLocation/${query}`);
     },
-   
-//Create routines
+
+    getGymsWithLocation: function(query) {
+        return axios.get(`/placesAPI/places/location/${query}`);
+    },
+    
+    //Create routines
     createRoutines: function(routineData) {
         return axios.get("/api/routines", routineData);
     },

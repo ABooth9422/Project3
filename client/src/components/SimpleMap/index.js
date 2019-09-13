@@ -12,8 +12,8 @@ class SimpleMap extends Component {
         this.state = {
             map: {
                 center: {
-                    lat: 35.8140004,
-                    lng: -81.0454212
+                    lat: 0,
+                    lng: 0
                   },
                   zoom: 11
             },
@@ -23,25 +23,40 @@ class SimpleMap extends Component {
 
     }
 
+  
+  componentDidMount(){
+    // this.setState({
+    //   map: {
+    //     center: {
+    //       lat: this.props.center.lat,
+    //       lng: this.props.center.lng
+    //     },
+    //     zoom: 11
+    //   }
+    // });
+  }
   loadMarkers(){
 
   }
  
   render() {
-    console.log(process.env);
     return (
         
       // Important! Always set the container height explicitly
       <div className='myMap' style={{ height: '50vh', width: '100%' }}>
         <GoogleMapReact
           bootstrapURLKeys={{ key: 'AIzaSyAr9PzQqMpjaO5J9DqQxj1PfR2W2XwhORA'}}
-          defaultCenter={this.state.map.center}
+          defaultCenter= {{
+            lat: 0,
+            lng: 0
+          }}
           defaultZoom={this.state.map.zoom}
+          center={this.props.center}
         >
           <AnyReactComponent
-            lat={this.state.map.center.lat}
-            lng={this.state.map.center.lng}
-            text="My Marker"
+            lat={this.props.center.lat}
+            lng={this.props.center.lng}
+            text="Home"
           />
         </GoogleMapReact>
       </div>

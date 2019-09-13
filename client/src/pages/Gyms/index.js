@@ -17,6 +17,7 @@ class Gyms extends Component{
 
   this.state={
     query: '',
+    center:{lat: 0, lng: 0},
     gymArray:[]
 
   }
@@ -42,9 +43,14 @@ class Gyms extends Component{
       
   }
 
-  formSubmit = (event) => {
-    console.log(this.state.query);
-    this.setState({query: ''});
+  formSubmit = () => {
+    if(this.state.query){
+      API.getGymsWithoutLocation(this.state.query).then(res =>{
+        console.log(res.data);
+        this.setState({center: res.data.center});
+        console.log(this.state.center);
+      }).catch(err => console.log(err))
+    }
   }
 
   inputChange = (event) => {
@@ -52,6 +58,8 @@ class Gyms extends Component{
   }
 
   render(){
+
+
   
   return (
     <>
@@ -82,7 +90,8 @@ class Gyms extends Component{
         </div>
         <div className='row text-center justify-content-center'>
             <div className='col-12 col-md-6 my-3'>
-              {/* <SimpleMap></SimpleMap> */}
+              {/* {this.state.center.hasOwnProperty('lat') ?  : <></>}  */}
+              <SimpleMap center={this.state.center}></SimpleMap>
             </div>
         </div>
       </Container>
