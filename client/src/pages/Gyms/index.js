@@ -14,50 +14,24 @@ import API from "../../utils/API";
 class Gyms extends Component{
   constructor(){
     super()
+
   this.state={
     query: '',
-    location:[],
-    disabled:false,
-    checked:false,
-    searched:false,
-    optionsState:"Type of Gym",
     gymArray:[]
-  }
-  this.getLocation = this.getLocation.bind(this);
-  }
 
-  checkInput=()=>{
-    let location= document.getElementById("location").value
- 
-    let useLocation=document.getElementById("useLocation").checked
-    API.getGyms((data)=>{
-      this.setState({gymArray:data.data.results})
-      console.log(data)
-    })
-    this.setState({searched:true})
-    if(useLocation){
-      this.getLocation()
-    }
   }
-  getLocation() {
+}
+ 
+  
+  getLocation = () => {
     navigator.geolocation.getCurrentPosition(this.showPosition);
   }
+
   showPosition = (position)=>{
     this.setState({location: position})
     console.log(this.state.location)
   }
-  checkboxLocation = () =>{
-    let useLocation=document.getElementById("useLocation").checked
-    console.log(useLocation)
-    if(!this.state.checked){
-      this.setState({checked:true})
-      console.log(useLocation)
-    }else{
-      this.setState({checked:false})
-      console.log(useLocation)
-      
-    }
-  }
+  
 
   useLocation=()=>{
     if(!this.state.disabled){
@@ -68,12 +42,12 @@ class Gyms extends Component{
       
   }
 
-  formSubmit = (event) =>{
+  formSubmit = (event) => {
     console.log(this.state.query);
     this.setState({query: ''});
   }
 
-  inputChange = (event) =>{
+  inputChange = (event) => {
     this.setState({query: event.target.value});
   }
 
