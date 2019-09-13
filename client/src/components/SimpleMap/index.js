@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
 import './style.css'
+import marker from './images/marker.png'
  
-const AnyReactComponent = ({ text }) => <div className="mapMarker">{text}</div>;
- 
+
 class SimpleMap extends Component {
 
     constructor(props){
@@ -25,15 +25,7 @@ class SimpleMap extends Component {
 
   
   componentDidMount(){
-    // this.setState({
-    //   map: {
-    //     center: {
-    //       lat: this.props.center.lat,
-    //       lng: this.props.center.lng
-    //     },
-    //     zoom: 11
-    //   }
-    // });
+   
   }
   loadMarkers(){
 
@@ -53,11 +45,7 @@ class SimpleMap extends Component {
           defaultZoom={this.state.map.zoom}
           center={this.props.center}
         >
-          <AnyReactComponent
-            lat={this.props.center.lat}
-            lng={this.props.center.lng}
-            text="Home"
-          />
+          {/* <img src={marker}className="mapMarker" lat={this.props.center.lat} lng={this.props.center.lng}/> */}
         </GoogleMapReact>
       </div>
     );

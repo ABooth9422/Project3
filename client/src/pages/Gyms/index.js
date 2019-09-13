@@ -18,7 +18,7 @@ class Gyms extends Component{
   this.state={
     query: '',
     center:{lat: 0, lng: 0},
-    gymArray:[]
+    gyms:[]
 
   }
 }
@@ -46,9 +46,8 @@ class Gyms extends Component{
   formSubmit = () => {
     if(this.state.query){
       API.getGymsWithoutLocation(this.state.query).then(res =>{
-        console.log(res.data);
-        this.setState({center: res.data.center});
-        console.log(this.state.center);
+        this.setState({center: res.data.center, gyms: res.data.gyms});
+        console.log(this.state);
       }).catch(err => console.log(err))
     }
   }
