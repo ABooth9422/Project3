@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const forumApi = require("./forumApi");
+const forumApi = require("./forumAPI");
 
 router.use("/forum", forumApi);
 
