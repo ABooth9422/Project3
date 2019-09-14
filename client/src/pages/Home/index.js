@@ -43,10 +43,10 @@ class Home extends React.Component {
               <div style={{"margin":"40%"}}className="testimonial d-flex rounded container py-3 my-5">
                 <div className='row'>
                     <div className="col-lg-9 col-12 justify-content-end align-self-center">
-                    <p className="text-center"style={{"whiteSpace": "pre-line"}}>{["Gymsense made getting back to the gym so much easier","-Mark"].join('\n')}</p>
+                    <p className="text-center p-2"style={{"whiteSpace": "pre-line"}}>{["Not having an active workout schedule in the past, GymSense has been a great PT in supporting my training objectives. GymSense is outcome focused, and I have been able to see continual improvement from my sessions. Thank you for being supportive with training efforts!","-Mark"].join('\n')}</p>
                     </div>
                     <div className="col-lg-3 col-12 justify-content-start">
-                    <img className="testImg rounded-circle"alt="test"width="200px" height="200px"src={require('./images/louis.jpg')}></img>
+                    <img className="testImg rounded-circle"alt="test"width="200px" height="200px"src={require('./images/mark.jpg')}></img>
                     </div>
                     </div>
                 </div>  
@@ -56,7 +56,7 @@ class Home extends React.Component {
                     <img style={{"left":"-100%"}}id="jarvis"className="testImg rounded-circle mr-5 position-relative "alt="test"width="200px" height="200px"src={require('./images/jbpic.jpg')}></img>
                     </div>
                     <div className="col-lg-9 col-12 justify-content-end align-self-center">
-                    <p className="text-center" style={{"whiteSpace": "pre-line"}}>{["I found a daily routine thanks to Gymsense!","-Jarvis"].join('\n')}</p>
+                    <p className="text-center p-2" style={{"whiteSpace": "pre-line"}}>{["What I like about GymSense is that they know how to motivate me. They make each of my training sessions challenging but rewarding. I would have no hesitation in recommending GymSense as your training source if you want to achieve your fitness and health goals.","-Jarvis"].join('\n')}</p>
                     </div>
 
                     </div>
@@ -65,7 +65,7 @@ class Home extends React.Component {
                 <div className='row'>
                     <div className="col-lg-9 col-12 justify-content-end align-self-center">
                       
-                    <p className="text-center"style={{"whiteSpace": "pre-line"}}>{["Loved the workout suggestions and the feedback from other users","-Louis"].join('\n')}</p>
+                    <p className="text-center p-2"style={{"whiteSpace": "pre-line"}}>{["Simply, with their help I achieved my goal of putting on weight, one which I have struggled with for years. With their help I have gained 13kg+ and my strength has more than doubled. GymSense really helped me by giving me the tools to grow with their training regimes.","-Louis"].join('\n')}</p>
                     
                     </div>
                     <div className="col-lg-3 col-12 justify-content-start">

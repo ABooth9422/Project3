@@ -23,8 +23,6 @@ export default {
         return axios.get("/forumAPI/forum/find")
     },
     createComment: function(stuff){
-        console.log(stuff)
-        console.log("hit@20 api")
-        return axios.post("/userAPI/users",stuff)
+        return axios.post("/forumAPI/forum/addComment",stuff)
     }
 };

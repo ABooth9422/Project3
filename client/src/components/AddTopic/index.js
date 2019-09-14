@@ -6,13 +6,19 @@ class AddTopic extends Component{
 
 
     state={
-        topic:""
+        topic:"",
+        comment:""
     }
 
     handleChange =(event) =>{
         let topic=event.target.value    
        this.setState({topic:topic})
       }
+    handleComment=(event)=>{
+        let comment= event.target.value
+        console.log(comment)
+        this.setState({comment:comment})
+    }
 
 render(){
     console.log(this.state.topic)
@@ -20,6 +26,9 @@ render(){
     const post={
         post:this.state.topic,
         likes:0
+    }
+    const comment={
+        post:this.state.comment
     }
   return (
         <>
@@ -36,12 +45,12 @@ render(){
                 <div className="d-flex justify-content-center">
                     <div className="form-group row">
                         <label>Comment</label>
-                        <textarea className="form-control" name="message" size="35" id="firstComment"
+                        <textarea onChange={this.handleComment} className="form-control" name="message" size="35" id="firstComment"
                             rows="6" cols="40"></textarea>
                     </div>
                 </div>
                 <div className="d-flex justify-content-center">
-                    <button type="button"onClick={()=>this.props.AddTopic(post)} className="btn btn-lg btn-dark mb-2">Submit</button>
+                    <button type="button"onClick={()=>this.props.AddTopic(post,comment)} className="btn btn-lg btn-dark mb-2">Submit</button>
                 </div>
             </form>
       </>

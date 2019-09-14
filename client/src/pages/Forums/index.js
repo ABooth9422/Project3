@@ -29,27 +29,32 @@ class Forum extends Component{
 
   componentDidMount(){
     API.getPost().then(res => {
+    
       this.setState({posts:res.data})
-      console.log(res)
     })
   }
   goToArticle(id){
     console.log("go to article")
     console.log(id)
   }
-  makeArticle=(forumObj)=>{
+  makeArticle=(forumObj,commentObj)=>{
     const addArticleArray=this.state.posts
     forumObj.user= this.props.user.googleId
-    console.log(forumObj)
+    commentObj.user=this.props.user.name
     API.addPost(forumObj).then(res=>{
       addArticleArray.push(res.data)
+      commentObj.ForumId=res.data.id
       this.setState({posts:addArticleArray})
+      API.createComment(commentObj).then(res=>{
+       
+      })
     })
 
   }
 
   render(){
     const forumPosts = this.state.posts
+    
     
   return (
     <>
@@ -73,6 +78,7 @@ class Forum extends Component{
          user={article.user}
          article={this.goToArticle}
          id={article.id}
+
          />
          )
       })}

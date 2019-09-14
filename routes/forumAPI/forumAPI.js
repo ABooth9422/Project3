@@ -7,4 +7,7 @@ router.route("/post")
 router.route("/find")
   .get(forumController.getTopic);
 
+router.route("/addComment")
+  .post(forumController.addComment)
+
 module.exports = router;
