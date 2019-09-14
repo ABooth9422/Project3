@@ -22,6 +22,13 @@ module.exports = function(sequelize, DataTypes) {
       },
       favWorkout: {
         type: DataTypes.STRING
+      },
+      playlist: {
+        type: DataTypes.STRING,
+        allowNull: true,
+        validate: {
+          isURL: true
+        }
       }
     }, 
     {
