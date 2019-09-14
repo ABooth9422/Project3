@@ -1,7 +1,7 @@
 {
-  "name": "mern",
+  "name": "gymsense",
   "version": "1.0.0",
-  "description": "Mern Demo",
+  "description": "Gym Sense",
   "main": "server.js",
   "scripts": {
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
@@ -24,6 +24,7 @@
     "classnames": "^2.2.6",
     "create-react-context": "^0.3.0",
     "date-fns": "^2.1.0",
+    "dotenv": "^8.1.0",
     "express": "^4.16.3",
     "google-map-react": "^1.1.4",
     "if-env": "^1.0.4",
