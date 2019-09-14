@@ -94,7 +94,7 @@ class App extends React.Component {
         <Route exact path="/home" component={Home} />
         <Route exact path="/gyms" component={Gyms} />
         <Route exact path="/routines" component={Routines} />
-        <Route exact path="/forums" component={Forums} />
+        <Route exact path="/forums" render={(props) => <Forums {...props} user={this.state.user} />}/>
         <Route exact path="/contact" component={Contact}/>
         <Route exact path="/about" component={About}/>
         <Route exact path="/profile" render={(props) => <Profile {...props} user={this.state.user} />}/>
