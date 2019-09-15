@@ -19,7 +19,7 @@ class AddComment extends Component{
     }
     componentDidMount(){
         this.setState({id:this.props.id})
-        API.getArticle(this.state.id).then(res => {
+        API.getArticle(this.props.id).then(res => {
             this.setState({article:res.data})
             console.log(this.state.article)
             this.setState({comments:res.data.Comments})  
@@ -50,6 +50,7 @@ render(){
         user={forum.user}
         likes={forum.likes}
         comments={"Comments" in forum ?forum.Comments.length:"1"}
+        id={this.props.id}
         />
         {articleComments.map(comment=>{
             return(

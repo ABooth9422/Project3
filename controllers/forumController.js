@@ -23,7 +23,12 @@ module.exports = {
     },
     getArticle:function(req,res){
         db.Forum
-        .findOne({where:req,include:[db.Comment]})
+        .findOne({
+            where: {
+                id: req.params.id
+              },
+              include: [db.Comment]
+        })
         .then(dbModel=> res.json(dbModel))
         .catch(err=> res.status(422).json(err))
     }

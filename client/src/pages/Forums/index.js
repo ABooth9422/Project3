@@ -22,7 +22,8 @@ class Forum extends Component{
       addTopic:false,
       view:false,
       id:"",
-      comment:[]
+      comment:[],
+      currentArticle:[]
      
     }
 
@@ -35,8 +36,16 @@ class Forum extends Component{
     })
   }
   goToArticle=(id)=>{
+
     this.setState({id:id})
     if(this.state.view){
+      
+      // API.getArticle(id).then(res => {
+      //   this.setState({currentArticle:res.data})
+      //   this.setState({comments:res.data.Comments})  
+      //   console.log(res)
+        
+      // })
       this.setState({view:false})
     }else{
       this.setState({view:true})
@@ -55,6 +64,9 @@ class Forum extends Component{
     console.log("hit @ back")
     if(this.state.view){
       this.setState({view:false})
+      API.getPost().then(res => {
+        this.setState({posts:res.data})
+      })
     }else{
       this.setState({view:true})
     }

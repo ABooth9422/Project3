@@ -26,6 +26,7 @@ export default {
         return axios.post("/forumAPI/forum/addComment",stuff)
     },
     getArticle:function(id){
-        return axios.get("/forumAPI/forum/getArticle",id)
+        
+        return axios.get(`/forumAPI/forum/getArticle/${id}`)
     }
 };
