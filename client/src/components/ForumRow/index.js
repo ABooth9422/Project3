@@ -14,7 +14,8 @@ function ForumRow(props){
         
         </div>
         <div id="iconRow"className="row d-flex">
-        <button onClick={()=>props.article(props.id)}className="btn btn-dark mx-2">Go To Post</button>
+        {props.button?<button onClick={()=>props.article(props.id)} id={props.id}className="btn btn-dark mx-2">Go To Post</button>
+        :<></>}
         <i id="comment" className="fa fa-comment mx-2">{props.comments || "1"}</i>
         <i id="likes"className="fa fa-thumbs-up">{props.likes}</i>
         </div>

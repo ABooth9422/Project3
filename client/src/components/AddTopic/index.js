@@ -16,13 +16,10 @@ class AddTopic extends Component{
       }
     handleComment=(event)=>{
         let comment= event.target.value
-        console.log(comment)
         this.setState({comment:comment})
     }
 
 render(){
-    console.log(this.state.topic)
-   
     const post={
         post:this.state.topic,
         likes:0
@@ -33,6 +30,7 @@ render(){
   return (
         <>
             <form className="bg-secondary p-5 mx-5 rounded">
+            <h1 className="display-2">Add a topic</h1>
                            <div className="d-flex justify-content-center">
                     <div className="form-group row">
                         <label  className="col-md-2 col-form-label">Topic</label>

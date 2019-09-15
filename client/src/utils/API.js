@@ -24,5 +24,8 @@ export default {
     },
     createComment: function(stuff){
         return axios.post("/forumAPI/forum/addComment",stuff)
+    },
+    getArticle:function(id){
+        return axios.get("/forumAPI/forum/getArticle",id)
     }
 };

@@ -20,7 +20,14 @@ module.exports = {
         .create(req.body)
         .then(dbModel=> res.json(dbModel))
         .catch(err=> res.status(422).json(err))
+    },
+    getArticle:function(req,res){
+        db.Forum
+        .findOne({where:req,include:[db.Comment]})
+        .then(dbModel=> res.json(dbModel))
+        .catch(err=> res.status(422).json(err))
     }
+
 
 
 }

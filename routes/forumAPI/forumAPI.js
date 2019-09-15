@@ -9,5 +9,7 @@ router.route("/find")
 
 router.route("/addComment")
   .post(forumController.addComment)
+router.route("/getArticle")
+  .get(forumController.getArticle)
 
 module.exports = router;
