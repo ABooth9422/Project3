@@ -15,7 +15,6 @@ module.exports = {
         .catch(err => res.status(422).json(err));
     },
     addComment:function(req,res){
-        console.log(req.body)
         db.Comment
         .create(req.body)
         .then(dbModel=> res.json(dbModel))
@@ -29,6 +28,12 @@ module.exports = {
               },
               include: [db.Comment]
         })
+        .then(dbModel=> res.json(dbModel))
+        .catch(err=> res.status(422).json(err))
+    },
+    updateLike:function(req,res){
+        db.Forum
+        .update({likes:req.body.likes},{where:{id:req.body.id}})
         .then(dbModel=> res.json(dbModel))
         .catch(err=> res.status(422).json(err))
     }

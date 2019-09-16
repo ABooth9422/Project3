@@ -28,5 +28,8 @@ export default {
     getArticle:function(id){
         
         return axios.get(`/forumAPI/forum/getArticle/${id}`)
+    },
+    updateLike:function(id){
+        return axios.put(`/forumAPI/forum/updateLike`,id)
     }
 };

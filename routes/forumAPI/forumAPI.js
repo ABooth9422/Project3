@@ -12,4 +12,7 @@ router.route("/addComment")
 router.route("/getArticle/:id")
   .get(forumController.getArticle)
 
+router.route("/updateLike")
+  .put(forumController.updateLike)
+
 module.exports = router;

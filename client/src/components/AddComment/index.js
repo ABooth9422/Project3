@@ -42,7 +42,7 @@ render(){
     
     const forum = this.state.article
     const articleComments=this.state.comments
-    
+    console.log(this.props.updateLike)
     return (
         <>
         <ForumRow
@@ -51,7 +51,10 @@ render(){
         likes={forum.likes}
         comments={"Comments" in forum ?forum.Comments.length:"1"}
         id={this.props.id}
+        likeStyle={this.props.likeStyle}
+        updateLike={this.props.updateLike}
         />
+        <h1 className="display-1 text-center">Comments</h1>
         {articleComments.map(comment=>{
             return(
                <CommentCard
@@ -62,7 +65,7 @@ render(){
             )
         })}
     
-        <form className="bg-secondary p-5 mx-5 rounded">
+        <form className="commentGroup rounded">
         <div className="d-flex justify-content-center">
         <div className="form-group row">
             <label>Comment</label>

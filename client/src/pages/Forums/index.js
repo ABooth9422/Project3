@@ -23,7 +23,9 @@ class Forum extends Component{
       view:false,
       id:"",
       comment:[],
-      currentArticle:[]
+      currentArticle:[],
+      likes:0,
+      likeStyle:"fa fa-thumbs-up"
      
     }
 
@@ -36,16 +38,8 @@ class Forum extends Component{
     })
   }
   goToArticle=(id)=>{
-
     this.setState({id:id})
     if(this.state.view){
-      
-      // API.getArticle(id).then(res => {
-      //   this.setState({currentArticle:res.data})
-      //   this.setState({comments:res.data.Comments})  
-      //   console.log(res)
-        
-      // })
       this.setState({view:false})
     }else{
       this.setState({view:true})
@@ -61,7 +55,7 @@ class Forum extends Component{
 
   }
   goBack=()=>{
-    console.log("hit @ back")
+    
     if(this.state.view){
       this.setState({view:false})
       API.getPost().then(res => {
@@ -71,7 +65,33 @@ class Forum extends Component{
       this.setState({view:true})
     }
   }
+  // likes=(id,likes)=>{
+    
+  //   const updtObj={
+  //     id:id,
+  //     likes: likes+1
+  //   }
+  //   const removObj={
+  //     id:id,
+  //     likes: likes-1
+  //   }
 
+  //   let newStyle
+  //   this.setState({likeStyle:newStyle})
+  //   if(this.state.likeStyle==="fa fa-thumbs-up"){
+  //     newStyle="fa fa-thumbs-up likes"
+  //     this.setState({likeStyle:newStyle})
+  //     API.updateLike(updtObj).then(res=>{
+  //       this.setState({likes:res.data[0]})
+  //     })
+  //   }else{
+  //     newStyle="fa fa-thumbs-up"
+  //     this.setState({likeStyle:newStyle})
+  //     API.updateLike(removObj).then(res=>{
+  //       this.setState({likes:res.data[0]})
+  //     })
+  //   }
+  // }
 
   makeArticle=(forumObj,commentObj)=>{
     const addArticleArray=this.state.posts
@@ -127,7 +147,7 @@ class Forum extends Component{
               <h1 id="forumHead" className="display-1 rounded mt-5 text-black">Forum Page</h1>
               </header>
             
-            <AddComment  back={this.goBack} user={this.props.user.name} id={this.state.id}  comment={this.postComment}/></>}
+            <AddComment back={this.goBack} user={this.props.user.name} id={this.state.id}  comment={this.postComment}/></>}
 
               
       </Container>

@@ -3,3 +3,10 @@ html,body{
   background: #000;
   font-family: 'Roboto', sans-serif;
 }
+.btn-dark,.btn-secondary{
+  background: #2A2728;
+background: -moz-linear-gradient(-45deg, #2A2728 0%, #6D6667 50%, #AFADB2 100%);
+background: -webkit-linear-gradient(-45deg, #2A2728 0%, #6D6667 50%, #AFADB2 100%);
+background: linear-gradient(135deg, #2A2728 0%, #6D6667 50%, #AFADB2 100%);
+box-shadow: 5px 5px 5px 0px #000000, inset 4px 4px 15px 0px #000000, 5px 5px 15px 5px rgba(0,0,0,0);
+}
