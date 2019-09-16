@@ -27,7 +27,7 @@ class ForumRow extends Component {
           this.setState({likeStyle:newStyle})
           API.updateLike(updtObj).then(res=>{
               console.log(res)
-            this.setState({likes:res.data[0]})
+            this.setState({likes:res.data.likes})
             console.log(this.state.likes)
           })
         }else if(this.state.likeStyle==="fa fa-thumbs-up likes"){
@@ -35,7 +35,7 @@ class ForumRow extends Component {
           this.setState({likeStyle:newStyle})
           API.updateLike(removObj).then(res=>{
             console.log(res.data.config)
-            this.setState({likes:res.data[0]})
+            this.setState({likes:res.data.likes})
           })
         }
       }
