@@ -39,7 +39,6 @@ p,h3{
         margin:auto auto 20px !important;
         width:400px;
         flex-wrap:wrap;
-    
     }
     .imgTest{
         display:flex;
@@ -48,7 +47,12 @@ p,h3{
     #jarvis{
         left:0% !important;
     }
-
+    .myJumbotron{
+        height:300px;
+    }
+    /* h1,h2{
+        font-size:18px;
+    } */
 }
 header {
     position: relative;

@@ -34,8 +34,22 @@ module.exports = {
     updateLike:function(req,res){
         db.Forum
         .update({likes:req.body.likes},{where:{id:req.body.id}})
+        .then(()=> 
+        db.Forum
+        .findOne({
+            where: {
+                id: req.body.id
+              }
+        })
         .then(dbModel=> res.json(dbModel))
+        
+        )
+        
+        
         .catch(err=> res.status(422).json(err))
+
+        
+        
     }
 
 
