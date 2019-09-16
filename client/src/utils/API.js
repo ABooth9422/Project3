@@ -31,5 +31,11 @@ export default {
     },
     updateLike:function(id){
         return axios.put(`/forumAPI/forum/updateLike`,id)
+    },
+    createProfile:function(userObj){
+        return axios.post("/userAPI/users/",userObj)
+    },
+    getUser:function(id){
+        return axios.get(`/userAPI/users/${id}`)
     }
 };

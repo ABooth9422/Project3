@@ -8,19 +8,21 @@ function Navbar(props) {
     if(!props.auth){
         links=
             <>
-            <li className="nav-item active">
+            <li className={props.home?"nav-item active":"nav-item"}>
             <Link className="nav-link" to="/">Home <span className="sr-only">(current)</span></Link>
             </li>
-            <li className="nav-item">
+            
+            <li className={props.findagym?"nav-item active":"nav-item"}>
             <Link className="nav-link" to="/gyms">Find A Gym</Link>
             </li>
-            <li className="nav-item">
+            <li className={props.myRoutines?"nav-item active":"nav-item"}>
             <Link className="nav-link" to="/routines">My Routines</Link>
             </li>
-            <li className="nav-item">
+            
+            <li className={props.visitForums?"nav-item active":"nav-item"}>
             <Link className="nav-link" to="/forums">Visit Forums</Link>
             </li>
-            <li className="nav-item">
+            <li className={props.clicked?"nav-item active":"nav-item"}>
             <Link className="nav-link" to="/profile">View Profile</Link>
             </li>
             </>
