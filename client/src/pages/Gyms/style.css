@@ -1,3 +1,12 @@
 h3{
     text-shadow:black 3px 3px 3px;
 }
+
+.mapContainer{
+    height: 50vh;
+}
+
+#gymDetailsMarkerWindow{
+    
+    color: black !important;
+}

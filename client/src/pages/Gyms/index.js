@@ -7,7 +7,7 @@ import GymCard from "../../components/GymCard";
 import Form from '../../components/Form';
 import TextInput from '../../components/TextInput';
 import Button from '../../components/Button';
-import SimpleMap from "../../components/SimpleMap";
+import {GoogleMap, withScriptjs, withGoogleMap, Marker, InfoWindow} from 'react-google-maps';
 import "./style.css";
 import API from "../../utils/API";
 
@@ -16,14 +16,20 @@ class Gyms extends Component{
     super()
 
   this.state={
+    WrappedMap: null,
+    selectedGym: null,
     query: '',
-    center:{lat: 0, lng: 0},
-    gyms:[]
+    center:{lat: 35.779591, lng: -78.638176},
+    gyms: []
 
   }
 }
  
-  
+  componentDidMount(){
+    if(!this.state.WrappedMap){
+      this.initMap();
+    }
+  }
   getLocation = () => {
     navigator.geolocation.getCurrentPosition(this.showPosition);
   }
@@ -45,20 +51,64 @@ class Gyms extends Component{
 
   formSubmit = () => {
     if(this.state.query){
+      console.log(this.state.query)
       API.getGymsWithoutLocation(this.state.query).then(res =>{
-        this.setState({center: res.data.center, gyms: res.data.gyms});
+        this.setState({center: res.data.center, gyms: res.data.gyms, WrappedMap: withScriptjs(withGoogleMap(this.Map)), selectedGym: null});
         console.log(this.state);
-      }).catch(err => console.log(err))
-    }
+      }).catch(err => {
+        console.log(err.response);
+      })
   }
+}
 
   inputChange = (event) => {
-    this.setState({query: event.target.value});
+    
+    this.setState({
+      query: event.target.value,
+      renderMap: false
+    });
+  }
+
+  selectedGym(gym){
+    
+  }
+
+  Map =() =>{
+    return (
+      <GoogleMap defaultZoom={10} defaultCenter={this.state.center}>
+        {this.state.gyms.map(gym =>(
+          <Marker key={gym.id} 
+          position={gym.geometry.location} 
+          onMouseOver={()=>{
+            this.setState({selectedGym: gym});
+          }}
+          />
+        ))}
+
+        {this.state.selectedGym && (
+          
+          <InfoWindow 
+          position={this.state.selectedGym.geometry.location} 
+          onCloseClick={()=>this.setState({selectedGym: null})}
+          >
+            <div id='gymDetailsMarkerWindow'>
+              <h5>{this.state.selectedGym.name}</h5>
+            </div>
+          </InfoWindow>
+        )}
+      </GoogleMap>
+    )
+  }
+  initMap =()=>{
+    this.setState({WrappedMap: withScriptjs(withGoogleMap(this.Map))})
   }
 
   render(){
 
-
+    
+    let WrappedMap = this.state.WrappedMap || withScriptjs(withGoogleMap(this.Map));
+    
+    
   
   return (
     <>
@@ -88,9 +138,13 @@ class Gyms extends Component{
             </div>
         </div>
         <div className='row text-center justify-content-center'>
-            <div className='col-12 col-md-6 my-3'>
-              {/* {this.state.center.hasOwnProperty('lat') ?  : <></>}  */}
-              <SimpleMap center={this.state.center}></SimpleMap>
+            <div className='col-12 col-md-6 my-3 mapContainer'>
+            <WrappedMap 
+              googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=${process.env.REACT_APP_GOOGLE_KEY}`}
+              loadingElement={<div style={{height: '100%'}}></div>}
+              containerElement={<div style={{height: '100%'}}></div>}
+              mapElement={<div style={{height: '100%'}}></div>}
+            />
             </div>
         </div>
       </Container>
