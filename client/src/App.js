@@ -13,6 +13,7 @@ import About from "./pages/About"
 import Contact from "./pages/Contact"
 import './App.css'
 
+
 class App extends React.Component {
   
   constructor(){
@@ -20,7 +21,8 @@ class App extends React.Component {
 
     this.state={
       user: {},
-      location:[]
+      location:[],
+      profile:{}
     }
 
     this.logInSuccess = this.logInSuccess.bind(this);
@@ -28,20 +30,11 @@ class App extends React.Component {
     this.logOut = this.logOut.bind(this);
   }
   
-  // getLocation() {
-  //   navigator.geolocation.getCurrentPosition(this.showPosition);
-  // }
-  // showPosition = (position)=>{
-  //   this.setState({location: position})
-  //   console.log(this.state.location)
-  // }
-  // componentDidMount(){
-  //   this.getLocation()
-  // } 
+ 
 
   logInSuccess(response){
       this.setState({user : response.profileObj}, ()=>{
-        console.log(this.state.user);
+        //console.log(this.state.user);
       })
   }
 
@@ -51,7 +44,7 @@ class App extends React.Component {
 
   logOut(){
     this.setState({user : {}}, ()=>{
-      console.log(this.state.user);
+      //console.log(this.state.user);
     })
   }
 
@@ -90,14 +83,14 @@ class App extends React.Component {
             {button}
           </Navbar>
           <Switch>
-        <Route exact path="/" component={Home} />
-        <Route exact path="/home" component={Home} />
-        <Route exact path="/gyms" component={Gyms} />
-        <Route exact path="/routines" component={Routines} />
-        <Route exact path="/forums" render={(props) => <Forums {...props} user={this.state.user} />}/>
+        <Route exact path="/" render={(props) => <Home {...props} home={"home"} user={this.state.user} />}/>
+        <Route exact path="/home" render={(props) => <Home {...props} home={"home"} user={this.state.user} />}/>
+        <Route exact path="/gyms" render={(props) => <Gyms {...props} findagym={"findgym"}user={this.state.user} />}/>
+        <Route exact path="/routines" render={(props) => <Routines {...props} myRoutines={"routines"} user={this.state.user} />}/>
+        <Route exact path="/forums" render={(props) => <Forums {...props} visitForums={"forums"} user={this.state.user} />}/>
         <Route exact path="/contact" component={Contact}/>
         <Route exact path="/about" component={About}/>
-        <Route exact path="/profile" render={(props) => <Profile {...props} user={this.state.user} />}/>
+        <Route exact path="/profile" render={(props) => <Profile {...props} clicked={"clicked"} profile={this.state.profile} user={this.state.user} />}/>
         <Route component={NoMatch} />
         </Switch>
       </Router>

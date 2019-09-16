@@ -13,17 +13,37 @@ class Profile extends React.Component {
     state={
       heading:"Create Profile",
       submit:false,
-      profile:require("../Profile/test.png"),
+      image:require("../Profile/test.png"),
       username:"Blank",
       email:"Blank",
-      movement:"Blank"
+      movement:"Blank",
+      profile:{},
+      length:0
+      
     }
+    componentDidMount(){
+      API.getUser(this.props.user.googleId).then((response)=>{
+      this.setState({profile:response.data})
+      this.setState({length:response.data.length})
+      if((this.state.length===0)){
+        this.setState({submit:false})
+      }else if(this.state.length===1){ 
+        this.setState({submit:true})
+        this.setState({image:this.state.profile[0].img})
+        this.setState({username:this.state.profile[0].name})
+        this.setState({email:this.state.profile[0].email})
+        this.setState({movement:this.state.profile[0].favWorkout})
+      }
+    }) 
+    }
+
+ 
   
   profileCreate=(event)=>{
     event.preventDefault()
     this.setState({submit:true,heading:"View Profile"})
     let image =document.getElementById("imageURL").value
-    this.setState({profile:image})
+    this.setState({image:image})
     let UserName=document.getElementById("userName").value
     this.setState({username:UserName})
     let fav=document.getElementById("favExer").value
@@ -31,16 +51,18 @@ class Profile extends React.Component {
     let email=document.getElementById("email").value
     this.setState({email:email})
      
-    
+    //console.log(this.props.user)
     let profileObj={
       img:image,
       email:this.props.user.email,
       name:UserName,
-      googleid:this.props.user.googleId
+      googleId:this.props.user.googleId,
+      favWorkout:fav
      }
+   
   
-   API.createComment(profileObj).then(function(resp){
-      console.log(resp)
+   API.createProfile(profileObj).then(function(resp){
+      //console.log(resp)
     })
   }
 
@@ -49,12 +71,14 @@ class Profile extends React.Component {
 
   render(props){
     let profile
-    console.log(this.props)
+    //console.log(this.props)
     if(!this.state.submit){
       profile=
       <>
+      
       <div className="row d-flex justify-content-center">
-      <h3>Hello {this.props.user.name}! Lets make your profile!</h3>
+      <h2 className="head display-1 rounded">{this.state.heading}</h2>
+      <h3>Hello {this.props.user.name || "there"}! Lets make your profile!</h3>
       </div>
      
         <form className="text-white font-weight-bold ">
@@ -81,20 +105,22 @@ class Profile extends React.Component {
             </div>
         </div>
         <div className="row d-flex justify-content-center">
-        <button  onClick={this.profileCreate}className="btn btn-secondary my-5">Submit</button>
+        <button onClick={this.profileCreate}className="btn btn-secondary my-5">Submit</button>
         </div>
         </form>
+        
+
       </>
     }else{
       profile=
       <>
       <div className="container text-white">
-      <h1 style={{"textDecoration":"underline"}}className="display-1 text-center">Welcome {this.state.username}</h1>
+      <h1 style={{"textDecoration":"underline"}}className="display-1 text-center">Welcome {this.state.username}!</h1>
       <div className="row row d-flex justify-content-center">
-      <img id="profilePic"className="rounded-circle my-2"src={this.state.profile} height="200px" width="200px" alt="main profile pic"></img>
+      <img id="profilePic"className="rounded-circle my-2"src={this.state.image} height="200px" width="200px" alt="main profile pic"></img>
       </div>
       <div className="row d-flex my-2 justify-content-center">
-      <h3>Your Email is: {this.state.email}</h3>
+      <h3>Email: {this.state.email}</h3>
       </div>
       <div className="row d-flex my-2 justify-content-center">
       <h3>Favorite exercise: {this.state.movement}</h3>
@@ -111,18 +137,18 @@ class Profile extends React.Component {
     <>
     <Wrapper>
     <Jumbotron/>
-      <Container>
-      
+      <Container style={{"padding":"100px"}}>
+      <div className="profContent rounded">
       <div className="container my-3 p-3">
       <div className="row d-flex justify-content-center">
-      <h2 className="head display-1 rounded">{this.state.heading}</h2> 
+      
       
       </div>
       
       </div>
       
       {profile}
-      
+      </div>
     
 
 
