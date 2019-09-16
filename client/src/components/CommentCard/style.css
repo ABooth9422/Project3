@@ -1,3 +1,6 @@
 .cont{
     text-shadow:black 3px 3px 3px;
+    background: #FE1A40;
+    background: linear-gradient(135deg,  #000000 0%, #630D25 47%, #FE1A40 100%);
+    box-shadow: black 18px 12px 9px;
 }

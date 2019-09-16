@@ -29,8 +29,8 @@ render(){
     }
   return (
         <>
-            <form className="bg-secondary p-5 mx-5 rounded">
-            <h1 className="display-2">Add a topic</h1>
+            <form className="topicContent rounded">
+            <h1 className="display-2 my-5">Add a topic</h1>
                            <div className="d-flex justify-content-center">
                     <div className="form-group row">
                         <label  className="col-md-2 col-form-label">Topic</label>
