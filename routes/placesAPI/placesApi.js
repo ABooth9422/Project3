@@ -7,4 +7,7 @@ router.route("/noLocation/:query")
 // router.route("/location/:query")
 //   .get(placesController.findGymsWithLocation);
 
+router.route("/details/:query")
+.get(placesController.findGymPhoto);
+
 module.exports = router;
