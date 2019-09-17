@@ -29,10 +29,19 @@ class Profile extends React.Component {
         this.setState({submit:false})
       }else if(this.state.length===1){ 
         this.setState({submit:true})
+        //this.props.mainProf(this.state.profile)
         this.setState({image:this.state.profile[0].img})
         this.setState({username:this.state.profile[0].name})
         this.setState({email:this.state.profile[0].email})
         this.setState({movement:this.state.profile[0].favWorkout})
+        const profObj={
+          img:this.state.profile[0].img,
+          name:this.state.profile[0].name,
+          email:this.state.profile[0].email,
+          favWorkout:this.state.profile[0].favWorkout,
+          googleId:this.props.user.googleId
+        }
+        this.props.mainProf(profObj)
       }
     }) 
     }
@@ -50,8 +59,7 @@ class Profile extends React.Component {
     this.setState({movement:fav})
     let email=document.getElementById("email").value
     this.setState({email:email})
-     
-    //console.log(this.props.user)
+    
     let profileObj={
       img:image,
       email:this.props.user.email,
@@ -59,11 +67,12 @@ class Profile extends React.Component {
       googleId:this.props.user.googleId,
       favWorkout:fav
      }
-   
   
    API.createProfile(profileObj).then(function(resp){
       //console.log(resp)
     })
+    this.props.mainProf(profileObj)
+   
   }
 
 

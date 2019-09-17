@@ -33,6 +33,7 @@ class Forum extends Component{
   }
 
   componentDidMount(){
+    console.log(this.props.profile)
     API.getPost().then(res => {
       this.setState({posts:res.data})
     })
@@ -65,42 +66,18 @@ class Forum extends Component{
       this.setState({view:true})
     }
   }
-  // likes=(id,likes)=>{
-    
-  //   const updtObj={
-  //     id:id,
-  //     likes: likes+1
-  //   }
-  //   const removObj={
-  //     id:id,
-  //     likes: likes-1
-  //   }
 
-  //   let newStyle
-  //   this.setState({likeStyle:newStyle})
-  //   if(this.state.likeStyle==="fa fa-thumbs-up"){
-  //     newStyle="fa fa-thumbs-up likes"
-  //     this.setState({likeStyle:newStyle})
-  //     API.updateLike(updtObj).then(res=>{
-  //       this.setState({likes:res.data[0]})
-  //     })
-  //   }else{
-  //     newStyle="fa fa-thumbs-up"
-  //     this.setState({likeStyle:newStyle})
-  //     API.updateLike(removObj).then(res=>{
-  //       this.setState({likes:res.data[0]})
-  //     })
-  //   }
-  // }
 
   makeArticle=(forumObj,commentObj)=>{
     const addArticleArray=this.state.posts
     forumObj.user= this.props.user.name
-    commentObj.user=this.props.user.name
+    forumObj.img=this.props.profile.img
+    commentObj.user=this.props.profile.name
    
     API.addPost(forumObj).then(res=>{
       addArticleArray.push(res.data)
       commentObj.ForumId=res.data.id
+      commentObj.img=this.props.profile.img
       this.setState({posts:addArticleArray})
       API.createComment(commentObj).then(res=>{
         
@@ -136,6 +113,8 @@ class Forum extends Component{
                 article={this.goToArticle}
                 id={article.id}
                 comments={"Comments" in article ?article.Comments.length:"1"}
+                forumImage={article.img}
+                
                 button={true}
                 />
                   )

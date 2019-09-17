@@ -10,6 +10,9 @@ module.exports = function(sequelize, DataTypes) {
       },
       likes: {
         type: DataTypes.INTEGER
+      },
+      img: {
+        type: DataTypes.STRING
       }
     }, 
     {

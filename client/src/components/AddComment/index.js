@@ -42,10 +42,12 @@ render(){
     
     const forum = this.state.article
     const articleComments=this.state.comments
-    console.log(this.props.updateLike)
+   
+    console.log(forum)
     return (
         <>
         <ForumRow
+        
         title={forum.post}
         user={forum.user}
         likes={forum.likes}
@@ -53,14 +55,18 @@ render(){
         id={this.props.id}
         likeStyle={this.props.likeStyle}
         updateLike={this.props.updateLike}
+        forumImage={forum.img}
+        
         />
         <h1 className="display-1 text-center">Comments</h1>
         {articleComments.map(comment=>{
+            {console.log(comment)}
             return(
                <CommentCard
                 key={comment.id}
                 comment={comment.post}
                 user={comment.user}
+                commentImg={comment.img}
                />
             )
         })}

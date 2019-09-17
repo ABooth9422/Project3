@@ -22,12 +22,13 @@ class App extends React.Component {
     this.state={
       user: {},
       location:[],
-      profile:{}
+      profile:""
     }
 
     this.logInSuccess = this.logInSuccess.bind(this);
     this.logInFailed = this.logInFailed.bind(this);
     this.logOut = this.logOut.bind(this);
+    this.setProfile=this.setProfile.bind(this)
   }
   
  
@@ -46,6 +47,12 @@ class App extends React.Component {
     this.setState({user : {}}, ()=>{
       //console.log(this.state.user);
     })
+  }
+  setProfile=(profile)=>{
+    this.setState({profile:profile},()=>{
+      console.log(this.state.profile)
+    })
+   
   }
 
   isObjEmpty(obj) {
@@ -87,10 +94,10 @@ class App extends React.Component {
         <Route exact path="/home" render={(props) => <Home {...props} home={"home"} user={this.state.user} />}/>
         <Route exact path="/gyms" render={(props) => <Gyms {...props} findagym={"findgym"}user={this.state.user} />}/>
         <Route exact path="/routines" render={(props) => <Routines {...props} myRoutines={"routines"} user={this.state.user} />}/>
-        <Route exact path="/forums" render={(props) => <Forums {...props} visitForums={"forums"} user={this.state.user} />}/>
+        <Route exact path="/forums" render={(props) => <Forums {...props} visitForums={"forums"} profile={this.state.profile} user={this.state.user} />}/>
         <Route exact path="/contact" component={Contact}/>
         <Route exact path="/about" component={About}/>
-        <Route exact path="/profile" render={(props) => <Profile {...props} clicked={"clicked"} profile={this.state.profile} user={this.state.user} />}/>
+        <Route exact path="/profile" render={(props) => <Profile {...props} clicked={"clicked"} mainProf={this.setProfile} user={this.state.user} />}/>
         <Route component={NoMatch} />
         </Switch>
       </Router>

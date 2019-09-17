@@ -7,6 +7,9 @@ module.exports = function(sequelize, DataTypes) {
       user: {
           type: DataTypes.STRING,
           allowNull: false 
+      },
+      img: {
+        type: DataTypes.STRING
       }
     }, 
     {
