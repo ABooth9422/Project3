@@ -42,8 +42,7 @@ class ForumRow extends Component {
 
     componentDidMount(){
         this.setState({likes:this.props.likes})
-        console.log(this.state.likes)
-        console.log(this.props.likes + "proplikes")
+        
     }
 
 
@@ -55,7 +54,12 @@ class ForumRow extends Component {
        
         <div className="forumBG rounded p-5 my-3 mx-5">
         <div className="row">
-        <h1 className="bgTitle">{this.props.title}</h1>
+        <div className="col-6">
+        <h1 className="bgTitle text-left">{this.props.title}</h1>
+        </div>
+        <div className="col-6 text-right">
+        <img className="rounded-circle"src={this.props.forumImage} alt="Forum profile" height="100px" width="100px"/>
+        </div>
         </div>
         <div className="row">
         <h3>Created by: {this.props.user}</h3>
