@@ -11,6 +11,10 @@ export default {
     getGymsWithLocation: function(query) {
         return axios.get(`/placesAPI/places/location/${query}`);
     },
+
+    getGymPhoto: function(query) {
+        return axios.get(`/placesAPI/places/details/${query}`);
+    },
     
     //Create routines
     createRoutines: function(routineData) {

@@ -8,6 +8,7 @@ import Form from '../../components/Form';
 import TextInput from '../../components/TextInput';
 import Button from '../../components/Button';
 import {GoogleMap, withScriptjs, withGoogleMap, Marker, InfoWindow} from 'react-google-maps';
+import markerImage from './images/marker.png'
 import "./style.css";
 import API from "../../utils/API";
 
@@ -69,7 +70,14 @@ class Gyms extends Component{
     });
   }
 
-  selectedGym(gym){
+  selectGym(gym){
+
+    this.setState({selectedGym: gym})
+    // if('photos' in gym){
+    //   API.getGymPhoto(gym.photos[0].photo_reference).then(response => {
+    //     console.log(response);
+    //   })
+    // }
     
   }
 
@@ -79,9 +87,15 @@ class Gyms extends Component{
         {this.state.gyms.map(gym =>(
           <Marker key={gym.id} 
           position={gym.geometry.location} 
-          onMouseOver={()=>{
-            this.setState({selectedGym: gym});
+          onClick={()=>{
+            this.selectGym(gym);
           }}
+          icon={
+            {
+              url: require('./images/marker.png'),
+              scaledSize: new window.google.maps.Size(50,50)
+            }
+          }
           />
         ))}
 
@@ -104,10 +118,7 @@ class Gyms extends Component{
   }
 
   render(){
-
-    
     let WrappedMap = this.state.WrappedMap || withScriptjs(withGoogleMap(this.Map));
-    
     
   
   return (
@@ -142,9 +153,19 @@ class Gyms extends Component{
             <WrappedMap 
               googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=${process.env.REACT_APP_GOOGLE_KEY}`}
               loadingElement={<div style={{height: '100%'}}></div>}
-              containerElement={<div style={{height: '100%'}}></div>}
+              containerElement={<div style={{height: '100%',  maxHeight: '500px'}}></div>}
               mapElement={<div style={{height: '100%'}}></div>}
             />
+            </div>
+            <div className='col-12 col-md-6 my-3'>
+            
+            {this.state.selectedGym && (
+                <GymCard details = 
+                {{name: this.state.selectedGym.name, 
+                  address: this.state.selectedGym.vicinity, 
+                  rating: this.state.selectedGym.rating}}/>
+              )}
+            
             </div>
         </div>
       </Container>
