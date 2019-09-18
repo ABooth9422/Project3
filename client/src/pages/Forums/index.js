@@ -33,7 +33,7 @@ class Forum extends Component{
   }
 
   componentDidMount(){
-    console.log(this.props.profile)
+  
     API.getPost().then(res => {
       this.setState({posts:res.data})
     })
@@ -70,7 +70,7 @@ class Forum extends Component{
 
   makeArticle=(forumObj,commentObj)=>{
     const addArticleArray=this.state.posts
-    forumObj.user= this.props.user.name
+    forumObj.user= this.props.profile.name
     forumObj.img=this.props.profile.img
     commentObj.user=this.props.profile.name
    
@@ -114,6 +114,7 @@ class Forum extends Component{
                 id={article.id}
                 comments={"Comments" in article ?article.Comments.length:"1"}
                 forumImage={article.img}
+                likeStyle={this.state.likeStyle}
                 
                 button={true}
                 />
@@ -126,7 +127,7 @@ class Forum extends Component{
               <h1 id="forumHead" className="display-1 rounded mt-5 text-black">Forum Page</h1>
               </header>
             
-            <AddComment back={this.goBack} user={this.props.user.name} id={this.state.id}  comment={this.postComment}/></>}
+            <AddComment profileIMG={this.props.profile.img}back={this.goBack} likeStyle={this.state.likeStyle} user={this.props.user.name} id={this.state.id}  comment={this.postComment}/></>}
 
               
       </Container>

@@ -26,29 +26,33 @@ class ForumRow extends Component {
           newStyle="fa fa-thumbs-up likes"
           this.setState({likeStyle:newStyle})
           API.updateLike(updtObj).then(res=>{
-              console.log(res)
             this.setState({likes:res.data.likes})
-            console.log(this.state.likes)
+        
           })
         }else if(this.state.likeStyle==="fa fa-thumbs-up likes"){
           newStyle="fa fa-thumbs-up"
           this.setState({likeStyle:newStyle})
           API.updateLike(removObj).then(res=>{
-            console.log(res.data.config)
+           
             this.setState({likes:res.data.likes})
           })
         }
       }
 
-    componentDidMount(){
-        this.setState({likes:this.props.likes})
-        
+    componentWillMount=()=>{
+       API.getLike(this.props.id).then(res=>{
+         this.setState({likes:res.data.likes})
+         console.log(this.state.likes)
+       })
+    }
+    test(){
+      console.log("nothing")
     }
 
-
     render(){
-
-    
+      console.log(this.props.likes+"@52")
+     
+      
     return (
         <>
        
@@ -69,7 +73,7 @@ class ForumRow extends Component {
         {this.props.button?<button onClick={()=>this.props.article(this.props.id)} id={this.props.id} className="btn btn-dark mx-2">Go To Post</button>
         :<></>}
         <i id="comment" className="fa fa-comment mx-2">{this.props.comments || "1"}</i>
-        <i id={this.props.id} onClick={()=>this.likes(this.props.id,this.props.likes)} className={this.state.likeStyle}/><p className="likesText mx-1">{this.state.likes || this.props.likes}</p>
+        <i id={this.props.id} onClick={this.props.likeComment?()=>this.test:()=>this.likes(this.props.id,this.props.likes)} className={this.state.likeStyle}/><p className="likesText mx-1">{this.state.likes}</p>
         </div>
        
         </div>

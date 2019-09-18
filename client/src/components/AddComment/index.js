@@ -11,7 +11,8 @@ class AddComment extends Component{
         currentComment:"",
         article:[],
         id:"",
-        comments:[]
+        comments:[],
+        likes:0
     }
     comment=(event)=>{
         let currentComment = event.target.value
@@ -21,6 +22,7 @@ class AddComment extends Component{
         this.setState({id:this.props.id})
         API.getArticle(this.props.id).then(res => {
             this.setState({article:res.data})
+            this.setState({likes:res.data.likes})
             console.log(this.state.article)
             this.setState({comments:res.data.Comments})  
           })
@@ -30,6 +32,7 @@ class AddComment extends Component{
         const commentArray=this.state.comments
         comObj.user=this.props.user
         comObj.ForumId=this.state.id
+        comObj.img=this.props.profileIMG
         API.createComment(comObj).then(res=>{
           commentArray.push(res.data)
            this.setState({comments:commentArray})
@@ -43,24 +46,25 @@ render(){
     const forum = this.state.article
     const articleComments=this.state.comments
    
-    console.log(forum)
+    console.log(this.state.likes +"likes from comment")
     return (
         <>
         <ForumRow
         
         title={forum.post}
         user={forum.user}
-        likes={forum.likes}
+        likes={this.state.likes}
         comments={"Comments" in forum ?forum.Comments.length:"1"}
         id={this.props.id}
         likeStyle={this.props.likeStyle}
         updateLike={this.props.updateLike}
         forumImage={forum.img}
+        likeComment={"false"}
+       
         
         />
         <h1 className="display-1 text-center">Comments</h1>
         {articleComments.map(comment=>{
-            {console.log(comment)}
             return(
                <CommentCard
                 key={comment.id}
