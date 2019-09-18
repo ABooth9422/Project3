@@ -21,7 +21,7 @@ class Profile extends React.Component {
       length:0
       
     }
-    componentDidMount(){
+    componentWillMount(){
       API.getUser(this.props.user.googleId).then((response)=>{
       this.setState({profile:response.data})
       this.setState({length:response.data.length})
@@ -29,7 +29,6 @@ class Profile extends React.Component {
         this.setState({submit:false})
       }else if(this.state.length===1){ 
         this.setState({submit:true})
-        //this.props.mainProf(this.state.profile)
         this.setState({image:this.state.profile[0].img})
         this.setState({username:this.state.profile[0].name})
         this.setState({email:this.state.profile[0].email})

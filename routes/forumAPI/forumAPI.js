@@ -15,4 +15,7 @@ router.route("/getArticle/:id")
 router.route("/updateLike")
   .put(forumController.updateLike)
 
+  router.route("/getLike/:id")
+  .get(forumController.getLike)
+
 module.exports = router;

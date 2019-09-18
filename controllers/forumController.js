@@ -41,15 +41,19 @@ module.exports = {
                 id: req.body.id
               }
         })
-        .then(dbModel=> res.json(dbModel))
-        
+        .then(dbModel=> res.json(dbModel))  
         )
-        
-        
+        .catch(err=> res.status(422).json(err)) 
+    },
+    getLike:function(req,res){
+        db.Forum
+        .findOne({
+            where: {
+                id: req.params.id
+              }
+        })
+        .then(dbModel=> res.json(dbModel))
         .catch(err=> res.status(422).json(err))
-
-        
-        
     }
 
 
