@@ -18,11 +18,6 @@ class Forum extends Component{
     this.state={
       forumTopics:[],
       showAddTopic: false,
-      
-      id:"",
-      comment:[],
-      currentArticle:[],
-      currentProfile: '',
       topicTitleInput: '',
       topicPostInput: '',
       commentInput: '',
@@ -34,11 +29,6 @@ class Forum extends Component{
   }
 
   componentDidMount(){
-    API.getUser(this.props.user.googleId).then(response => {
-      console.log(response);
-      this.setState({currentProfile: response.data[0]});
-    })
-
     this.getAllForumTopics();
   }
 
@@ -62,7 +52,7 @@ class Forum extends Component{
     event.preventDefault();
     const commentObj = {
       post: this.state.commentInput,
-      UserId: this.state.currentProfile.id,
+      UserId: this.props.profile.id,
       ForumTopicId: this.state.forumTopics[0].id
     }
     API.createComment(commentObj).then(response => {
@@ -76,7 +66,7 @@ class Forum extends Component{
     const formObj = {
       topic: this.state.topicTitleInput,
       post: this.state.topicPostInput,
-      UserId: this.state.currentProfile.id
+      UserId: this.props.profile.id
     }
     API.createForumTopic(formObj).then(response => {
       console.log(response);
@@ -120,10 +110,10 @@ class Forum extends Component{
     const likedByArray = topic.likedBy.split(",");
     const obj = {};
 
-    if(likedByArray.includes(`${this.state.currentProfile.id}`)){
-      obj.likedBy = likedByArray.filter(likedBy => likedBy !== `${this.state.currentProfile.id}`).join(",")
+    if(likedByArray.includes(`${this.props.profile.id}`)){
+      obj.likedBy = likedByArray.filter(likedBy => likedBy !== `${this.props.profile.id}`).join(",")
     }else{
-      obj.likedBy = topic.likedBy ? `${topic.likedBy},${this.state.currentProfile.id}` : `${this.state.currentProfile.id}`
+      obj.likedBy = topic.likedBy ? `${topic.likedBy},${this.props.profile.id}` : `${this.props.profile.id}`
     }
     
     API.updateFormTopic(topic.id, obj).then(response => {
@@ -162,7 +152,7 @@ class Forum extends Component{
                   title={topic.topic}
                   post={topic.post}
                   likes={topic.likedBy ? topic.likedBy.split(",").length: 0}
-                  hasLiked={this.state.currentProfile ? topic.likedBy.split(",").includes(`${this.state.currentProfile.id}`): false}
+                  hasLiked={this.props.profile ? topic.likedBy.split(",").includes(`${this.props.profile.id}`): false}
                   clickLikeHandle={()=>this.likeTopic(topic)}
                   authorProfile={topic.User}
                   comments={topic.Comments}

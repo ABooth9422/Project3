@@ -1,134 +1,26 @@
-
 import React from "react";
 import Container from "../../components/Container";
 import Jumbotron from "../../components/Jumbotron";
 import Wrapper from "../../components/Wrapper"
-import Footer from "../../components/Footer"
 import "./style.css"
-import API from "../../utils/API"
 
 
 class Profile extends React.Component {
   
     state={
-      heading:"Create Profile",
-      submit:false,
-      image:require("../Profile/test.png"),
-      usernameInput:"",
-      imageInput:"",
-      exerciseInput:"",
-      profile:{},
-      length:0
+      user: null,
+      profile:null
       
     }
     componentWillMount(){
-      API.getUser(this.props.user.googleId).then((response)=>{
-      this.setState({profile:response.data})
-      this.setState({length:response.data.length})
-      if((this.state.length===0)){
-        this.setState({submit:false})
-      }else if(this.state.length===1){ 
-        this.setState({submit:true})
-        this.setState({image:this.state.profile[0].img})
-        this.setState({username:this.state.profile[0].name})
-        this.setState({email:this.state.profile[0].email})
-        this.setState({movement:this.state.profile[0].favWorkout})
-        const profObj={
-          img:this.state.profile[0].img,
-          name:this.state.profile[0].name,
-          email:this.state.profile[0].email,
-          favWorkout:this.state.profile[0].favWorkout,
-          googleId:this.props.user.googleId
-        }
-        this.props.mainProf(profObj)
-      }
-    }) 
+      this.setState({user: this.props.user, profile: this.props.profile})
     }
-
- 
-  
-  profileCreate=(event)=>{
-    event.preventDefault()
-    let profileObj={
-      img:this.state.imageInput,
-      email:this.props.user.email,
-      name:this.state.usernameInput,
-      googleId:this.props.user.googleId,
-      favWorkout:this.state.exerciseInput
-     }
-  
-   API.createProfile(profileObj).then((response) =>{
-    this.setState({profile: response.data, submit: true})
-    this.props.mainProf(response.data)
-    })
-    
-   
-  }
-
-  userNameChange=(event)=>{
-    this.setState({usernameInput: event.target.value})
-  }
-
-  imageChange=(event)=>{
-    this.setState({imageInput: event.target.value})
-  }
-
-  excerciseChange=(event)=>{
-    this.setState({exerciseInput: event.target.value})
-  }
-
-  isObjEmpty(obj) {
-    for(var key in obj) {
-        if(obj.hasOwnProperty(key))
-            return false;
-    }
-    return true;
-  }
-
-
-
 
 
   render(){
-    let profile
-    //console.log(this.props)
-    if(this.isObjEmpty(this.state.profile)){
-      profile=
-      <>
-      
-      <div className="row d-flex justify-content-center">
-      <h2 className="head display-1 rounded">{this.state.heading}</h2>
-      <h3>Hello {this.props.user.name || "there"}! Lets make your profile!</h3>
-      </div>
-     
-        <form className="text-white font-weight-bold ">
-      <div className="row my-3 d-flex justify-content-center">
-        <div className="col-6">
-          <label >User Name</label>
-          <input type="text" id="userName"className="form-control" onChange={this.userNameChange} value={this.state.usernameInput} placeholder="Username"/>
-          </div>
-        </div>
-        <div className="row my-3 d-flex justify-content-center">
-          <div className="col-6">
-          <label >Image URL</label>
-          <input id="imageURL"type="text" className="form-control" onChange={this.imageChange} value={this.state.imageInput} placeholder="Profile Image Link"/>
-          </div>
-        </div>
-        <div className="row d-flex my-3 justify-content-center">
-          <div className="col-3">
-          <label >Favorite Exercise</label>
-          <input id="favExer"type="text" className="form-control" onChange={this.excerciseChange} value={this.state.exerciseInput} placeholder="Favorite Movement"/>
-            </div>
-        </div>
-        <div className="row d-flex justify-content-center">
-        <button onClick={this.profileCreate}className="btn btn-secondary my-5">Submit</button>
-        </div>
-        </form>
-        
-
-      </>
-    }else{
-      profile=
+    let page;
+    if(this.state.profile){
+      page=
       <>
       <div className="container text-white">
       <h1 style={{"textDecoration":"underline"}}className="display-1 text-center">Welcome {this.props.profile.name}!</h1>
@@ -144,6 +36,44 @@ class Profile extends React.Component {
       </div>
       </div>
       </>
+
+    }else{
+      page=
+      <>
+      <div className="row d-flex justify-content-center">
+      <h2 className="head display-1 rounded">{this.state.heading}</h2>
+      <h3>Hello {this.props.user.name || "there"}! Lets make your profile!</h3>
+      </div>
+     
+        <form className="text-white font-weight-bold ">
+      <div className="row my-3 d-flex justify-content-center">
+        <div className="col-6">
+          <label >User Name</label>
+          <input type="text" id="userName"className="form-control" onChange={this.props.usernameChange} placeholder="Username"/>
+          </div>
+        </div>
+        <div className="row my-3 d-flex justify-content-center">
+          <div className="col-6">
+          <label >Image URL</label>
+          <input id="imageURL"type="text" className="form-control" onChange={this.props.imageChange} placeholder="Profile Image Link"/>
+          </div>
+        </div>
+        <div className="row d-flex my-3 justify-content-center">
+          <div className="col-3">
+          <label >Favorite Exercise</label>
+          <input id="favExer"type="text" className="form-control" onChange={this.props.excerciseChange} placeholder="Favorite Movement"/>
+            </div>
+        </div>
+        <div className="row d-flex justify-content-center">
+        <button onClick={(event)=>{
+          this.props.profileSubmit(event, (response)=>{
+            this.setState({profile: response});
+          });
+        }} className="btn btn-secondary my-5">Submit</button>
+        </div>
+        </form>
+      </>
+      
     }
 
 
@@ -160,9 +90,8 @@ class Profile extends React.Component {
       <div className="row d-flex justify-content-center">
       </div>
       </div>
-      {profile}
+      {page}
       </div>
-   
       </Container>
     </Wrapper>
     </>
