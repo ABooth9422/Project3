@@ -18,8 +18,8 @@ class GymCard extends Component{
         <>
         <div className='row'>
         <div className="col-12">
-        <div className="card mx-1 my-2 bg-secondary" style={{"width": "100%","minHeight":"100px","boxShadow":"black 3px 3px 3px"}}>
-            <img src={this.props.details.image}></img>
+        <div className="card mx-1 my-2 bg-secondary">
+            <img className='gymImage' src={this.props.details.img || ''}/>
         <div className="card-body">
           <h3 className="card-title text-white">{this.props.details.name}</h3>
           <p className="card-text text-white">{this.props.details.address}</p>

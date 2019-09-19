@@ -12,6 +12,7 @@ import Navbar from "./components/Navbar";
 import About from "./pages/About"
 import Contact from "./pages/Contact"
 import Footer from './components/Footer'
+import API from './utils/API'
 import './App.css'
 
 
@@ -31,28 +32,40 @@ class App extends React.Component {
     this.logOut = this.logOut.bind(this);
     this.setProfile=this.setProfile.bind(this)
   }
+
+  
   
  
 
   logInSuccess(response){
       this.setState({user : response.profileObj}, ()=>{
-        //console.log(this.state.user);
+        API.getUser(this.state.user.googleId).then((response)=>{
+          if(response.data.length > 0){
+            this.setState({profile: response.data})
+          }else{
+            this.setState({profile: {}});
+          }
       })
-  }
+  })
+}
 
   logInFailed(){
-    
+    this.setState({profile: {}});
   }
 
   logOut(){
-    this.setState({user : {}}, ()=>{
-      //console.log(this.state.user);
-    })
+    this.setState({user : {}, profile: {}})
+  
   }
-  setProfile=(profile)=>{
-    this.setState({profile:profile},()=>{
-      console.log(this.state.profile)
-    })
+
+  setProfile=()=>{
+    API.getUser(this.state.user.googleId).then((response)=>{
+      if(response.data.length > 0){
+        this.setState({profile: response.data})
+      }else{
+        this.setState({profile: {}});
+      }
+  })
    
   }
 
@@ -99,7 +112,7 @@ class App extends React.Component {
       <Switch>
         <Route exact path="/" render={(props) => <Home {...props} home={"home"} user={this.state.user} />}/>
         <Route exact path="/home" render={(props) => <Home {...props} home={"home"} user={this.state.user} />}/>
-        <Route exact path="/profile" render={(props) => <Profile {...props} clicked={"clicked"} mainProf={this.setProfile} user={this.state.user} />}/>
+        <Route exact path="/profile" render={(props) => <Profile {...props} clicked={"clicked"} mainProf={this.setProfile} user={this.state.user} profile={this.state.profile}/>}/>
         <Route component={NoMatch} />
       </Switch>
       
@@ -113,7 +126,7 @@ class App extends React.Component {
         <Route exact path="/forums" render={(props) => <Forums {...props} visitForums={"forums"} profile={this.state.profile} user={this.state.user} />}/>
         <Route exact path="/contact" component={Contact}/>
         <Route exact path="/about" component={About}/>
-        <Route exact path="/profile" render={(props) => <Profile {...props} clicked={"clicked"} mainProf={this.setProfile} user={this.state.user} />}/>
+        <Route exact path="/profile" render={(props) => <Profile {...props} clicked={"clicked"} mainProf={this.setProfile} user={this.state.user} profile={this.state.profile}/>}/>
         <Route component={NoMatch} />
       </Switch>
     }

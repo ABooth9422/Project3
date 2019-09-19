@@ -73,11 +73,11 @@ class Gyms extends Component{
   selectGym(gym){
 
     this.setState({selectedGym: gym})
-    // if('photos' in gym){
-    //   API.getGymPhoto(gym.photos[0].photo_reference).then(response => {
-    //     console.log(response);
-    //   })
-    // }
+    if('photos' in gym){
+      API.getGymPhoto(gym.photos[0].photo_reference).then(response => {
+        console.log(response.data);
+      })
+    }
     
   }
 
@@ -98,18 +98,6 @@ class Gyms extends Component{
           }
           />
         ))}
-
-        {this.state.selectedGym && (
-          
-          <InfoWindow 
-          position={this.state.selectedGym.geometry.location} 
-          onCloseClick={()=>this.setState({selectedGym: null})}
-          >
-            <div id='gymDetailsMarkerWindow'>
-              <h5>{this.state.selectedGym.name}</h5>
-            </div>
-          </InfoWindow>
-        )}
       </GoogleMap>
     )
   }
@@ -160,10 +148,12 @@ class Gyms extends Component{
             <div className='col-12 col-md-6 my-3'>
             
             {this.state.selectedGym && (
+                
                 <GymCard details = 
                 {{name: this.state.selectedGym.name, 
                   address: this.state.selectedGym.vicinity, 
-                  rating: this.state.selectedGym.rating}}/>
+                  rating: this.state.selectedGym.rating,
+                  img: 'photos' in this.state.selectedGym ? `https://maps.googleapis.com/maps/api/place/photo?maxheight=300&photoreference=${this.state.selectedGym.photos[0].photo_reference}&key=${process.env.REACT_APP_GOOGLE_KEY}`: ''}}/>
               )}
             
             </div>
