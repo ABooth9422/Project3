@@ -15,11 +15,11 @@ function Footer() {
                 </div>
                 
             </div>
-            {/* <div className="container my-1 d-flex justify-content-center">
+            <div className="container my-1 d-flex justify-content-center">
                 <img alt="facebook" className="rounded-circle mx-2" width="50px" height="50px"src={require("./images/facebook.png")}></img>
                 <img alt="instagram" className="rounded-circle mx-2" width="50px" height="50px"src={require("./images/instagram.jpg")}></img>
                 <img alt="twitter" className="rounded-circle mx-2" width="50px" height="50px"src={require("./images/twitter.png")}></img>
-            </div> */}
+            </div>
 
             <div className="container d-flex justify-content-center">
             <div className="row">
