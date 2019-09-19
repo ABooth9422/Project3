@@ -1,7 +1,6 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, Link,} from "react-router-dom";
 import {GoogleLogin, GoogleLogout} from 'react-google-login'
-
 import Home from './pages/Home'
 import NoMatch from './pages/NoMatch'
 import Forums from './pages/Forums'
@@ -22,66 +21,70 @@ class App extends React.Component {
     super()
 
     this.state={
-      user: {},
-      location:[],
-      profile:{}
+      user: null,
+      profile:null,
+      profileUsernameInput: '',
+      profileImageInput: '',
+      profileExcerciseInput: ''
+      
+    }
+  }
+  
+  logInSuccess=(response)=>{
+    this.setState({user: response.profileObj});
+    this.setProfile(response.profileObj.googleId);
+  }
+
+  logInFailed=(response)=>{
+    console.log(response)
+  }
+
+  logOut=()=>{
+    this.setState({user: null, profile: null});
+  
+  }
+
+  setProfile(id){
+    API.getUser(id).then(response=>{
+      if(response.data)
+        this.setState({profile: response.data});
+      console.log(this.state.profile)
+    })
+  }
+
+  profileUsernameInputChange=(event)=>{
+    this.setState({profileUsernameInput: event.target.value})
+  }
+  profileImageInputChange=(event)=>{
+    this.setState({profileImageInput: event.target.value})
+  }
+  profileExcerciseInputChange=(event)=>{
+    this.setState({profileExcerciseInput: event.target.value})
+  }
+
+  submitProfile=(event, cb)=>{
+    event.preventDefault();
+    const profileObj = {
+      googleId: this.state.user.googleId,
+      name: this.state.profileUsernameInput,
+      email: this.state.user.email,
+      img: this.state.profileImageInput,
+      favWorkout: this.state.profileExcerciseInput
     }
 
-    this.logInSuccess = this.logInSuccess.bind(this);
-    this.logInFailed = this.logInFailed.bind(this);
-    this.logOut = this.logOut.bind(this);
-    this.setProfile=this.setProfile.bind(this)
-  }
+    API.createProfile(profileObj).then(response =>{
+      this.setState({profile: response.data})
+      cb(response.data);
+    }).catch(err=>{
+      console.log(err)
+    })
 
-  
-  
- 
-
-  logInSuccess(response){
-      this.setState({user : response.profileObj}, ()=>{
-        API.getUser(this.state.user.googleId).then((response)=>{
-          if(response.data.length > 0){
-            this.setState({profile: response.data})
-          }else{
-            this.setState({profile: {}});
-          }
-      })
-  })
-}
-
-  logInFailed(){
-    this.setState({profile: {}});
-  }
-
-  logOut(){
-    this.setState({user : {}, profile: {}})
-  
-  }
-
-  setProfile=()=>{
-    API.getUser(this.state.user.googleId).then((response)=>{
-      if(response.data.length > 0){
-        this.setState({profile: response.data})
-      }else{
-        this.setState({profile: {}});
-      }
-  })
-   
-  }
-
-  isObjEmpty(obj) {
-    for(var key in obj) {
-        if(obj.hasOwnProperty(key))
-            return false;
-    }
-    return true;
   }
 
   render(){
     let button;
     let routes;
-    if(this.isObjEmpty(this.state.user)){
-      console.log(this.state.user)
+    if(!this.state.user){
       button = <GoogleLogin
       clientId="21724966650-6sae44jffah2o9mrni7lrhgjq3vh39vm.apps.googleusercontent.com"
       buttonText="Login"
@@ -91,7 +94,6 @@ class App extends React.Component {
     />
 
     }else{
-      console.log(this.state.user)
       button = <><GoogleLogout
       clientId="658977310896-knrl3gka66fldh83dao2rhgbblmd4un9.apps.googleusercontent.com"
       buttonText="Logout"
@@ -99,7 +101,7 @@ class App extends React.Component {
       /><Link to="/profile"><img className="rounded-circle ml-3"width="50px"height="50px"alt="logon"src={this.state.user.imageUrl}/></Link></>
     }
 
-    if(this.isObjEmpty(this.state.user)){
+    if(!this.state.user){
       routes = 
       <Switch>
         <Route exact path="/" component={Home}/>
@@ -107,26 +109,33 @@ class App extends React.Component {
         <Route component={NoMatch} />
       </Switch>
       
-    }else if(this.isObjEmpty(this.state.profile)){
+    }else if(!this.state.profile){
       routes =
       <Switch>
-        <Route exact path="/" render={(props) => <Home {...props} home={"home"} user={this.state.user} />}/>
-        <Route exact path="/home" render={(props) => <Home {...props} home={"home"} user={this.state.user} />}/>
-        <Route exact path="/profile" render={(props) => <Profile {...props} clicked={"clicked"} mainProf={this.setProfile} user={this.state.user} profile={this.state.profile}/>}/>
+        <Route exact path="/" render={(props) => <Home {...props} home={"home"} />}/>
+        <Route exact path="/home" render={(props) => <Home {...props} home={"home"} />}/>
+        <Route exact path="/profile" render={(props) => <Profile 
+        user={this.state.user} 
+        profile={this.state.profile}
+        usernameChange={this.profileUsernameInputChange} 
+        imageChange={this.profileImageInputChange}
+        excerciseChange={this.profileExcerciseInputChange}
+        profileSubmit={this.submitProfile}
+        />}/>
         <Route component={NoMatch} />
       </Switch>
       
     }else{
       routes = 
       <Switch>
-        <Route exact path="/" render={(props) => <Home {...props} home={"home"} user={this.state.user} />}/>
-        <Route exact path="/home" render={(props) => <Home {...props} home={"home"} user={this.state.user} />}/>
-        <Route exact path="/gyms" render={(props) => <Gyms {...props} findagym={"findgym"}user={this.state.user} />}/>
-        <Route exact path="/routines" render={(props) => <Routines {...props} myRoutines={"routines"} user={this.state.user} />}/>
-        <Route exact path="/forums" render={(props) => <Forums {...props} visitForums={"forums"} profile={this.state.profile} user={this.state.user} />}/>
+        <Route exact path="/" render={(props) => <Home {...props} home={"home"}  profile={this.state.profile}/>}/>
+        <Route exact path="/home" render={(props) => <Home {...props} home={"home"}  profile={this.state.profile}/>}/>
+        <Route exact path="/gyms" render={(props) => <Gyms {...props} findagym={"findgym"} profile={this.state.profile}/>}/>
+        <Route exact path="/routines" render={(props) => <Routines {...props} myRoutines={"routines"}  profile={this.state.profile}/>}/>
+        <Route exact path="/forums" render={(props) => <Forums {...props} visitForums={"forums"} profile={this.state.profile} />}/>
         <Route exact path="/contact" component={Contact}/>
         <Route exact path="/about" component={About}/>
-        <Route exact path="/profile" render={(props) => <Profile {...props} clicked={"clicked"} mainProf={this.setProfile} user={this.state.user} profile={this.state.profile}/>}/>
+        <Route exact path="/profile" render={(props) => <Profile {...props} clicked={"clicked"} user={this.state.user} profile={this.state.profile}/>}/>
         <Route component={NoMatch} />
       </Switch>
     }
@@ -134,7 +143,7 @@ class App extends React.Component {
 
     return (
       <Router>
-         <Navbar signedIn={!this.isObjEmpty(this.state.user)} hasProfile={!this.isObjEmpty(this.state.profile)}>
+         <Navbar signedIn={!!this.state.user} hasProfile={!!this.state.profile}>
             {button}
         </Navbar>
         {routes}
