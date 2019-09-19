@@ -11,6 +11,7 @@ import Routines from './pages/Routines'
 import Navbar from "./components/Navbar";
 import About from "./pages/About"
 import Contact from "./pages/Contact"
+import Footer from './components/Footer'
 import './App.css'
 
 
@@ -22,7 +23,7 @@ class App extends React.Component {
     this.state={
       user: {},
       location:[],
-      profile:""
+      profile:{}
     }
 
     this.logInSuccess = this.logInSuccess.bind(this);
@@ -65,6 +66,7 @@ class App extends React.Component {
 
   render(){
     let button;
+    let routes;
     if(this.isObjEmpty(this.state.user)){
       console.log(this.state.user)
       button = <GoogleLogin
@@ -74,22 +76,36 @@ class App extends React.Component {
       onFailure={this.loginFailed}
       cookiePolicy={'single_host_origin'}
     />
+
     }else{
       console.log(this.state.user)
       button = <><GoogleLogout
       clientId="658977310896-knrl3gka66fldh83dao2rhgbblmd4un9.apps.googleusercontent.com"
       buttonText="Logout"
       onLogoutSuccess={this.logOut}
-      /><Link to="/viewProfile"><img className="rounded-circle ml-3"width="50px"height="50px"alt="logon"src={this.state.user.imageUrl}/></Link></>
+      /><Link to="/profile"><img className="rounded-circle ml-3"width="50px"height="50px"alt="logon"src={this.state.user.imageUrl}/></Link></>
     }
 
-
-    return (
-      <Router>
-         <Navbar auth={this.isObjEmpty(this.state.user)}>
-            {button}
-          </Navbar>
-          <Switch>
+    if(this.isObjEmpty(this.state.user)){
+      routes = 
+      <Switch>
+        <Route exact path="/" component={Home}/>
+        <Route exact path="/home" component={Home}/>
+        <Route component={NoMatch} />
+      </Switch>
+      
+    }else if(this.isObjEmpty(this.state.profile)){
+      routes =
+      <Switch>
+        <Route exact path="/" render={(props) => <Home {...props} home={"home"} user={this.state.user} />}/>
+        <Route exact path="/home" render={(props) => <Home {...props} home={"home"} user={this.state.user} />}/>
+        <Route exact path="/profile" render={(props) => <Profile {...props} clicked={"clicked"} mainProf={this.setProfile} user={this.state.user} />}/>
+        <Route component={NoMatch} />
+      </Switch>
+      
+    }else{
+      routes = 
+      <Switch>
         <Route exact path="/" render={(props) => <Home {...props} home={"home"} user={this.state.user} />}/>
         <Route exact path="/home" render={(props) => <Home {...props} home={"home"} user={this.state.user} />}/>
         <Route exact path="/gyms" render={(props) => <Gyms {...props} findagym={"findgym"}user={this.state.user} />}/>
@@ -99,8 +115,19 @@ class App extends React.Component {
         <Route exact path="/about" component={About}/>
         <Route exact path="/profile" render={(props) => <Profile {...props} clicked={"clicked"} mainProf={this.setProfile} user={this.state.user} />}/>
         <Route component={NoMatch} />
-        </Switch>
+      </Switch>
+    }
+
+
+    return (
+      <Router>
+         <Navbar signedIn={!this.isObjEmpty(this.state.user)} hasProfile={!this.isObjEmpty(this.state.profile)}>
+            {button}
+        </Navbar>
+        {routes}
+        <Footer/>
       </Router>
+      
     );
   }
 

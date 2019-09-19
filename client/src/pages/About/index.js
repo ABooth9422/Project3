@@ -29,7 +29,7 @@ function About(){
             </div>
           </Container>
         </Wrapper>
-        <Footer/>
+
         </>
     )
 }

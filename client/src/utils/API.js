@@ -16,26 +16,33 @@ export default {
         return axios.get(`/placesAPI/places/details/${query}`);
     },
     
-    //Create routines
+
     createRoutines: function(routineData) {
         return axios.get("/api/routines", routineData);
     },
-    addPost:function(post){
-        return axios.post("/forumAPI/forum/post",post)
+
+    createForumTopic:function(topic){
+        return axios.post("/forumAPI/forums/createForumTopic", topic)
     },
-    getPost:function(){
-        return axios.get("/forumAPI/forum/find")
+    getAllForumTopics:function(){
+        return axios.get("/forumAPI/forums/getForumTopics")
     },
-    createComment: function(stuff){
-        return axios.post("/forumAPI/forum/addComment",stuff)
+    getForumTopic:function(id){
+        return axios.get(`/forumAPI/forums/getForumTopic/${id}`)
     },
-    getArticle:function(id){
-        
-        return axios.get(`/forumAPI/forum/getArticle/${id}`)
+    updateFormTopic:function(id, obj){
+        return axios.put(`/forumAPI/forums/updateTopic/${id}`, obj)
     },
-    updateLike:function(id){
-        return axios.put(`/forumAPI/forum/updateLike`,id)
+    createComment:function(comment){
+        return axios.post("/forumAPI/forums/createComment", comment)
     },
+    getAllComments:function(){
+        return axios.get("/forumAPI/forums/getComments")
+    },
+    getComment:function(id){
+        return axios.get(`/forumAPI/forums/getComment/${id}`)
+    },   
+    
     createProfile:function(userObj){
         return axios.post("/userAPI/users/",userObj)
     },

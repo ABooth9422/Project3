@@ -142,9 +142,9 @@ class Gyms extends Component{
         </div>
         <div className='row text-center justify-content-center'>
             <div className='col-12 col-md-6 '>
-              <Form>
-                <TextInput id='gymSearch' label='Enter Address' changeHandle={this.inputChange}>{this.state.query}</TextInput>
-                <Button type='button' bootType='danger' clickHandle={this.formSubmit} >GO</Button>
+            <Form>
+              <TextInput id='gymSearch' label='Enter Address' changeHandle={this.inputChange}>{this.state.query}</TextInput>
+              <Button type='button' bootType='danger' clickHandle={this.formSubmit} >GO</Button>
               </Form>
             </div>
         </div>
@@ -170,7 +170,6 @@ class Gyms extends Component{
         </div>
       </Container>
     </Wrapper>
-    <Footer/>
     </>
   );
   }

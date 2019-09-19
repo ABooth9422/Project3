@@ -4,7 +4,7 @@ import './style.css'
 function Form(props){
 
     return (
-        <form>
+        <form {...props}>
             {props.children}
         </form>
     )

@@ -57,8 +57,6 @@ class Profile extends React.Component {
     this.setState({username:UserName})
     let fav=document.getElementById("favExer").value
     this.setState({movement:fav})
-    let email=document.getElementById("email").value
-    this.setState({email:email})
     
     let profileObj={
       img:image,
@@ -105,10 +103,6 @@ class Profile extends React.Component {
         </div>
         <div className="row d-flex my-3 justify-content-center">
           <div className="col-3">
-          <label >Email</label>
-          <input id="email"type="email" className="form-control" placeholder="Email"/>
-          </div>
-          <div className="col-3">
           <label >Favorite Exercise</label>
           <input id="favExer"type="text" className="form-control" placeholder="Favorite Movement"/>
             </div>
@@ -150,20 +144,13 @@ class Profile extends React.Component {
       <div className="profContent rounded">
       <div className="container my-3 p-3">
       <div className="row d-flex justify-content-center">
-      
-      
       </div>
-      
       </div>
-      
       {profile}
       </div>
-    
-
-
+   
       </Container>
     </Wrapper>
-    <Footer/>
     </>
   );
 }

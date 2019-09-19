@@ -2,55 +2,98 @@ const db = require("../models");
 
 module.exports = {
 
-    postTopic:function(req,res){
-        db.Forum
+    createForumTopic:function(req,res){
+        db.ForumTopic
         .create(req.body)
         .then(dbModel => res.json(dbModel))
         .catch(err => res.status(422).json(err));
     },
-    getTopic:function(req,res){
-        db.Forum
-        .findAll({include:db.Comment})
+    getForumTopics:function(req,res){
+        db.ForumTopic
+        .findAll(
+        {
+            include: 
+            [
+                {
+                    model: db.User,
+                   
+                },
+                {
+                    model: db.Comment,
+                    include: 
+                    [
+                        {
+                            model: db.User,
+                            
+                        }
+                    ] 
+                }, 
+            ],
+
+            order: 
+            [
+                ['createdAt', "DESC"]
+            ]
+        })
+        .then(dbModel => res.json(dbModel))
+        .catch(err => {
+            console.log(err)
+            res.status(422).json(err)
+        });
+    },
+    getForumTopic:function(req,res){
+        db.ForumTopic
+        .findOne(
+            {   where: {id: req.params.id},
+                include: 
+                [
+                    {
+                        model: db.User,
+                        
+                    },
+                    {
+                        model: db.Comment,
+                        include: 
+                        [
+                            {
+                                model: db.User,
+                                
+                            }
+                        ] 
+                    }, 
+                ]
+            })
         .then(dbModel => res.json(dbModel))
         .catch(err => res.status(422).json(err));
     },
-    addComment:function(req,res){
+
+    updateTopic: function(req, res){
+        db.ForumTopic
+        .update(req.body, {where: {id: req.params.id}})
+        .then(dbModel => res.json(dbModel))
+        .catch(err => res.status(422).json(err));
+    },
+
+    createComment:function(req,res){
         db.Comment
         .create(req.body)
-        .then(dbModel=> res.json(dbModel))
-        .catch(err=> res.status(422).json(err))
+        .then(dbModel => res.json(dbModel))
+        .catch(err => res.status(422).json(err));
     },
-    getArticle:function(req,res){
-        db.Forum
-        .findOne({
-            where: {
-                id: req.params.id
-              },
-              include: [db.Comment]
-        })
-        .then(dbModel=> res.json(dbModel))
-        .catch(err=> res.status(422).json(err))
+    getComments:function(req,res){
+        db.Comment
+        .findAll({include: [db.ForumTopic, db.User]})
+        .then(dbModel => res.json(dbModel))
+        .catch(err => res.status(422).json(err));
     },
-    updateLike:function(req,res){
-        db.Forum
-        .update({likes:req.body.likes},{where:{id:req.body.id}})
-        .then(()=> 
-        db.Forum
-        .findOne({
-            where: {
-                id: req.body.id
-              }
-        })
-        .then(dbModel=> res.json(dbModel))
-        
-        )
-        
-        
-        .catch(err=> res.status(422).json(err))
-
-        
-        
-    }
+    getComment:function(req,res){
+        db.Comment
+        .findOne({where: {id: req.params.id},
+            include: [db.ForumTopic, db.User]})
+        .then(dbModel => res.json(dbModel))
+        .catch(err => res.status(422).json(err));
+    },
+   
 
 
 

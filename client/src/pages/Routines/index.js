@@ -38,7 +38,6 @@ function Routine() {
       </div>
       </Container>
     </Wrapper>
-    <Footer/>
     </>
   );
 }
