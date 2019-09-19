@@ -16,4 +16,7 @@ router.route("/getComments")
 router.route("/getComment/:id")
   .get(forumController.getComment)
 
+  router.route("/getLike/:id")
+  .get(forumController.getLike)
+
 module.exports = router;

@@ -48,5 +48,8 @@ export default {
     },
     getUser:function(id){
         return axios.get(`/userAPI/users/${id}`)
+    },
+    getLike:function(id){
+        return axios.get(`/forumAPI/forum/getLike/${id}`)
     }
 };

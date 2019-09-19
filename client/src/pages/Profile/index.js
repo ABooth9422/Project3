@@ -21,10 +21,28 @@ class Profile extends React.Component {
       length:0
       
     }
-
-    
-    componentDidMount(){
-      this.setState({profile: this.props.profile || {}});
+    componentWillMount(){
+      API.getUser(this.props.user.googleId).then((response)=>{
+      this.setState({profile:response.data})
+      this.setState({length:response.data.length})
+      if((this.state.length===0)){
+        this.setState({submit:false})
+      }else if(this.state.length===1){ 
+        this.setState({submit:true})
+        this.setState({image:this.state.profile[0].img})
+        this.setState({username:this.state.profile[0].name})
+        this.setState({email:this.state.profile[0].email})
+        this.setState({movement:this.state.profile[0].favWorkout})
+        const profObj={
+          img:this.state.profile[0].img,
+          name:this.state.profile[0].name,
+          email:this.state.profile[0].email,
+          favWorkout:this.state.profile[0].favWorkout,
+          googleId:this.props.user.googleId
+        }
+        this.props.mainProf(profObj)
+      }
+    }) 
     }
 
  
