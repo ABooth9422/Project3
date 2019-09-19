@@ -1,0 +1,14 @@
+.likes{
+    color:#BD4750 !important;
+}
+
+.forumBG{
+background: #FE1A40;
+background: linear-gradient(135deg, #FE1A40 0%, #630D25 47%, #000000 100%);
+box-shadow: black 18px 12px 9px;
+
+}
+
+.topicPost{
+    background: #0002;
+}

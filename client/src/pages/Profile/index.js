@@ -14,9 +14,9 @@ class Profile extends React.Component {
       heading:"Create Profile",
       submit:false,
       image:require("../Profile/test.png"),
-      username:"Blank",
-      email:"Blank",
-      movement:"Blank",
+      usernameInput:"",
+      imageInput:"",
+      exerciseInput:"",
       profile:{},
       length:0
       
@@ -49,38 +49,50 @@ class Profile extends React.Component {
   
   profileCreate=(event)=>{
     event.preventDefault()
-    this.setState({submit:true,heading:"View Profile"})
-    let image =document.getElementById("imageURL").value
-    this.setState({image:image})
-    let UserName=document.getElementById("userName").value
-    this.setState({username:UserName})
-    let fav=document.getElementById("favExer").value
-    this.setState({movement:fav})
-    let email=document.getElementById("email").value
-    this.setState({email:email})
-    
     let profileObj={
-      img:image,
+      img:this.state.imageInput,
       email:this.props.user.email,
-      name:UserName,
+      name:this.state.usernameInput,
       googleId:this.props.user.googleId,
-      favWorkout:fav
+      favWorkout:this.state.exerciseInput
      }
   
-   API.createProfile(profileObj).then(function(resp){
-      //console.log(resp)
+   API.createProfile(profileObj).then((response) =>{
+    this.setState({profile: response.data, submit: true})
+    this.props.mainProf(response.data)
     })
-    this.props.mainProf(profileObj)
+    
    
+  }
+
+  userNameChange=(event)=>{
+    this.setState({usernameInput: event.target.value})
+  }
+
+  imageChange=(event)=>{
+    this.setState({imageInput: event.target.value})
+  }
+
+  excerciseChange=(event)=>{
+    this.setState({exerciseInput: event.target.value})
+  }
+
+  isObjEmpty(obj) {
+    for(var key in obj) {
+        if(obj.hasOwnProperty(key))
+            return false;
+    }
+    return true;
   }
 
 
 
 
-  render(props){
+
+  render(){
     let profile
     //console.log(this.props)
-    if(!this.state.submit){
+    if(this.isObjEmpty(this.state.profile)){
       profile=
       <>
       
@@ -93,23 +105,19 @@ class Profile extends React.Component {
       <div className="row my-3 d-flex justify-content-center">
         <div className="col-6">
           <label >User Name</label>
-          <input type="text" id="userName"className="form-control" placeholder="Username"/>
+          <input type="text" id="userName"className="form-control" onChange={this.userNameChange} value={this.state.usernameInput} placeholder="Username"/>
           </div>
         </div>
         <div className="row my-3 d-flex justify-content-center">
           <div className="col-6">
           <label >Image URL</label>
-          <input id="imageURL"type="text" className="form-control" placeholder="Profile Image Link"/>
+          <input id="imageURL"type="text" className="form-control" onChange={this.imageChange} value={this.state.imageInput} placeholder="Profile Image Link"/>
           </div>
         </div>
         <div className="row d-flex my-3 justify-content-center">
           <div className="col-3">
-          <label >Email</label>
-          <input id="email"type="email" className="form-control" placeholder="Email"/>
-          </div>
-          <div className="col-3">
           <label >Favorite Exercise</label>
-          <input id="favExer"type="text" className="form-control" placeholder="Favorite Movement"/>
+          <input id="favExer"type="text" className="form-control" onChange={this.excerciseChange} value={this.state.exerciseInput} placeholder="Favorite Movement"/>
             </div>
         </div>
         <div className="row d-flex justify-content-center">
@@ -123,15 +131,16 @@ class Profile extends React.Component {
       profile=
       <>
       <div className="container text-white">
-      <h1 style={{"textDecoration":"underline"}}className="display-1 text-center">Welcome {this.state.username}!</h1>
+      <h1 style={{"textDecoration":"underline"}}className="display-1 text-center">Welcome {this.props.profile.name}!</h1>
       <div className="row row d-flex justify-content-center">
-      <img id="profilePic"className="rounded-circle my-2"src={this.state.image} height="200px" width="200px" alt="main profile pic"></img>
+      <img id="profilePic"className="rounded-circle my-2"src={this.props.profile.img || this.props.image} height="200px" width="200px" alt="main profile pic"></img>
       </div>
       <div className="row d-flex my-2 justify-content-center">
-      <h3>Email: {this.state.email}</h3>
+      <h3>Email: {this.props.profile.email}</h3>
       </div>
       <div className="row d-flex my-2 justify-content-center">
-      <h3>Favorite exercise: {this.state.movement}</h3>
+      <h3>Favorite exercise: {this.props.profile.favWorkout}</h3>
+
       </div>
       </div>
       </>
@@ -149,20 +158,13 @@ class Profile extends React.Component {
       <div className="profContent rounded">
       <div className="container my-3 p-3">
       <div className="row d-flex justify-content-center">
-      
-      
       </div>
-      
       </div>
-      
       {profile}
       </div>
-    
-
-
+   
       </Container>
     </Wrapper>
-    <Footer/>
     </>
   );
 }

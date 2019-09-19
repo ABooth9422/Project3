@@ -24,16 +24,17 @@ module.exports = function(sequelize, DataTypes) {
       favWorkout: {
         type: DataTypes.STRING
       },
-      // playlist: {
-      //   type: DataTypes.STRING,
-      //   allowNull: true,
-      //   validate: {
-      //     isURL: true
-      //   }
-      // }
-    }, 
-    {
-      timestamps: false
     });
+
+    User.associate = (models) =>{
+      User.hasMany(models.ForumTopic), {
+        onDelete: "cascade"
+      };
+
+      User.hasMany(models.Comment), {
+        onDelete: "cascade"
+      };
+    }
+    
     return User;
   };

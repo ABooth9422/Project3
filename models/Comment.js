@@ -3,24 +3,22 @@ module.exports = function(sequelize, DataTypes) {
       post: {
         type: DataTypes.STRING,
         allowNull: false
-      },
-      user: {
-          type: DataTypes.STRING,
-          allowNull: false 
-      },
-      img: {
-        type: DataTypes.STRING
       }
-    }, 
-    {
-      timestamps: false
     });
+
     Comment.associate = function(models) {
-      Comment.belongsTo(models.Forum, {
+      Comment.belongsTo(models.ForumTopic, {
+        foreignKey: {
+          allowNull: false
+        }
+      });
+
+      Comment.belongsTo(models.User, {
         foreignKey: {
           allowNull: false
         }
       });
     };
+
     return Comment;
   };

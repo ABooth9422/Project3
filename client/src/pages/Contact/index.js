@@ -51,7 +51,6 @@ function Contact(){
         </div>
           </Container>
         </Wrapper>
-        <Footer/>
         </>
     )
 }

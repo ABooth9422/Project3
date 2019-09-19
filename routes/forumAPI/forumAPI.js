@@ -1,19 +1,20 @@
 const router = require("express").Router();
 const forumController = require("../../controllers/forumController");
 
-router.route("/post")
-  .post(forumController.postTopic);
-
-router.route("/find")
-  .get(forumController.getTopic);
-
-router.route("/addComment")
-  .post(forumController.addComment)
-router.route("/getArticle/:id")
-  .get(forumController.getArticle)
-
-router.route("/updateLike")
-  .put(forumController.updateLike)
+router.route("/createForumTopic")
+  .post(forumController.createForumTopic);
+router.route("/getForumTopics")
+  .get(forumController.getForumTopics);
+router.route("/getForumTopic/:id")
+  .get(forumController.getForumTopic)
+router.route("/upDateTopic/:id")
+  .put(forumController.updateTopic)
+router.route("/createComment")
+  .post(forumController.createComment);
+router.route("/getComments")
+  .get(forumController.getComments);
+router.route("/getComment/:id")
+  .get(forumController.getComment)
 
   router.route("/getLike/:id")
   .get(forumController.getLike)
