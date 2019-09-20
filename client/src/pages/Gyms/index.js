@@ -2,13 +2,11 @@ import React,{Component} from "react";
 import Container from "../../components/Container";
 import Jumbotron from "../../components/Jumbotron";
 import Wrapper from "../../components/Wrapper";
-import Footer from "../../components/Footer";
 import GymCard from "../../components/GymCard";
 import Form from '../../components/Form';
 import TextInput from '../../components/TextInput';
 import Button from '../../components/Button';
-import {GoogleMap, withScriptjs, withGoogleMap, Marker, InfoWindow} from 'react-google-maps';
-import markerImage from './images/marker.png'
+import {GoogleMap, withScriptjs, withGoogleMap, Marker} from 'react-google-maps';
 import "./style.css";
 import API from "../../utils/API";
 

@@ -1,7 +1,6 @@
 import React from 'react'
 import Form from '../Form'
 import TextInput from '../TextInput'
-import TextAreaInput from '../TextAreaInput'
 import Button from '../Button'
 import './style.css'
 import Container from '../Container'
