@@ -23,14 +23,17 @@ class Profile extends React.Component {
       page=
       <>
       <div className="container text-white">
-      <h1 style={{"textDecoration":"underline"}}className="display-1 text-center">Welcome {this.props.profile.name}!</h1>
+      <h1 style={{"textDecoration":"underline"}}className="display-3 my-3 text-center">Welcome {this.state.user.name}!</h1>
       <div className="row row d-flex justify-content-center">
-      <img id="profilePic"className="rounded-circle my-2"src={this.props.profile.img || this.props.image} height="200px" width="200px" alt="main profile pic"></img>
+      <img id="profilePic"className="rounded-circle my-3"src={this.props.profile.img || this.props.image} height="200px" width="200px" alt="main profile pic"></img>
       </div>
-      <div className="row d-flex my-2 justify-content-center">
+      <div className="row d-flex my-3 justify-content-center">
+      <h3>Username: {this.props.profile.name}</h3>
+      </div>
+      <div className="row d-flex my-3 justify-content-center">
       <h3>Email: {this.props.profile.email}</h3>
       </div>
-      <div className="row d-flex my-2 justify-content-center">
+      <div className="row d-flex my-3 justify-content-center">
       <h3>Favorite exercise: {this.props.profile.favWorkout}</h3>
 
       </div>
@@ -41,8 +44,10 @@ class Profile extends React.Component {
       page=
       <>
       <div className="row d-flex justify-content-center">
-      <h2 className="head display-1 rounded">{this.state.heading}</h2>
-      <h3>Hello {this.props.user.name || "there"}! Lets make your profile!</h3>
+      <h1 className="head display-3 mb-2 rounded"> Lets make your profile!</h1>
+      </div>
+      <div className="row d-flex justify-content-center">
+      <h5 className="display-4">Hello {this.props.user.name || "there"}!</h5>
       </div>
      
         <form className="text-white font-weight-bold ">
@@ -69,7 +74,7 @@ class Profile extends React.Component {
           this.props.profileSubmit(event, (response)=>{
             this.setState({profile: response});
           });
-        }} className="btn btn-secondary my-5">Submit</button>
+        }} className="btn btn-secondary my-3">Submit</button>
         </div>
         </form>
       </>

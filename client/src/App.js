@@ -33,6 +33,7 @@ class App extends React.Component {
   logInSuccess=(response)=>{
     this.setState({user: response.profileObj});
     this.setProfile(response.profileObj.googleId);
+    console.log(this.state.user)
   }
 
   logInFailed=(response)=>{
