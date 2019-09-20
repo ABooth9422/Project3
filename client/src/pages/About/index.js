@@ -2,7 +2,6 @@ import React from "react";
 import Container from "../../components/Container";
 import Jumbotron from "../../components/Jumbotron";
 import Wrapper from "../../components/Wrapper"
-import Footer from "../../components/Footer"
 import {Link} from "react-router-dom"
 import "./style.css"
 

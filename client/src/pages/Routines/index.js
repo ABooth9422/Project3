@@ -1,7 +1,6 @@
 import React from "react";
 import Container from "../../components/Container";
 import Wrapper from "../../components/Wrapper";
-import Footer from "../../components/Footer";
 import "./style.css";
 import GymCalendar from "../../components/GymCalendar";
 import Logo from "../../components/Logo"

@@ -7,7 +7,7 @@ function TextAreaInput(props){
         <div className="form-group ">
         <label htmlFor={props.id}>{props.label}</label>
         <textarea onChange={props.changeHandle} className="form-control" name="message" size="35" id={props.id}
-            rows="6" cols="40" value={props.children} placeholder={props.placeholder} value={props.children}>
+            rows="6" cols="40" placeholder={props.placeholder} value={props.children}>
         </textarea>             
         </div>
     )
