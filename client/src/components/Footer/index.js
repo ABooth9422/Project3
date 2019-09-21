@@ -23,7 +23,7 @@ function Footer() {
 
             <div className="container d-flex justify-content-center">
             <div className="row">
-                <p>&copy; Gym Sense</p>
+                <p>&copy; GymSense</p>
                 </div>
                 </div>
         </footer>

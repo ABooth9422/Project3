@@ -38,9 +38,9 @@ function ForumTopic(props) {
         
             {props.open && (
                 <>
-                <div className="row text-center">
-                    <div className='col-12 topicPost rounded py-3'>
-                        <p>{props.post}</p>
+                <div className="row">
+                    <div className='col-12 topicPost rounded p-5'>
+                        <p className="text-left" style={{"fontSize":"20px"}}>{props.post}</p>
                     </div>
                 </div>
                 </>

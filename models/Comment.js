@@ -1,7 +1,7 @@
 module.exports = function(sequelize, DataTypes) {
     var Comment = sequelize.define("Comment", {
       post: {
-        type: DataTypes.STRING,
+        type: DataTypes.TEXT('long'),
         allowNull: false
       }
     });

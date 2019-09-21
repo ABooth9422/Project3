@@ -112,15 +112,12 @@ class Gyms extends Component{
     <Wrapper>
     <Jumbotron/>
       <Container>
-              <header className="my-5 p-5rounded">
+              <header className="my-1 p-5rounded">
               <div className="gym__bg p-5 "></div>
               <h1 id="gymHead" className="display-1 rounded mt-5 text-black">Find your gym!</h1>
               </header>
           <div style={{"boxShadow":"black 3px 3px 3px"}}className="contain rounded mx-5 p-5">
           <div className="row d-flex justify-content-center text-center">
-          </div>
-          <div className="row d-flex my-5 justify-content-center text-center">
-          <h3>Our desire is to help you find a gym in your area and be an advocate to getting you started with your workout needs!</h3>
           </div>
           <div className="row d-flex my-3  justify-content-center text-center">
           <h3>Our desire is to help you find a gym in your area and be a resource for starting your workout routines. Enter your address or zip code below to find a gym to FIT you needs!
