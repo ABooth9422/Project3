@@ -22,6 +22,7 @@ class Forum extends Component{
       topicPostInput: '',
       commentInput: '',
       showComments: false,
+      load:true
      
     }
 
@@ -34,6 +35,7 @@ class Forum extends Component{
 
   toggleShowAddTopic =()=>{
     this.setState({showAddTopic: !this.state.showAddTopic});
+    console.log(this.state.showAddTopic)
   }
 
   topicTitleInputChange=(event)=>{
@@ -92,7 +94,8 @@ class Forum extends Component{
     this.setState(
       {forumTopics: topic,
         showComments: true,
-        showAddComment: true
+        showAddComment: true,
+        load:false
       }
     )
   }
@@ -100,7 +103,8 @@ class Forum extends Component{
   goBack=()=>{
     this.setState({
       showComments: false,
-        showAddComment: false
+        showAddComment: false,
+        load:true
     })
     this.getAllForumTopics();
   }
@@ -143,7 +147,9 @@ class Forum extends Component{
               </header>
               <h3 className="text-center  p-5 text-white">The GymSense forum is a place to ask questions, discuss routines, debate dietary practices 
               or share personal accomplishments to inspire others. Please be considerate and respectful to other GymSense members. Moderators reserve the right to delete any content deemed unfit for the GymSense forum.</h3>
+                {this.state.load?
                 <button type="button" onClick={this.toggleShowAddTopic} className="btn-lg btn-secondary mb-5">Add a Forum Topic!</button>
+                :<></>}
                 {addTopicForm}
                 {this.state.forumTopics.map(topic => {
                   return(
