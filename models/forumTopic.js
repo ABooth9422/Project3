@@ -2,10 +2,13 @@ module.exports = function(sequelize, DataTypes) {
     var ForumTopic = sequelize.define("ForumTopic", {
       topic: {
         type: DataTypes.STRING,
+        validate:{
+          len: [1,100]
+        },
         allowNull: false
       } ,
       post: {
-        type: DataTypes.STRING,
+        type: DataTypes.TEXT('long'),
         allowNull: false
       },
       likedBy: {

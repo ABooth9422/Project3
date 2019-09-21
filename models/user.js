@@ -20,6 +20,9 @@ module.exports = function(sequelize, DataTypes) {
       },
       img: {
           type: DataTypes.STRING,
+          validate:{
+            isURL:true
+          }
       },
       favWorkout: {
         type: DataTypes.STRING
