@@ -26,25 +26,33 @@ npm run start
 The objective of GymSense is to provide individuals with an opportunity to find gyms based on address or zip code, find routines that's most suitable to their needs and engage in discussions via the forum where other GymSense users have provided tips and insight on things that have worked well for them! GIT INTENSE...GIT GYMSENSE!!
 
 ## Take a tour of the app below...
-![This is the initial login page where you will be required to login with a valid email in order to have access to the application.](/images/login.png)
 
-![Here is where you will be able to create a profile. The profile page is required for full functionality of the application.](/images/profile.png)
+This is the initial login page where you will be required to login with a valid email in order to have access to the application.
+![gymsenseLogin](./images/login.png)
 
-![This page will give you the opportunity to search for a gym based on address or zip code.](images/findgym.png)
+Here is where you will be able to create a profile. The profile page is required for full functionality of the application.
+![gymsenseProfile](./images/profile.png)
 
-![This is our testimonial page where users have provided their insight on what GymSense was able to do for them!](images/testimonials.png)
+This page will give you the opportunity to search for a gym based on address or zip code.
+![gymsenseGym](./images/findgym.png)
 
-![The routines page is used to allow users to use the routines that are provided or create their own.](images/routine.png)
+This is our testimonial page where users have provided their insight on what GymSense was able to do for them!
+![gymsenseTestimonial](./images/testimonials.png)
 
-![This page will give you the capability to share a topic you want to discuss amongst other GymSense users.](images/topics.png)
+The routines page is used to allow users to use the routines that are provided or create their own.
+![gymsenseRoutine](./images/routine.png)
 
-![After you create a topic other users will be able to like and comment on topics of their choice.](images/comments.png)
+This page will give you the capability to share a topic you want to discuss amongst other GymSense users.
+![gymsenseTopics](./images/topics.png)
+
+After you create a topic other users will be able to like and comment on topics of their choice.
+![gymsenseComments](./images/comments.png)
 
 ## Technologies
 
 ## Author
 
-👤 **Aaron Booth  Mark Bruce  Jarvis Maness  Louis Rollins  **
+👤 ** Aaron Booth  Mark Bruce  Jarvis Maness  Louis Rollins  **
 
 * Github: [@abooth9422](https://github.com/abooth9422)
 
