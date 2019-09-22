@@ -9,7 +9,10 @@ router.route("/")
 router
   .route("/:id")
   .get(userController.findById)
-  .put(userController.update)
-  .delete(userController.remove);
+  
+router.route("/addGym")
+  .post(userController.addGym)
+router.route("/remFav/:id")
+  .delete(userController.remGym)
 
 module.exports = router;

@@ -40,6 +40,12 @@ p,h3{
         width:400px;
         flex-wrap:wrap;
     }
+    h1{
+        font-size:72px !important;
+    }
+    h2{
+        font-size:72px !important;
+    }
     .imgTest{
         display:flex;
         justify-content:center;

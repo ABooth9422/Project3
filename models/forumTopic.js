@@ -16,7 +16,8 @@ module.exports = function(sequelize, DataTypes) {
         allowNull: false,
         defaultValue: '' 
       }
-    });
+    }
+    );
 
     ForumTopic.associate = function(models) {
       ForumTopic.belongsTo(models.User, {

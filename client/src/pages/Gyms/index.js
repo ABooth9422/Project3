@@ -28,6 +28,7 @@ class Gyms extends Component{
     if(!this.state.WrappedMap){
       this.initMap();
     }
+   
   }
   getLocation = () => {
     navigator.geolocation.getCurrentPosition(this.showPosition);
@@ -69,11 +70,10 @@ class Gyms extends Component{
   }
 
   selectGym(gym){
-
     this.setState({selectedGym: gym})
     if('photos' in gym){
       API.getGymPhoto(gym.photos[0].photo_reference).then(response => {
-        console.log(response.data);
+        //console.log(response.data);
       })
     }
     
@@ -101,6 +101,21 @@ class Gyms extends Component{
   }
   initMap =()=>{
     this.setState({WrappedMap: withScriptjs(withGoogleMap(this.Map))})
+  }
+
+  remFav=(destroyGym)=>{
+    API.removeFavoriteGym(destroyGym).then(response=>{
+      console.log(response)
+    })
+
+  }
+
+  addFav=(favoriteGym)=>{
+    favoriteGym.UserId=this.props.profile.id
+    console.log(favoriteGym)
+    API.addFavoriteGym(favoriteGym).then(response=>{
+      console.log(response)
+    })
   }
 
   render(){
@@ -133,7 +148,7 @@ class Gyms extends Component{
            
         </div>
         </div>
-        <div className='row text-center my-5 justify-content-center'>
+        <div className='row text-center mx-2 my-5 justify-content-center'>
             <div className='col-12 col-md-6 my-3 rounded mapContainer'>
             <WrappedMap 
               googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=${process.env.REACT_APP_GOOGLE_KEY}`}
@@ -148,10 +163,15 @@ class Gyms extends Component{
             {this.state.selectedGym && (
                 
                 <GymCard details = 
-                {{name: this.state.selectedGym.name, 
+                {{name: this.state.selectedGym.name,
+                  addFav:this.addFav,
+                  remFav:this.remFav, 
                   address: this.state.selectedGym.vicinity, 
                   rating: this.state.selectedGym.rating,
-                  img: 'photos' in this.state.selectedGym ? `https://maps.googleapis.com/maps/api/place/photo?maxheight=300&photoreference=${this.state.selectedGym.photos[0].photo_reference}&key=${process.env.REACT_APP_GOOGLE_KEY}`: ''}}/>
+                  reset:this.state.selectedGym.reset,
+                  img: 'photos' in this.state.selectedGym ? `https://maps.googleapis.com/maps/api/place/photo?maxheight=300&photoreference=${this.state.selectedGym.photos[0].photo_reference}&key=${process.env.REACT_APP_GOOGLE_KEY}`: ''}}
+                  
+                  />
               )}
             
             </div>

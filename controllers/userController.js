@@ -10,28 +10,27 @@ module.exports = {
   },
   findById: function(req, res) {
     db.User
-      .findOne({where: {googleId: req.params.id}})
+      .findOne({where: {googleId: req.params.id},include:[db.favGym]})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
   create: function(req, res) {
-    console.log(req.body)
     db.User
       .create(req.body)
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
-  update: function(req, res) {
-    db.User
-      // .findOneAndUpdate({ _id: req.params.id }, req.body)
-      // .then(dbModel => res.json(dbModel))
-      // .catch(err => res.status(422).json(err));
+  addGym:function(req,res){
+    console.log(req.body)
+    db.favGym
+      .create(req.body)
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
   },
-  remove: function(req, res) {
-    db.User
-      // .findById({ _id: req.params.id })
-      // .then(dbModel => dbModel.remove())
-      // .then(dbModel => res.json(dbModel))
-      // .catch(err => res.status(422).json(err));
+  remGym:function(req,res){
+    db.favGym
+      .destroy({where:{name:req.params.id}})
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
   }
 };
