@@ -12,7 +12,7 @@ router
   
 router.route("/addGym")
   .post(userController.addGym)
-router.route("/remFav/:id")
+router.route("/remFav/:gymId/:UserId")
   .delete(userController.remGym)
 
 module.exports = router;

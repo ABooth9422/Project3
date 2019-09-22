@@ -45,7 +45,7 @@ class Home extends React.Component {
                     <p className="text-center p-2"style={{"whiteSpace": "pre-line"}}>{["Not having an active workout schedule in the past, GymSense has been a great PT in supporting my training objectives. GymSense is outcome focused, and I have been able to see continual improvement from my sessions. Thank you for being supportive with training efforts!","-Mark"].join('\n')}</p>
                     </div>
                     <div className="col-lg-3 col-12 justify-content-start">
-                    <img className="testImg rounded-circle"alt="test"width="200px" height="200px"src={require('./images/mark.jpg')}></img>
+                    <img className="testImg rounded-circle"alt="test"width="200px" height="200px"src='https://sketchok.com/images/articles/01-cartoons/007-rick-and-morty/09/15.jpg'></img>
                     </div>
                     </div>
                 </div>  

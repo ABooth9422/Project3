@@ -1,5 +1,9 @@
 module.exports = function(sequelize, DataTypes) {
     var favGym = sequelize.define("favGym", {
+      gymId: {
+        type: DataTypes.STRING,
+        allowNull: false
+      },
       name: {
         type: DataTypes.STRING,
         allowNull: false
