@@ -55,7 +55,7 @@ export default {
     addFavoriteGym:function(gymObj){
         return axios.post("/userAPI/users/addGym",gymObj)
     },
-    removeFavoriteGym:function(gym){
-        return axios.delete(`/userAPI/users/remFav/${gym}`)
+    removeFavoriteGym:function(gymId, UserId){
+        return axios.delete(`/userAPI/users/remFav/${gymId}/${UserId}`)
     }
 };

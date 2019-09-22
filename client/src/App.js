@@ -50,8 +50,18 @@ class App extends React.Component {
     API.getUser(id).then(response=>{
       if(response.data)
         this.setState({profile: response.data});
-      console.log(this.state.profile)
     })
+  }
+
+  getProfile =(cb=(res)=>console.log(res))=>{
+    API.getUser(this.state.user.googleId).then(response=>{
+      this.setState({profile: response.data});
+      cb(response.data)
+    }).catch(err =>{
+      console.log(err);
+      cb(null);
+    })
+    
   }
 
   profileUsernameInputChange=(event)=>{
@@ -118,7 +128,7 @@ class App extends React.Component {
         <Route exact path="/home" render={(props) => <Home {...props} home={"home"} />}/>
         <Route exact path="/profile" render={(props) => <Profile 
         user={this.state.user} 
-        profile={this.state.profile}
+        profile={this.state.profile} getProfile={this.getProfile}
         usernameChange={this.profileUsernameInputChange} 
         imageChange={this.profileImageInputChange}
         excerciseChange={this.profileExcerciseInputChange}
@@ -130,14 +140,14 @@ class App extends React.Component {
     }else{
       routes = 
       <Switch>
-        <Route exact path="/" render={(props) => <Home {...props} home={"home"}  profile={this.state.profile}/>}/>
-        <Route exact path="/home" render={(props) => <Home {...props} home={"home"}  profile={this.state.profile}/>}/>
-        <Route exact path="/gyms" render={(props) => <Gyms {...props} findagym={"findgym"} profile={this.state.profile}/>}/>
-        <Route exact path="/routines" render={(props) => <Routines {...props} myRoutines={"routines"}  profile={this.state.profile}/>}/>
-        <Route exact path="/forums" render={(props) => <Forums {...props} visitForums={"forums"} profile={this.state.profile} />}/>
+        <Route exact path="/" render={(props) => <Home {...props} home={"home"}  profile={this.state.profile} getProfile={this.getProfile}/>}/>
+        <Route exact path="/home" render={(props) => <Home {...props} home={"home"}  profile={this.state.profile} getProfile={this.getProfile}/>}/>
+        <Route exact path="/gyms" render={(props) => <Gyms {...props} findagym={"findgym"} profile={this.state.profile} getProfile={this.getProfile}/>}/>
+        <Route exact path="/routines" render={(props) => <Routines {...props} myRoutines={"routines"}  profile={this.state.profile} getProfile={this.getProfile}/>}/>
+        <Route exact path="/forums" render={(props) => <Forums {...props} visitForums={"forums"} profile={this.state.profile} getProfile={this.getProfile} />}/>
         <Route exact path="/contact" component={Contact}/>
         <Route exact path="/about" component={About}/>
-        <Route exact path="/profile" render={(props) => <Profile {...props} clicked={"clicked"} user={this.state.user} profile={this.state.profile}/>}/>
+        <Route exact path="/profile" render={(props) => <Profile {...props} clicked={"clicked"} user={this.state.user} profile={this.state.profile} getProfile={this.getProfile}/>}/>
         <Route component={NoMatch} />
       </Switch>
     }

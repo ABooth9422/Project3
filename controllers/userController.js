@@ -29,7 +29,7 @@ module.exports = {
   },
   remGym:function(req,res){
     db.favGym
-      .destroy({where:{name:req.params.id}})
+      .destroy({where:{gymId: req.params.gymId, UserId: req.params.UserId}})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   }

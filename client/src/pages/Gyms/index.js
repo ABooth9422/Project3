@@ -19,7 +19,8 @@ class Gyms extends Component{
     selectedGym: null,
     query: '',
     center:{lat: 35.779591, lng: -78.638176},
-    gyms: []
+    gyms: [],
+    favoriteGyms: []
 
   }
 }
@@ -28,6 +29,8 @@ class Gyms extends Component{
     if(!this.state.WrappedMap){
       this.initMap();
     }
+
+    this.updateFavorites();
    
   }
   getLocation = () => {
@@ -70,10 +73,11 @@ class Gyms extends Component{
   }
 
   selectGym(gym){
+    console.log(gym);
     this.setState({selectedGym: gym})
     if('photos' in gym){
       API.getGymPhoto(gym.photos[0].photo_reference).then(response => {
-        //console.log(response.data);
+        
       })
     }
     
@@ -103,20 +107,41 @@ class Gyms extends Component{
     this.setState({WrappedMap: withScriptjs(withGoogleMap(this.Map))})
   }
 
-  remFav=(destroyGym)=>{
-    API.removeFavoriteGym(destroyGym).then(response=>{
-      console.log(response)
-    })
+  toggleFavoriteGym = () =>{
+    if(this.state.favoriteGyms.includes(this.state.selectedGym.id)){
+      API.removeFavoriteGym(this.state.selectedGym.id, this.props.profile.id).then(response=>{
+        this.updateFavorites();
+      })
+    }else{
+      const sGym = this.state.selectedGym;
+      const gymObj = {
+        gymId: sGym.id,
+        name: sGym.name,
+        address: sGym.vicinity,
+        rating: sGym.rating,
+        img: 'photos' in sGym ? sGym.photos[0].photo_reference : 'https://hondafsj.com/dist/img/nophoto.jpg',
+        UserId: this.props.profile.id
 
+      }
+
+      console.log(gymObj);
+
+      API.addFavoriteGym(gymObj).then(response=>{
+        this.updateFavorites();
+      })
+     
+    }
+
+    
   }
 
-  addFav=(favoriteGym)=>{
-    favoriteGym.UserId=this.props.profile.id
-    console.log(favoriteGym)
-    API.addFavoriteGym(favoriteGym).then(response=>{
-      console.log(response)
-    })
+  updateFavorites(){
+    this.props.getProfile(res =>{
+      this.setState({favoriteGyms: res.favGyms.map(gym=>gym.gymId)});
+    });
   }
+
+ 
 
   render(){
     let WrappedMap = this.state.WrappedMap || withScriptjs(withGoogleMap(this.Map));
@@ -162,14 +187,14 @@ class Gyms extends Component{
             
             {this.state.selectedGym && (
                 
-                <GymCard details = 
-                {{name: this.state.selectedGym.name,
-                  addFav:this.addFav,
-                  remFav:this.remFav, 
-                  address: this.state.selectedGym.vicinity, 
-                  rating: this.state.selectedGym.rating,
-                  reset:this.state.selectedGym.reset,
-                  img: 'photos' in this.state.selectedGym ? `https://maps.googleapis.com/maps/api/place/photo?maxheight=300&photoreference=${this.state.selectedGym.photos[0].photo_reference}&key=${process.env.REACT_APP_GOOGLE_KEY}`: ''}}
+                <GymCard 
+                id= {this.state.selectedGym.id}
+                  name= {this.state.selectedGym.name}
+                  favClick= {this.toggleFavoriteGym}
+                  address= {this.state.selectedGym.vicinity }
+                  rating= {this.state.selectedGym.rating}
+                  favorited={this.state.favoriteGyms.includes(this.state.selectedGym.id)}
+                  img= {'photos' in this.state.selectedGym ? `https://maps.googleapis.com/maps/api/place/photo?maxheight=300&photoreference=${this.state.selectedGym.photos[0].photo_reference}&key=${process.env.REACT_APP_GOOGLE_KEY}`: 'https://hondafsj.com/dist/img/nophoto.jpg'}
                   
                   />
               )}

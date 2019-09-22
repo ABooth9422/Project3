@@ -3,6 +3,7 @@ import Container from "../../components/Container";
 import Jumbotron from "../../components/Jumbotron";
 import Wrapper from "../../components/Wrapper"
 import GymCard from "../../components/GymCard"
+import API from '../../utils/API'
 import "./style.css"
 
 
@@ -13,9 +14,23 @@ class Profile extends React.Component {
       profile:null
       
     }
-    componentWillMount(){
-      this.setState({user: this.props.user, profile: this.props.profile})
-     
+    componentDidMount(){
+      this.updateProfile();
+    }
+
+    removeFavoriteGym=(id)=>{
+      console.log(id);
+      API.removeFavoriteGym(id, this.state.profile.id).then(response=>{
+        this.updateProfile();
+      })
+    }
+
+    updateProfile(){
+      this.props.getProfile((res =>{
+        this.setState({user: this.props.user, profile: res}, ()=>{
+          console.log(this.state)
+        })
+      }))
     }
 
 
@@ -26,41 +41,42 @@ class Profile extends React.Component {
       page=
       <>
       <div className="container text-white">
-      <h1 style={{"textDecoration":"underline"}}className="display-3 my-3 text-center">Welcome {this.state.user.name}!</h1>
+      <h1 style={{"textDecoration":"underline"}}className="display-3 my-3 text-center">Welcome {this.props.user.name}!</h1>
       <div className="row row d-flex justify-content-center">
-      <img id="profilePic"className="rounded-circle my-3"src={this.props.profile.img || this.props.image} height="200px" width="200px" alt="main profile pic"></img>
+      <img id="profilePic"className="rounded-circle my-3"src={this.state.profile.img || this.props.image} height="200px" width="200px" alt="main profile pic"></img>
       </div>
       <div className="row d-flex my-3 justify-content-center">
-      <h3>Username: {this.props.profile.name}</h3>
+      <h3>Username: {this.state.profile.name}</h3>
       </div>
       <div className="row d-flex my-3 justify-content-center">
-      <h3>Email: {this.props.profile.email}</h3>
+      <h3>Email: {this.state.profile.email}</h3>
       </div>
       <div className="row d-flex my-3 justify-content-center">
-      <h3>Favorite exercise: {this.props.profile.favWorkout}</h3>
+      <h3>Favorite exercise: {this.state.profile.favWorkout}</h3>
 
       </div>
       </div>
-      {this.state.profile.favGyms?
+      {this.state.profile.favGyms && this.state.profile.favGyms.length > 0  ?
         <h1 className="display-1">Favorite Gyms</h1>
         :<></>}
       <div className="row">
-      {this.state.profile.favGyms? this.state.profile.favGyms.map(gym=>{
+      {this.state.profile.favGyms && this.state.profile.favGyms.map(gym=>{
         return(
           
-         <div className="col-md-4 col-12">
+         <div key={gym.id} className="col-md-4 col-12">
         <GymCard
-        key={gym.id}
+        key={gym.gymId}
         name={gym.name}
-        img={gym.img}
+        img={ gym.img.startsWith('http') ? 'https://hondafsj.com/dist/img/nophoto.jpg' : `https://maps.googleapis.com/maps/api/place/photo?maxheight=300&photoreference=${gym.img}&key=${process.env.REACT_APP_GOOGLE_KEY}`}
         rating={gym.rating}
         address={gym.address}
-        remFav={true}
+        favClick={()=>this.removeFavoriteGym(gym.gymId)}
+        favorited={true}
         />
         </div> 
         
         )
-      }):<></>}
+      })}
        
        </div>
       </>
