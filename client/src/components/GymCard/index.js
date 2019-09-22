@@ -7,29 +7,47 @@ class GymCard extends Component{
             isFavorited:false
         }
       }
+      componentDidMount(){
+        this.setState({isFavorited:false})
+      }
+
       toggle() {
         this.setState({isFavorited: !this.state.isFavorited});
+        const favoriteGym={
+          img:this.props.details.img,
+          name:this.props.details.name,
+          address:this.props.details.address,
+          rating:this.props.details.rating
+        }
+        if(!this.state.isFavorited){
+            this.props.details.addFav(favoriteGym)
+        }else{
+            this.props.details.remFav(this.props.details.name)
+        }
       }
 
 
     render(){
-
+     console.log(this.props)
+     
     return(
         <>
         <div className='row'>
         <div className="col-12">
         <div className="card mx-1 my-2 bg-secondary">
-            <img className='gymImage' alt='Gym' src={this.props.details.img || ''}/>
+            <img className='gymImage' alt='Gym' src={this.props.img?this.props.img :this.props.details.img}/>
         <div className="card-body">
-          <h3 className="card-title text-white">{this.props.details.name}</h3>
-          <p className="card-text text-white">{this.props.details.address}</p>
+          <h3 className="card-title text-white">{this.props.name?this.props.name :this.props.details.name}</h3>
+          <p className="card-text text-white">{this.props.address?this.props.address :this.props.details.address}</p>
           <div className="row d-flex justify-content-center">
-          <p className="card-text text-white">Rating: {this.props.details.rating}</p>
+          <p className="card-text text-white">Rating: {this.props.rating?this.props.rating :this.props.details.rating}</p>
           </div>
+          {!this.props.remFav?
           <div className="row my-2 d-flex justify-content-center">
           <i onClick={()=>this.toggle()} className={`${this.state.isFavorited?"fa fa-star yellow":"fa fa-star"}`}></i>
           <p className="mx-2">Add to favorites</p>
           </div>
+          :<></>}
         </div>
       </div>
       </div>

@@ -19,20 +19,24 @@ module.exports = function(sequelize, DataTypes) {
           }
       },
       img: {
-          type: DataTypes.STRING,
+          type: DataTypes.TEXT('long'),
           validate:{
             isURL:true
           }
       },
       favWorkout: {
         type: DataTypes.STRING
-      },
-    });
+      }
+    }
+    );
 
     User.associate = (models) =>{
       User.hasMany(models.ForumTopic), {
         onDelete: "cascade"
       };
+      User.hasMany(models.favGym),{
+        onDelete:"cascade"
+      }
 
       User.hasMany(models.Comment), {
         onDelete: "cascade"

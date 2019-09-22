@@ -51,5 +51,11 @@ export default {
     },
     getLike:function(id){
         return axios.get(`/forumAPI/forum/getLike/${id}`)
+    },
+    addFavoriteGym:function(gymObj){
+        return axios.post("/userAPI/users/addGym",gymObj)
+    },
+    removeFavoriteGym:function(gym){
+        return axios.delete(`/userAPI/users/remFav/${gym}`)
     }
 };

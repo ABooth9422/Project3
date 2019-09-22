@@ -2,6 +2,7 @@ import React from "react";
 import Container from "../../components/Container";
 import Jumbotron from "../../components/Jumbotron";
 import Wrapper from "../../components/Wrapper"
+import GymCard from "../../components/GymCard"
 import "./style.css"
 
 
@@ -14,10 +15,12 @@ class Profile extends React.Component {
     }
     componentWillMount(){
       this.setState({user: this.props.user, profile: this.props.profile})
+     
     }
 
 
   render(){
+    
     let page;
     if(this.state.profile){
       page=
@@ -38,6 +41,28 @@ class Profile extends React.Component {
 
       </div>
       </div>
+      {this.state.profile.favGyms?
+        <h1 className="display-1">Favorite Gyms</h1>
+        :<></>}
+      <div className="row">
+      {this.state.profile.favGyms? this.state.profile.favGyms.map(gym=>{
+        return(
+          
+         <div className="col-md-4 col-12">
+        <GymCard
+        key={gym.id}
+        name={gym.name}
+        img={gym.img}
+        rating={gym.rating}
+        address={gym.address}
+        remFav={true}
+        />
+        </div> 
+        
+        )
+      }):<></>}
+       
+       </div>
       </>
 
     }else{
@@ -52,19 +77,19 @@ class Profile extends React.Component {
      
         <form className="text-white font-weight-bold ">
       <div className="row my-3 d-flex justify-content-center">
-        <div className="col-6">
+        <div className="col-12 col-md-6">
           <label >User Name</label>
           <input type="text" id="userName"className="form-control" onChange={this.props.usernameChange} placeholder="Username"/>
           </div>
         </div>
         <div className="row my-3 d-flex justify-content-center">
-          <div className="col-6">
+          <div className="col-12 col-md-6">
           <label >Image URL</label>
           <input id="imageURL"type="text" className="form-control" onChange={this.props.imageChange} placeholder="Profile Image Link"/>
           </div>
         </div>
         <div className="row d-flex my-3 justify-content-center">
-          <div className="col-3">
+          <div className="col-12 col-md-3">
           <label >Favorite Exercise</label>
           <input id="favExer"type="text" className="form-control" onChange={this.props.excerciseChange} placeholder="Favorite Movement"/>
             </div>

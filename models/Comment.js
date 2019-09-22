@@ -3,8 +3,10 @@ module.exports = function(sequelize, DataTypes) {
       post: {
         type: DataTypes.TEXT('long'),
         allowNull: false
-      }
-    });
+      },
+      
+    }
+    );
 
     Comment.associate = function(models) {
       Comment.belongsTo(models.ForumTopic, {
