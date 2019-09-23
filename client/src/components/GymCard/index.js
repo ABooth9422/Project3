@@ -6,12 +6,12 @@ function GymCard (props){
         <>
         <div className='row'>
         <div className="col-12">
-        <div className="card mx-1 my-2 bg-secondary">
+        <div className={props.grey?"card mx-1 my-2 grey":"card mx-1 my-2 gymCard"}>
             <img className='gymImage' alt='Gym' src={props.img?props.img :props.img}/>
         <div className="card-body">
-          <h3 className="card-title text-white">{props.name?props.name :props.name}</h3>
+          <h3 style={{"textDecoration":"underline"}}className="card-title text-white">{props.name?props.name :props.name}</h3>
           <p className="card-text text-white">{props.address?props.address :props.address}</p>
-          <div className="row d-flex justify-content-center">
+          <div className="row d-flex justify-content-center mb-1">
           <p className="card-text text-white">Rating: {props.rating?props.rating :props.rating}</p>
           </div>
           <div className="row my-2 d-flex justify-content-center">

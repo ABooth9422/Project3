@@ -57,5 +57,8 @@ export default {
     },
     removeFavoriteGym:function(gymId, UserId){
         return axios.delete(`/userAPI/users/remFav/${gymId}/${UserId}`)
+    },
+    getWorkouts:function(){
+        return axios.get("/routineAPI/routine/")
     }
 };

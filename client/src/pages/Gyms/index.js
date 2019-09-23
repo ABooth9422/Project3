@@ -152,10 +152,10 @@ class Gyms extends Component{
     <Wrapper>
     <Jumbotron/>
       <Container>
-              <header className="my-1 p-5rounded">
-              <div className="gym__bg p-5 "></div>
-              <h1 id="gymHead" className="display-1 rounded mt-5 text-black">Find your gym!</h1>
-              </header>
+          <header className="my-1 p-5rounded">
+          <div className="gym__bg p-5 "></div>
+          <h1 id="gymHead" className="display-1 rounded mt-5 text-black">Find your gym!</h1>
+          </header>
           <div style={{"boxShadow":"black 3px 3px 3px"}}className="contain rounded mx-5 p-5">
           <div className="row d-flex justify-content-center text-center">
           </div>
@@ -164,7 +164,7 @@ class Gyms extends Component{
           </h3>
           </div>
           
-        <div className='row justify-content-center my-5'>
+        <div className='row justify-content-center'>
            
             <Form>
               <TextInput id='gymSearch' placeholder={"Enter Address"} changeHandle={this.inputChange}>{this.state.query}</TextInput>

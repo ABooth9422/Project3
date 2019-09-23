@@ -116,8 +116,8 @@ class App extends React.Component {
     if(!this.state.user){
       routes = 
       <Switch>
-        <Route exact path="/" component={Home}/>
-        <Route exact path="/home" component={Home}/>
+        <Route exact path="/" render={(props) => <Home {...props} home={"home"} />}/>
+        <Route exact path="/home" render={(props) => <Home {...props} home={"home"} />}/>
         <Route component={NoMatch} />
       </Switch>
       
@@ -127,6 +127,7 @@ class App extends React.Component {
         <Route exact path="/" render={(props) => <Home {...props} home={"home"} />}/>
         <Route exact path="/home" render={(props) => <Home {...props} home={"home"} />}/>
         <Route exact path="/profile" render={(props) => <Profile 
+        clicked={true}
         user={this.state.user} 
         profile={this.state.profile} getProfile={this.getProfile}
         usernameChange={this.profileUsernameInputChange} 

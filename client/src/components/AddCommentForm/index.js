@@ -13,7 +13,7 @@ function AddCommentForm(props){
           <div className='row justify-content-center'>
               <div className='col-12 col-md-6'>
                 <Form className='topicContent rounded px-md-5 px-2 py-3'>
-                    <h1 className="display-3 my-5">Add a comment</h1>
+                    <h1 className="display-3 font-weight-bold my-5">Add Comment</h1>
                     <TextInput id='forumTopic'  changeHandle={props.commentInputChange} placeholder='What is your comment?'>{props.value}</TextInput>
                     <Button type='submit' clickHandle={props.commentFormSubmit}>Submit </Button>
                     <Button type='button' clickHandle={props.goBack}>Go Back </Button>

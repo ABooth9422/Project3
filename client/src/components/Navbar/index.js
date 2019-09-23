@@ -8,13 +8,13 @@ function Navbar(props) {
 
     if(!props.signedIn){
         links=
-        <li className="nav-item active">
+        <li className={props.home?"nav-item active":"nav-item"}>
         <Link className="nav-link" to="/">Home <span className="sr-only">(current)</span></Link>
         </li>
     } else if(!props.hasProfile){
         links=
         <>
-        <li className="nav-item active">
+        <li className={props.home?"nav-item active":"nav-item"}>
         <Link className="nav-link" to="/">Home <span className="sr-only">(current)</span></Link>
         </li>
         <li className={props.clicked?"nav-item active":"nav-item"}>
@@ -50,7 +50,7 @@ function Navbar(props) {
             <img height="50"className="bg-secondary rounded" alt="logo"width="50"src={require("../Jumbotron/images/GS.png")}/>
             </button>
             <div className="collapse navbar-collapse" id="navbarNav">
-                <h2><span id="badge"className="badge badge-dark"><img alt="logo"height="50px"src={require("../Jumbotron/images/gymsense.png")}></img></span></h2>
+                <h2><span id="badge"className="badge  rounded rounded-pill badge-dark"><img alt="logo"height="50px"src={require("../Jumbotron/images/gymsense.png")}></img></span></h2>
                 <ul className="navbar-nav mr-auto myNavs">
                     {links}
                 </ul>

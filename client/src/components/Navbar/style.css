@@ -16,3 +16,6 @@
 #accountName,#password{
     width:fit-content;
 }
+.nav-link{
+    font-weight:bolder;
+}

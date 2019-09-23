@@ -41,7 +41,7 @@ class Profile extends React.Component {
       page=
       <>
       <div className="container text-white">
-      <h1 style={{"textDecoration":"underline"}}className="display-3 my-3 text-center">Welcome {this.props.user.name}!</h1>
+      <h1 style={{"textDecoration":"underline"}}className="display-3 font-weight-bold my-3 text-center">Welcome {this.props.user.name}!</h1>
       <div className="row row d-flex justify-content-center">
       <img id="profilePic"className="rounded-circle my-3"src={this.state.profile.img || this.props.image} height="200px" width="200px" alt="main profile pic"></img>
       </div>
@@ -57,12 +57,12 @@ class Profile extends React.Component {
       </div>
       </div>
       {this.state.profile.favGyms && this.state.profile.favGyms.length > 0  ?
-        <h1 className="display-1">Favorite Gyms</h1>
+        <h1 className="display-1 font-weight-bold">Favorite Gyms</h1>
         :<></>}
       <div className="row">
       {this.state.profile.favGyms && this.state.profile.favGyms.map(gym=>{
         return(
-          
+        
          <div key={gym.id} className="col-md-4 col-12">
         <GymCard
         key={gym.gymId}
@@ -72,6 +72,7 @@ class Profile extends React.Component {
         address={gym.address}
         favClick={()=>this.removeFavoriteGym(gym.gymId)}
         favorited={true}
+        grey={true}
         />
         </div> 
         

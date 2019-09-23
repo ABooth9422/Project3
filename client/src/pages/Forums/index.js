@@ -148,7 +148,7 @@ class Forum extends Component{
               <h3 className="text-center  p-5 text-white">The GymSense forum is a place to ask questions, discuss routines, debate dietary practices 
               or share personal accomplishments to inspire others. Please be considerate and respectful to other GymSense members. Moderators reserve the right to delete any content deemed unfit for the GymSense forum.</h3>
                 {this.state.load?
-                <button type="button" onClick={this.toggleShowAddTopic} className="btn-lg btn-secondary mb-5">Add a Forum Topic!</button>
+                <button type="button" onClick={this.toggleShowAddTopic} style={{"marginBottom":"3rem !important"}} className="btn-lg btn-secondary">Add a Forum Topic!</button>
                 :<></>}
                 {addTopicForm}
                 {this.state.forumTopics.map(topic => {
