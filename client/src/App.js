@@ -86,7 +86,7 @@ class App extends React.Component {
       email: this.state.user.email,
       img: this.state.profileImageInput,
       favWorkout: this.state.profileExcerciseInput,
-      signature:this.state.profileSig
+      signature:this.state.profileSig ||"default"
     }
 
     API.createProfile(profileObj).then(response =>{

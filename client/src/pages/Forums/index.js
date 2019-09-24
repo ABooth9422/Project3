@@ -151,7 +151,11 @@ class Forum extends Component{
                 <button type="button" onClick={this.toggleShowAddTopic} style={{"marginBottom":"3rem !important"}} className="btn-lg btn-secondary">Add a Forum Topic!</button>
                 :<></>}
                 {addTopicForm}
-                {this.state.forumTopics.map(topic => {
+                {this.state.forumTopics.sort((a,b)=>{
+                let aLikes=a.likedBy.split(",").length
+                let bLikes=b.likedBy.split(",").length
+                return bLikes-aLikes
+              }).map(topic => {
                   return(
                 <ForumTopic
                   key={topic.id}
@@ -167,7 +171,9 @@ class Forum extends Component{
                   open= {this.state.showComments}
                 />
                   )
-              })} 
+              })
+              
+              } 
 
               {addCommentForm}
               
