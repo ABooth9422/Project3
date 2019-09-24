@@ -26,6 +26,11 @@ module.exports = function(sequelize, DataTypes) {
       },
       favWorkout: {
         type: DataTypes.STRING
+      },
+      signature: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        defaultValue: 'default'
       }
     }
     );

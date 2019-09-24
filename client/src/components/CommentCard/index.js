@@ -6,7 +6,7 @@ function CommentCard(props){
     return (
         <>
 
-        <div className="cont rounded my-5 mx-5 p-5">
+        <div className={`${props.authorProfile.signature} rounded my-5 mx-5 p-5`}>
         <div className="row mb-3">
         <div className="col-6 text-left">
         <h5 className="display-4"style={{"textDecoration":"underline"}}>{props.authorProfile.name}</h5>

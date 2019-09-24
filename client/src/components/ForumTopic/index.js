@@ -10,8 +10,7 @@ function ForumTopic(props) {
 
     return (
         <>
-       
-        <div className="forumBG rounded p-3 px-5 my-3 mx-5">
+        <div className={`${props.authorProfile.signature} rounded p-3 px-5 my-3 mx-5`}>
         <div className="row">
         <div className="col-6">
         <h1 className="bgTitle text-left">{props.title}</h1>
