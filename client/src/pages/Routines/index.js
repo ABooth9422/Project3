@@ -1,13 +1,13 @@
 import React,{Component} from "react";
 import Container from "../../components/Container";
 import Wrapper from "../../components/Wrapper";
-import "./style.css";
 import Logo from "../../components/Logo"
 import GymTube from "../../components/Youtube"
 import API from "../../utils/API"
-import MultiStep from "react-multistep"
+import DynamicForm from "../../components/DynamicForm"
 import StepOne from "../../components/StepOne"
 import StepTwo from "../../components/StepTwo"
+import "./style.css";
 
 
 class Routine extends Component {
@@ -17,6 +17,12 @@ class Routine extends Component {
     workouts:null,
     muscleGroups:null
   }
+
+  steps = [
+    {name: 'StepOne', component: <StepOne/>},
+    {name: 'StepOne', component: <StepOne/>},
+
+  ]
   
 
   componentDidMount(){
@@ -28,12 +34,8 @@ class Routine extends Component {
   }
 
   
-
-
-
   render(){
 
- 
   return (
     <>
     <Wrapper>
@@ -44,7 +46,7 @@ class Routine extends Component {
             </header>
         <div className="mainStuff">
         {this.state.info?<GymTube/>:<Logo style={{"boxShadow":"black 3px 3px 3px"}}class={"bg-white gymsensei rounded"}image={require("./images/GYMSENSEi.png")}/>  }
-        <MultiStep showNavigation={true} steps={this.steps}/>
+        <DynamicForm steps={this.steps}/>
         <button type="button" onClick={()=>this.setState({info:true})}>testing</button>
         </div>
             <div className="row p-5">
