@@ -25,7 +25,8 @@ class App extends React.Component {
       profile:null,
       profileUsernameInput: '',
       profileImageInput: '',
-      profileExcerciseInput: ''
+      profileExcerciseInput: '',
+      profileSig:''
       
     }
   }
@@ -73,7 +74,10 @@ class App extends React.Component {
   profileExcerciseInputChange=(event)=>{
     this.setState({profileExcerciseInput: event.target.value})
   }
-  
+  profileSigChange=(event)=>{
+    this.setState({profileSig:event.target.value})
+  }
+
   submitProfile=(event, cb)=>{
     event.preventDefault();
     const profileObj = {
@@ -81,7 +85,8 @@ class App extends React.Component {
       name: this.state.profileUsernameInput,
       email: this.state.user.email,
       img: this.state.profileImageInput,
-      favWorkout: this.state.profileExcerciseInput
+      favWorkout: this.state.profileExcerciseInput,
+      signature:this.state.profileSig
     }
 
     API.createProfile(profileObj).then(response =>{
@@ -134,6 +139,7 @@ class App extends React.Component {
         imageChange={this.profileImageInputChange}
         excerciseChange={this.profileExcerciseInputChange}
         profileSubmit={this.submitProfile}
+        sigSelect={this.profileSigChange}
         />}/>
         <Route component={NoMatch} />
       </Switch>

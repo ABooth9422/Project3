@@ -42,7 +42,7 @@ class Profile extends React.Component {
       <>
       <div className="container text-white">
       <h1 style={{"textDecoration":"underline"}}className="display-3 font-weight-bold my-3 text-center">Welcome {this.props.user.name}!</h1>
-      <div className="row row d-flex justify-content-center">
+      <div className={`row ${this.state.profile.signature} rounded rounded-pill px-5 mx-5 d-flex justify-content-center`}>
       <img id="profilePic"className="rounded-circle my-3"src={this.state.profile.img || this.props.image} height="200px" width="200px" alt="main profile pic"></img>
       </div>
       <div className="row d-flex my-3 justify-content-center">
@@ -118,10 +118,10 @@ class Profile extends React.Component {
          <div className="row d-flex justify-content-center">
         <label>Select a Signature for forum</label>
         </div> 
-        <label><input type="radio" value="blueSig" name="sigBtn" id="blueSig"/><img  alt="blueSig"className="rounded-circle" width="100px"height="100px"src={require('./images/bluesig.png')}></img></label>
-        <label> <input type="radio" value="manSig" name="sigBtn" id="manSig"/><img alt="manSig"className="rounded-circle" width="100px"height="100px"src={require('./images/manSig.png')}></img></label>
-        <label> <input type="radio" value="pinkSig" name="sigBtn" id="pinkSig"/><img alt="pinkSig"className="rounded-circle" width="100px"height="100px"src={require('./images/pinkSig.png')}></img></label>
-        <label> <input type="radio" value="default" name="sigBtn" id="default"/><img alt="default"className="rounded-circle" width="100px"height="100px"src={require('./images/default.png')}></img></label>
+        <label><input type="radio" value="blueSig" onChange={this.props.sigSelect}name="sigBtn" id="blueSig"/><img  alt="blueSig"className="rounded-circle" width="100px"height="100px"src={require('./images/bluesig.png')}></img></label>
+        <label> <input type="radio" value="manSteel" onChange={this.props.sigSelect}name="sigBtn" id="manSig"/><img alt="manSig"className="rounded-circle" width="100px"height="100px"src={require('./images/manSig.png')}></img></label>
+        <label> <input type="radio" value="pinkSig" onChange={this.props.sigSelect}name="sigBtn" id="pinkSig"/><img alt="pinkSig"className="rounded-circle" width="100px"height="100px"src={require('./images/pinkSig.png')}></img></label>
+        <label> <input type="radio" value="default" onChange={this.props.sigSelect}name="sigBtn" id="default"/><img alt="default"className="rounded-circle" width="100px"height="100px"src={require('./images/default.png')}></img></label>
         </div>
         </div>
         </div>
