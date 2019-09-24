@@ -8,6 +8,7 @@ class Jumbotron extends Component {
     render(){ 
     return (
             <>
+            
 <div id="carouselExampleInterval" className="carousel slide" data-ride="carousel">
 <div className="carousel-inner">
   <div className="carousel-item active myJumbotron"data-interval="8000">

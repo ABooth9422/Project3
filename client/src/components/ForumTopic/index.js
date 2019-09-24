@@ -16,9 +16,10 @@ function ForumTopic(props) {
                 <div className="col-10">
                     <h3 className="bgTitle text-left">{props.title}</h3>
                     <h5 className="text-left">Created by: {props.authorProfile.name || 'No Name'}</h5>
+                    <h5 className="text-left">{props.authorProfile.createdAt}</h5>
                 </div>
                 <div className="col-2 text-right">
-                    <img className="rounded-circle"src={props.authorProfile.img || ''} alt="Forum profile" height="75px" width="75px"/>
+                    <img className="rounded-circle"src={props.authorProfile.img || ''} alt="Forum profile" height="100px" width="100px"/>
                     
                 </div>
             </div>
