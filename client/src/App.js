@@ -26,7 +26,7 @@ class App extends React.Component {
       profileUsernameInput: '',
       profileImageInput: '',
       profileExcerciseInput: '',
-      profileSig:''
+      profileSig:null
       
     }
   }
