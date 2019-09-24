@@ -111,6 +111,21 @@ class Profile extends React.Component {
           <input id="favExer"type="text" className="form-control" onChange={this.props.excerciseChange} placeholder="Favorite Movement"/>
             </div>
         </div>
+
+        <div className="row d-flex my-3 justify-content-center">
+        <div className="col-12">
+        <div className="image-radio mt-3">
+         <div className="row d-flex justify-content-center">
+        <label>Select a Signature for forum</label>
+        </div> 
+        <label><input type="radio" value="blueSig" name="sigBtn" id="blueSig"/><img  alt="blueSig"className="rounded-circle" width="100px"height="100px"src={require('./images/bluesig.png')}></img></label>
+        <label> <input type="radio" value="manSig" name="sigBtn" id="manSig"/><img alt="manSig"className="rounded-circle" width="100px"height="100px"src={require('./images/manSig.png')}></img></label>
+        <label> <input type="radio" value="pinkSig" name="sigBtn" id="pinkSig"/><img alt="pinkSig"className="rounded-circle" width="100px"height="100px"src={require('./images/pinkSig.png')}></img></label>
+        <label> <input type="radio" value="default" name="sigBtn" id="default"/><img alt="default"className="rounded-circle" width="100px"height="100px"src={require('./images/default.png')}></img></label>
+        </div>
+        </div>
+        </div>
+
         <div className="row d-flex justify-content-center">
         <button onClick={(event)=>{
           this.props.profileSubmit(event, (response)=>{

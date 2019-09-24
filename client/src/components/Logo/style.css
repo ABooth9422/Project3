@@ -2,3 +2,9 @@
     border-width:2px;
     border-color:white;
 }
+@media screen and (max-width:1007px){
+
+    #logo{
+        width:400px;
+    }
+}

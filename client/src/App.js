@@ -73,7 +73,7 @@ class App extends React.Component {
   profileExcerciseInputChange=(event)=>{
     this.setState({profileExcerciseInput: event.target.value})
   }
-
+  
   submitProfile=(event, cb)=>{
     event.preventDefault();
     const profileObj = {

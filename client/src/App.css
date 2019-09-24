@@ -10,3 +10,27 @@ background: -webkit-linear-gradient(-45deg, #2A2728 0%, #6D6667 50%, #AFADB2 100
 background: linear-gradient(135deg, #2A2728 0%, #6D6667 50%, #AFADB2 100%);
 box-shadow: 5px 5px 5px 0px #000000, inset 4px 4px 15px 0px #000000, 5px 5px 15px 5px rgba(0,0,0,0);
 }
+
+.blueSig{
+  background: #525252;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #3d72b4, #525252);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #3d72b4, #525252); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  box-shadow:black 3px 3px 3px;
+  }
+  .pinkSig{
+      background: #7b4397;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #dc2430, #7b4397);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #dc2430, #7b4397); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  box-shadow:black 3px 3px 3px;
+  }
+  .manSteel{
+      background: #780206;  /* fallback for old browsers */
+      background: -webkit-linear-gradient(to right, #061161, #780206);  /* Chrome 10-25, Safari 5.1-6 */
+      background: linear-gradient(to right, #061161, #780206); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+      box-shadow:black 3px 3px 3px;
+  }
+  .default{
+    background: #FE1A40;
+    background: linear-gradient(135deg, #FE1A40 0%, #630D25 47%, #000000 100%);
+    box-shadow:black 3px 3px 3px;
+    }
