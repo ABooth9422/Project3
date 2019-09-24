@@ -1,4 +1,4 @@
-INSERT INTO gymsensedb.users (googleId, name, email, img, favWorkout, signature, createdAt, updatedAt)
+INSERT INTO vrehwe9wmkudwfl8.users (googleId, name, email, img, favWorkout, signature, createdAt, updatedAt)
 VALUES ("0", "blueostrich887", "hermann.nordeide@example.com", "https://randomuser.me/api/portraits/men/19.jpg", "Bench Press", "blueSig", "2019-09-22 16:18:10", "2019-09-22 16:18:10"),
     ("1", "happypanda130", "harper.singh@example.com", "https://randomuser.me/api/portraits/women/16.jpg", "Eating", "manSteel", "2019-09-22 16:18:10", "2019-09-22 16:18:10"),
     ("2", "goldencat618", "victoria.olson@example.com", "https://randomuser.me/api/portraits/women/87.jpg", "Eating", "default", "2019-09-22 16:18:10", "2019-09-22 16:18:10"),

@@ -10,25 +10,31 @@ function ForumTopic(props) {
 
     return (
         <>
+       
         <div className={`${props.authorProfile.signature} rounded p-3 px-5 my-3 mx-5`}>
-        <div className="row">
-        <div className="col-6">
-        <h1 className="bgTitle text-left">{props.title}</h1>
-        <h3 className="text-left">Created by: {props.authorProfile.name || 'No Name'}</h3>
-        {!props.open && (
-                <div className="row justify-content-start">
-                <Button type='button' clickHandle={props.goToPost}>Go To Post</Button>
+            <div className="row">
+                <div className="col-10">
+                    <h3 className="bgTitle text-left">{props.title}</h3>
+                    <h5 className="text-left">Created by: {props.authorProfile.name || 'No Name'}</h5>
                 </div>
-        )}
-        </div>
-        <div className="col-6 text-right">
-        <img className="rounded-circle"src={props.authorProfile.img || ''} alt="Forum profile" height="100px" width="100px"/>
-        <div className="row text-right justify-content-end">
-        <i id="comment" className="fa fa-comment mx-2">{props.comments.length || "1"}</i>
-        <i id={props.id} onClick={props.clickLikeHandle} className={props.hasLiked ? 'fa fa-thumbs-up likes mr-3':'fa fa-thumbs-up mr-3'}style={{"fontSize":"24px"}}>{props.likes}</i>
-        </div>
-        </div>
-        </div>
+                <div className="col-2 text-right">
+                    <img className="rounded-circle"src={props.authorProfile.img || ''} alt="Forum profile" height="75px" width="75px"/>
+                    
+                </div>
+            </div>
+            <div className="row my-2">
+                <div className="col-10">
+                    {!props.open && (
+                        <div className="row justify-content-start">
+                            <Button type='button' clickHandle={props.goToPost}>Go To Post</Button>
+                        </div>
+                    )}
+                </div>
+                <div className="col-2 text-right py-2 px-0">
+                    <i id="comment" className="fa fa-comment mx-2">{props.comments.length || "1"}</i>
+                    <i id={props.id} onClick={props.clickLikeHandle} className={props.hasLiked ? 'fa fa-thumbs-up likes mr-3':'fa fa-thumbs-up mr-3'}style={{"fontSize":"24px"}}>{props.likes}</i>
+                </div>
+            </div>
             {props.open && (
                 <>
                 <div className="row">

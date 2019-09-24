@@ -1,4 +1,5 @@
-INSERT INTO gymsensedb.Workouts (muscleGroup, workout, videoLink)
+
+INSERT INTO vrehwe9wmkudwfl8.Workouts (muscleGroup, workout, videoLink)
 VALUES ("Chest", "Barbell Bench Press", "ysUTNll8JQ8"),
 ("Chest", "Dumbbell Bench Press", "VmB1G1K7v94"),
 ("Chest", "Barbell Incline Bench", "SrqOu55lrYU&t=166s"),
@@ -12,7 +13,7 @@ VALUES ("Chest", "Barbell Bench Press", "ysUTNll8JQ8"),
 ("Biceps", "Standing Curls", "yTWO2th-RIY"),
 ("Biceps", "Hammer Curls", "7jqi2qWAUJk"),
 ("Biceps", "Precher Curls", "fIWP-FRFNU0"),
-("Biceps", "Reverse Curls", "nRgxYX2Ve9w"),
+("Biceps", "Reverse Curls", "=nRgxYX2Ve9w"),
 ("Biceps", "Overhead Cable Curls", "d4YaCgGG-so"),
 ("Triceps", "Rope Tricep Pushdown", "REWv05om0ho"),
 ("Triceps", "Tricep Dips", "35PXVWP1XVs"),
@@ -28,7 +29,7 @@ VALUES ("Chest", "Barbell Bench Press", "ysUTNll8JQ8"),
 ("Back", "Bent-Over Row", "6TSP1TRMUzs"),
 ("Back", "Seated Cable Row", "sP_4vybjVJs"),
 ("Back", "Lat Pulldown", "CAwf7n6Luuc"),
-("Back", "Kettlebell Swings", "bMQHAmCXJAI"),
+("Back", "Kettlebell Swings", "=bMQHAmCXJAI"),
 ("Cardio", "Elliptical", "E15Q3Z9J-Zg"),
 ("Cardio", "Treadmill", "xJlztO0JeIo"),
 ("Cardio", "Bicycle", "XVlXHG-P9YY"),
@@ -40,7 +41,7 @@ VALUES ("Chest", "Barbell Bench Press", "ysUTNll8JQ8"),
 ("Abs", "Planks", "ASdvN_XEl_c"),
 ("Abs", "Russian Twists", "NeAtimSCxsY");
 
-INSERT INTO gymsensedb.Users (googleId, name, email, img, favWorkout, signature, createdAt, updatedAt)
+INSERT INTO vrehwe9wmkudwfl8.Users (googleId, name, email, img, favWorkout, signature, createdAt, updatedAt)
 VALUES ("0", "blueostrich887", "hermann.nordeide@example.com", "https://randomuser.me/api/portraits/men/19.jpg", "Bench Press", "blueSig", "2019-09-22 16:18:10", "2019-09-22 16:18:10"),
     ("1", "happypanda130", "harper.singh@example.com", "https://randomuser.me/api/portraits/women/16.jpg", "Eating", "manSteel", "2019-09-22 16:18:10", "2019-09-22 16:18:10"),
     ("2", "goldencat618", "victoria.olson@example.com", "https://randomuser.me/api/portraits/women/87.jpg", "Eating", "default", "2019-09-22 16:18:10", "2019-09-22 16:18:10"),
@@ -142,7 +143,9 @@ VALUES ("0", "blueostrich887", "hermann.nordeide@example.com", "https://randomus
     ("98", "blackfrog666", "norma.shelton@example.com", "https://randomuser.me/api/portraits/women/71.jpg", "Running", "pinkSig", "2019-09-22 16:18:10", "2019-09-22 16:18:10"),
     ("99", "yellowfish776", "trijntje.vandenhombergh@example.com", "https://randomuser.me/api/portraits/women/60.jpg", "Eating", "default", "2019-09-22 16:18:10", "2019-09-22 16:18:10");
 
-INSERT INTO gymsensedb.ForumTopics (topic, post, likedBy, createdAt, updatedAt, UserId)
+
+INSERT INTO vrehwe9wmkudwfl8.ForumTopics (topic, post, likedBy, createdAt, updatedAt, UserId)
+
 VALUES ("excepteur cillum reprehenderit ea non fugiat", "Elit nostrud enim labore labore consequat. Reprehenderit Lorem aliquip elit ullamco excepteur in. Magna aliqua enim et est velit eu consectetur magna ipsum aliqua. Excepteur dolor irure ipsum. Labore anim Lorem Lorem irure occaecat qui deserunt nostrud sint elit officia. Laboris officia duis eiusmod dolor incididunt est irure esse dolor elit laborum enim fugiat. Irure consequat sit ullamco quis enim veniam.", "37,93,4,91,8,97,63,9,21,71,6,23,62,88,46,68,51,50,5,73,58,13,43,20,90,7,33,89,94,85,1,66,36,55,22,54,52,39,99,19,15,70", "2019-09-22 16:18:10", "2019-09-22 16:18:10", 48),
   ("ea qui ea fugiat proident incididunt", "Cupidatat in do ad mollit. Sint ex nostrud excepteur labore commodo et incididunt aliquip non nulla excepteur sit consequat. Consequat nostrud veniam quis velit culpa irure. Nulla consequat labore fugiat aute minim elit ea dolor. Aliquip est magna proident cupidatat anim mollit voluptate reprehenderit commodo. Et do minim culpa amet occaecat veniam do in consectetur. Veniam eiusmod ipsum anim enim cillum excepteur dolor do commodo est irure.", "21,54,17,90,85,86,95,5,94,28,42,70,49,63", "2019-09-22 16:18:10", "2019-09-22 16:18:10", 33),
   ("minim id labore culpa voluptate nulla consequat mollit culpa", "Mollit non incididunt ullamco minim id cupidatat tempor. Voluptate Lorem mollit voluptate excepteur. Adipisicing officia eiusmod occaecat aliqua magna nisi minim irure duis culpa quis reprehenderit laborum culpa qui. Ullamco eiusmod cupidatat anim irure. Mollit qui elit magna sunt anim ea laborum in mollit consectetur ea nulla. Excepteur tempor cupidatat ex do tempor eu tempor nulla in ex.", "69,81,8,91,89,99,76,23,93,9,48,13,60,27,62,84,26,5,36,87,55,21,37,35,42,18,53,83,39,90,82,25,68,11", "2019-09-22 16:18:10", "2019-09-22 16:18:10", 6),
@@ -169,7 +172,8 @@ VALUES ("excepteur cillum reprehenderit ea non fugiat", "Elit nostrud enim labor
   ("nisi aliqua velit quis", "Consequat exercitation labore amet labore aliquip laboris ea qui tempor dolor. Dolore eiusmod id non.", "45,40,37,86,66,39,91,10,62,87,53,15,60,4,11,50,28,41,97,25,3,54,17,68", "2019-09-22 16:18:10", "2019-09-22 16:18:10", 58),
   ("nulla exercitation consequat irure minim ut consectetur elit eu", "Sit sint ea anim eiusmod nisi eiusmod. Ut amet nulla ipsum consequat minim do nulla id velit proident anim fugiat adipisicing ex veniam. Adipisicing aute aute irure mollit tempor nulla. Irure do id labore veniam eu qui. Et ex occaecat laboris. Ipsum irure nulla elit officia aliquip laborum ea ullamco laborum dolor deserunt eiusmod quis magna nulla. Velit commodo magna consectetur dolor ex amet dolore. Nostrud deserunt officia ullamco.", "65,41,72,75,38", "2019-09-22 16:18:10", "2019-09-22 16:18:10", 21); 
 
-INSERT INTO gymsensedb.Comments (post, createdAt, updatedAt, ForumTopicId, UserId)
+
+INSERT INTO vrehwe9wmkudwfl8.Comments (post, createdAt, updatedAt, ForumTopicId, UserId)
 VALUES ("Ut quis esse consequat ex consectetur qui id exercitation cillum ut dolore veniam ad. Nulla aute eu laboris nulla incididunt amet ut excepteur. Nulla cupidatat sunt occaecat non adipisicing deserunt incididunt cillum culpa ut. Ullamco aliqua adipisicing pariatur fugiat consectetur est excepteur sit veniam minim aliquip anim laboris magna eiusmod. Esse ex dolor labore officia qui est mollit duis exercitation esse eu commodo. Cupidatat adipisicing commodo reprehenderit officia laborum quis pariatur consequat Lorem adipisicing. Incididunt incididunt enim pariatur veniam laborum cillum.", "2019-09-22 16:18:10", "2019-09-22 16:18:10", 3, 82),
 ("Est minim culpa aliquip laboris nostrud adipisicing labore. Anim minim ea enim labore consectetur consectetur mollit ea veniam dolore duis in labore dolore ullamco. Veniam enim ullamco culpa deserunt consectetur non elit consectetur Lorem occaecat culpa cillum. Incididunt fugiat elit incididunt sunt exercitation labore deserunt commodo. Elit elit duis deserunt aliquip veniam laborum irure est labore. Proident incididunt aliquip commodo. Ad nisi ea proident anim eiusmod sunt commodo.", "2019-09-22 16:18:10", "2019-09-22 16:18:10", 8, 31),
 ("Fugiat do voluptate ut est Lorem nulla deserunt consequat cillum ut. Duis aliquip qui veniam consectetur ipsum nulla sint sint est eiusmod minim reprehenderit magna. Culpa enim aute dolore eiusmod magna consectetur cillum excepteur velit Lorem id in minim aute. Esse in ipsum irure reprehenderit deserunt cupidatat duis magna cillum esse laborum.", "2019-09-22 16:18:10", "2019-09-22 16:18:10", 2, 7),
@@ -270,8 +274,8 @@ VALUES ("Ut quis esse consequat ex consectetur qui id exercitation cillum ut dol
 ("Aliqua eu sint occaecat proident duis id deserunt et id duis cillum fugiat ea culpa. Mollit qui non culpa culpa labore cupidatat ex aliqua mollit id dolor. Et aliqua cillum aliqua cillum adipisicing Lorem culpa aute sit pariatur aute eu. Aliquip culpa dolor in anim incididunt eiusmod et do amet minim nostrud nulla consequat. Labore aute eiusmod magna esse incididunt aute tempor cillum proident cupidatat laborum adipisicing. Exercitation nostrud exercitation pariatur ipsum commodo ea in ad eiusmod elit dolore proident sunt. Aute exercitation officia excepteur.", "2019-09-22 16:18:10", "2019-09-22 16:18:10", 6, 51), ("Occaecat ea do dolor occaecat reprehenderit ea exercitation incididunt dolore. Ea proident qui culpa exercitation fugiat. Amet velit nostrud excepteur pariatur quis nostrud incididunt aliquip veniam officia adipisicing. Occaecat fugiat in sit amet magna laboris occaecat cupidatat aliquip. Non qui nulla ex. Do eu id consectetur in ex est commodo adipisicing Lorem nostrud esse ullamco in Lorem sint. Anim magna officia ex laboris officia veniam cillum proident incididunt eiusmod aliqua exercitation.", "2019-09-22 16:18:10", "2019-09-22 16:18:10", 7, 94); 
 
 
-SELECT * FROM gymsensedb.forumtopics;
-SELECT * FROM gymsensedb.comments;
-SELECT * FROM gymsensedb.users;
-SELECT * FROM gymsensedb.workouts;
-SELECT * FROM gymsensedb.favgyms;
+SELECT * FROM vrehwe9wmkudwfl8.forumtopics;
+SELECT * FROM vrehwe9wmkudwfl8.comments;
+SELECT * FROM vrehwe9wmkudwfl8.users;
+SELECT * FROM vrehwe9wmkudwfl8.workouts;
+SELECT * FROM vrehwe9wmkudwfl8.favgyms;
