@@ -1,4 +1,4 @@
-INSERT INTO gymsensedb.workouts (muscleGroup, workout, videoLink)
+INSERT INTO vrehwe9wmkudwfl8.workouts (muscleGroup, workout, videoLink)
 VALUES ("Chest", "Barbell Bench Press", "ysUTNll8JQ8"),
 ("Chest", "Dumbbell Bench Press", "VmB1G1K7v94"),
 ("Chest", "Barbell Incline Bench", "SrqOu55lrYU&t=166s"),
