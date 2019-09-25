@@ -19,8 +19,8 @@ class Routine extends Component {
   }
 
   steps = [
-    {name: 'StepOne', component: <StepOne/>},
-    {name: 'StepOne', component: <StepOne/>},
+    {name: 'StepOne', component: null},
+    {name: 'StepTwo', component: null},
 
   ]
   
@@ -30,6 +30,9 @@ class Routine extends Component {
       this.setState({workouts:res.data})
       const muscleGroups=Array.from(new Set(this.state.workouts.map(workout=>workout.muscleGroup))).sort()
       this.setState({muscleGroup:muscleGroups})
+      this.steps[0].component= <StepOne muscleGroups={this.state.muscleGroups}/>
+      this.steps[1].component= <StepTwo/>
+
     })
   }
 
