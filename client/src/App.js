@@ -56,6 +56,7 @@ class App extends React.Component {
         cb(null)
       })
   }
+  
 
   profileUsernameInputChange = (event) => {
     this.setState({ profileUsernameInput: event.target.value })
@@ -69,6 +70,7 @@ class App extends React.Component {
   profileSigChange = (event) => {
     this.setState({ profileSig: event.target.value })
   }
+
 
   submitProfile = (event, cb) => {
     event.preventDefault()

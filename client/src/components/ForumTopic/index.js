@@ -8,6 +8,7 @@ function ForumTopic (props) {
     <CommentCard key={comment.id} authorProfile={comment.User} comment={comment.post} />
   ))
 
+
   return (
     <>
       <div className={`${props.authorProfile.signature} forumTopicCard rounded p-3 px-5 my-3 mx-5`}>
