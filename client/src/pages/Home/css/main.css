@@ -31,4 +31,25 @@
           clip-path: circle(35% at 0% 50%);
   background: rgba(255, 255, 255, 0);
 }
+
+@media (max-width: 1007px) {
+  .testimonial.jarvis:hover {
+    background: #fff4;
+    width: 500px;
+    position: relative;
+    -webkit-clip-path: none;
+            clip-path: none;
+    -webkit-transition: none;
+    transition: none;
+  }
+  .testimonial:hover {
+    background: #fff4;
+    width: 500px;
+    position: relative;
+    -webkit-clip-path: none;
+            clip-path: none;
+    -webkit-transition: none;
+    transition: none;
+  }
+}
 /*# sourceMappingURL=main.css.map */

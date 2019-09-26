@@ -39,6 +39,7 @@ p,h3{
         margin:auto auto 20px !important;
         width:400px;
         flex-wrap:wrap;
+      
     }
     h1{
         font-size:72px !important;
@@ -52,6 +53,7 @@ p,h3{
     }
     #jarvis{
         left:0% !important;
+        margin:10% !important;
     }
     .myJumbotron{
         height:300px;
