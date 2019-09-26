@@ -22,7 +22,7 @@ function CommentCard(props){
                 </div>
             </div>
         </div>
-      </div>
+      
     </>
   )
 }
