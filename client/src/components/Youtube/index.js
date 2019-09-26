@@ -4,7 +4,7 @@ import YouTube from 'react-youtube';
 class GymTube extends Component {
 
 
-  render(props) {
+  render() {
     const opts = {
       height: '250',
       width: '70%',
@@ -21,9 +21,10 @@ class GymTube extends Component {
       
       <YouTube
         className="gymTube"
-        videoId="ysUTNll8JQ8"
+        videoId={this.props.link}
         opts={opts}
         onReady={this._onReady}
+        onEnd={this.props.closeVideo}
       />
     );
   }

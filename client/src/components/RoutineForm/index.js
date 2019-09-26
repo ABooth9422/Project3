@@ -9,7 +9,7 @@ class RoutineForm extends Component {
 
     const selectedMuscles = {}
     props.muscleGroups.forEach((muscle) => {
-      selectedMuscles[muscle] = false
+    selectedMuscles[muscle] = false
 
       this.state = {
         step: 1,
@@ -56,11 +56,16 @@ class RoutineForm extends Component {
       if (selectedMuscles[key]) {
         let listOfWorkouts = this.props.workouts.filter((w) => w.muscleGroup === key)
         for (let i = 0; i < numberOfWorkouts; i++) {
-          let workout
+          let workout = {
+            excercise: null,
+            reps: 10,
+            sets: 3,
+            cals: 25
+          }
 
           do {
-            workout = listOfWorkouts[Math.floor(Math.random() * listOfWorkouts.length)]
-          } while (selectedWorkouts.includes(workout))
+            workout.excercise = listOfWorkouts[Math.floor(Math.random() * listOfWorkouts.length)]
+          } while (selectedWorkouts.includes(workout.excercise))
           selectedWorkouts.push(workout)
         }
       }
@@ -68,13 +73,13 @@ class RoutineForm extends Component {
     this.setState({ selectedWorkouts })
   }
 
-  addWorkout (workout) {
-    const sWorkouts = Array.from(this.state.selectedWorkouts)
-    if (!sWorkouts.includes(workout)) {
-      sWorkouts.push(workout)
-      this.setState({ selectedWorkouts: sWorkouts })
-    }
-  }
+  // addWorkout (workout) {
+  //   const sWorkouts = Array.from(this.state.selectedWorkouts)
+  //   if (!sWorkouts.includes(workout)) {
+  //     sWorkouts.push(workout)
+  //     this.setState({ selectedWorkouts: sWorkouts })
+  //   }
+  // }
 
   render () {
     const { step } = this.state
@@ -100,7 +105,7 @@ class RoutineForm extends Component {
             prevStep={this.prevStep}
             handleChange={this.handleChange}
             values={values}
-            workouts={this.state.selectedWorkouts}
+            submit={()=>this.props.submit(this.state.selectedWorkouts)}
           />
         )
 
