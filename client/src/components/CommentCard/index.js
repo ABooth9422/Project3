@@ -1,8 +1,8 @@
 import React from 'react'
 import './style.css'
 
-function CommentCard(props){
 
+function CommentCard(props){
     return (
         <>
         <div className={`${props.authorProfile.signature} rounded my-3 px-5 mx-5 p-3`}>
@@ -22,8 +22,9 @@ function CommentCard(props){
                 </div>
             </div>
         </div>
-        </>
-    )
+      </div>
+    </>
+  )
 }
 
-export default CommentCard;
+export default CommentCard
