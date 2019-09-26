@@ -9,7 +9,7 @@ function CommentCard(props){
             <div className="row mb-3">
                 <div className="col-10 text-left">
                     <h4 style={{"textDecoration":"underline"}}>{props.authorProfile.name}</h4>
-                    <h5>{props.authorProfile.createdAt}</h5>
+                    <h5>{props.authorProfile.createdAt.split(".").splice(0,1).join("").split("T").join(" Time: ")}</h5>
                     <h5 >Commented:</h5>
                 </div>
                 <div className="col-2 text-right">
