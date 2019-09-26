@@ -16,12 +16,12 @@ p,h3{
     font-weight:bold;
     color:white !important;
 }   
-.testimonial{
+/* .testimonial{
     background:#fff4;
     width:500px;
     position:relative;
     
-}
+} */
 .testImg{
     opacity:85;
     filter: alpha(opacity=85)

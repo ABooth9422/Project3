@@ -1,0 +1,34 @@
+.testimonial {
+  background: #fff4;
+  width: 500px;
+  position: relative;
+  -webkit-clip-path: circle(100%);
+          clip-path: circle(100%);
+  -webkit-transition: all .5s ease-in;
+  transition: all .5s ease-in;
+  cursor: pointer;
+}
+
+.testimonial:hover {
+  -webkit-clip-path: circle(60% at 120% 50%);
+          clip-path: circle(60% at 120% 50%);
+  background: rgba(255, 255, 255, 0);
+}
+
+.testimonial.jarvis {
+  background: #fff4;
+  width: 500px;
+  position: relative;
+  -webkit-clip-path: circle(100%);
+          clip-path: circle(100%);
+  -webkit-transition: all .5s ease-in;
+  transition: all .5s ease-in;
+  cursor: pointer;
+}
+
+.testimonial.jarvis:hover {
+  -webkit-clip-path: circle(35% at 0% 50%);
+          clip-path: circle(35% at 0% 50%);
+  background: rgba(255, 255, 255, 0);
+}
+/*# sourceMappingURL=main.css.map */

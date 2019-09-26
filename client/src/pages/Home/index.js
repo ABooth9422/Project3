@@ -2,6 +2,7 @@ import React from "react";
 import Wrapper from '../../components/Wrapper'
 import Jumbotron from '../../components/Jumbotron'
 import Container from '../../components/Container'
+import "./css/main.css"
 
 
 import "./style.css"
@@ -49,7 +50,7 @@ class Home extends React.Component {
                     </div>
                     </div>
                 </div>  
-                <div style={{"margin":"10%"}}className="testimonial  rounded container py-3 my-5">
+                <div style={{"margin":"10%"}}className="testimonial jarvis rounded container py-3 my-5">
                 <div className='row d-flex'>
                     <div className="col-lg-3 col-12 justify-content-start">
                     <img style={{"left":"-100%"}}id="jarvis"className="testImg rounded-circle mr-5 position-relative "alt="test"width="200px" height="200px"src={require('./images/jbpic.jpg')}></img>
