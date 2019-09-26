@@ -3,10 +3,7 @@ import Button from '../Button'
 import "./style.css"
 
 class RoutineWorkoutForm extends Component {
-  submit = (event) => {
-    event.preventDefault()
-    console.log('Done')
-  }
+ 
 
   goBack = (event) => {
     event.preventDefault()
@@ -14,7 +11,8 @@ class RoutineWorkoutForm extends Component {
   }
 
   render () {
-    const { values, handleChange, handleCheckboxChange, workouts } = this.props
+    const { values, handleChange, handleCheckboxChange } = this.props
+    const workouts = values.selectedWorkouts;
 
     return (
       <div className='container'>
@@ -40,7 +38,7 @@ class RoutineWorkoutForm extends Component {
             {workouts &&
               workouts.map((w) => {
                 return (
-                  <div key={w.workout} className='row text-center justify-content-center'>
+                  <div key={w.excercise.workout} className='row text-center justify-content-center'>
                     <div className='col-1'>
                       {/* Remove Button */}
                       <Button className='btn btn-sm btn-dark'>X</Button>
@@ -51,30 +49,30 @@ class RoutineWorkoutForm extends Component {
                     </div>
                     <div className='col-6 col-md-4'>
                       {/* Workout Name */}
-                      {w.workout}
-                      <span style={{ color: 'yellow', marginLeft: '10px' }}>({w.muscleGroup})</span>
+                      {w.excercise.workout}
+                      <span style={{ color: 'yellow', marginLeft: '10px' }}>({w.excercise.muscleGroup})</span>
                     </div>
                     <div className='col-2'>
                       <input
                         type='number'
                         className='form-control'
-                        id={`${w.workout}Reps`}
+                        id={`${w.excercise.workout}Reps`}
                         min='5'
                         max='100'
                         step='5'
-                        defaultValue='10'
+                        value={w.excercise.muscleGroup === "Cardio" ? w.cals : w.reps}
                         style={{ width: '50%', minWidth: '4rem', margin: '0 auto' }}
                       />
                     </div>
                     <div className='col-2'>
-                      {w.muscleGroup !== 'Cardio' && (
+                      {w.excercise.muscleGroup !== 'Cardio' && (
                         <input
                           type='number'
                           className='form-control'
-                          id={`${w.workout}Sets`}
+                          id={`${w.excercise.workout}Sets`}
                           min='1'
                           max='10'
-                          defaultValue='3'
+                          val={w.sets}
                           style={{ width: '50%', minWidth: '4rem', margin: '0 auto' }}
                         />
                       )}
@@ -86,7 +84,7 @@ class RoutineWorkoutForm extends Component {
 
           <div className='col-12'>
             <Button clickHandle={this.goBack}>Go Back</Button>
-            <Button clickHandle={this.submit}>Finished</Button>
+            <Button clickHandle={this.props.submit}>Finished</Button>
           </div>
         </div>
       </div>

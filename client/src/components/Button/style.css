@@ -1,0 +1,10 @@
+.myButton:hover{
+    animation: glow 1s; 
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+@keyframes glow {
+    0%{box-shadow: #000 -2px 2px 2px, #000 2px -2px 2px, #000 2px 2px 2px, #000 -2px -2px 2px}
+    50%{box-shadow: #f00 -2px 2px 2px, #f00 2px -2px 2px, #f00 2px 2px 2px, #f00 -2px -2px 2px}
+}

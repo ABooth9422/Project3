@@ -5,6 +5,7 @@ import Wrapper from '../../components/Wrapper'
 import API from '../../utils/API'
 import AddTopicForm from '../../components/AddTopicForm'
 import AddCommentForm from '../../components/AddCommentForm'
+import Button from '../../components/Button'
 
 import './style.css'
 import ForumTopic from '../../components/ForumTopic'
@@ -165,13 +166,13 @@ class Forum extends Component {
               members. Moderators reserve the right to delete any content deemed unfit for the GymSense forum.
             </h3>
             {this.state.load ? (
-              <button
+              <Button
                 type='button'
                 onClick={this.toggleShowAddTopic}
                 style={{ marginBottom: '3rem !important' }}
-                className='btn-lg btn-secondary'>
+                >
                 Add a Forum Topic!
-              </button>
+              </Button>
             ) : (
               <></>
             )}
