@@ -64,6 +64,7 @@ class App extends React.Component {
     })
     
   }
+  
 
   profileUsernameInputChange=(event)=>{
     this.setState({profileUsernameInput: event.target.value})
@@ -79,6 +80,7 @@ class App extends React.Component {
   }
 
   submitProfile=(event, cb)=>{
+
     event.preventDefault();
     const profileObj = {
       googleId: this.state.user.googleId,
