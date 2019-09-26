@@ -16,7 +16,7 @@ function ForumTopic (props) {
           <div className='col-10'>
             <h3 className='bgTitle text-left'>{props.title}</h3>
             <h5 className='text-left'>Created by: {props.authorProfile.name || 'No Name'}</h5>
-            <h5 className='text-left'>{props.authorProfile.createdAtsplit(".").splice(0,1).join("").split("T").join(" Time: ")}</h5>
+            <h5 className='text-left'>{props.authorProfile.createdAt.split(".").splice(0,1).join("").split("T").join(" Time: ")}</h5>
           </div>
           <div className='col-2 text-right'>
             <img

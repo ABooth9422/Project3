@@ -53,7 +53,7 @@ class Routine extends Component {
                 have a general idea of what you want to do you can use our calendar to make your own workout schedule.
               </h3>
             </div>
-            <h1>Form</h1>
+            <h3 className="display-1 underline">Routine Wizard</h3>
             {this.state.muscleGroups && (
               <RoutineForm workouts={this.state.workouts} muscleGroups={this.state.muscleGroups} />
             )}
