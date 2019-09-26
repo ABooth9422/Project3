@@ -37,11 +37,18 @@ html,body{
 }
 input[type=checkbox] + label {
   color: #ccc;
-  font-style: normal;
+  font-weight:bold
 } 
 input[type=checkbox]:checked + label {
   color: #f00;
-  font-style: normal;
+  font-weight:bold;
+} 
+input[type=checkbox].completed + label {
+  color: #ccc;
+  font-weight:bold;
+} 
+input[type=checkbox]:checked.completed + label {
+  color: rgb(6, 109, 6);
   font-weight:bold;
 } 
 .grey{

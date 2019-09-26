@@ -5,6 +5,7 @@ import Logo from '../../components/Logo'
 import GymTube from '../../components/Youtube'
 import API from '../../utils/API'
 import RoutineForm from '../../components/RoutineForm'
+import RoutineCard from '../../components/RoutineCard'
 import './style.css'
 
 class Routine extends Component {
@@ -57,6 +58,10 @@ class Routine extends Component {
             {this.state.muscleGroups && (
               <RoutineForm workouts={this.state.workouts} muscleGroups={this.state.muscleGroups} />
             )}
+            <div className="row mx-5 justify-content-center my-5">
+            <RoutineCard/> 
+            </div>
+            
           </Container>
         </Wrapper>
       </>

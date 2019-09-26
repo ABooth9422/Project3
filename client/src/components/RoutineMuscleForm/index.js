@@ -46,7 +46,7 @@ class RoutineMuscleForm extends Component {
                   <label style={{"fontSize":"20px"}}className="mx-2">Workouts per Muscle Group:</label>
                   <input
                     type='number'
-                    className='form-control'
+                    className='form-control grey'
                     id='numberOfWorkouts'
                     min='1'
                     max='5'
