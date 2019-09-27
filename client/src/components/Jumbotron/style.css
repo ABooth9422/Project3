@@ -4,10 +4,6 @@
     background-color:slategrey;
     box-shadow:black 3px 3px 3px;
     position:relative;
-    /* background-image:url("./images/backdrop.jpg");  */
-    /* background-size:cover; */
-    /* background-position-y:-300px; */
-    
     width:100%;
     background-repeat: no-repeat;
     border-radius:0 !important  
@@ -16,57 +12,11 @@
 
 #jumboLogo{
     position: absolute;
-    top: 20%
+    top: 30%;
+    left:5%;
 }
 
-#jumboLogo.animate{
-    transform-origin: 25% 50%;
-    animation: crash 2s;
-    animation-iteration-count: 1;
-    animation-timing-function: linear;
-}
 
-@keyframes crash{
-    0%{
-        
-        left: 110%;
-     
-        transform: rotate(-5deg);
-    }
-    10%{
-    }
-    20%{
-        
-        transform: rotate(5deg);
-    }
-    30%{
-
-    }
-    40%{
-        
-        transform: rotate(-5deg);
-    }
-    50%{
-
-    }
-    60%{
-        
-        transform: rotate(5deg);
-    }
-    70%{
-
-    }
-    80%{
-        
-        transform: rotate(-5deg);
-    }
-    90%{
-
-    }
-    100%{
-        left: 2%;
-    }
-}
 
 @media screen and (max-width:1007px){
     .myJumbotron{
@@ -78,9 +28,8 @@
 }
 @media screen and (max-width:504px){
     #jumboLogo{
-        width:200px;
-        height:100px;
+        width:400px;
+        height:200px;
         align-self:baseline;
-        content:url(./images/GS.png)
     }
 }
