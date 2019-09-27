@@ -20,12 +20,14 @@ module.exports = function(sequelize, DataTypes) {
       },
       img: {
           type: DataTypes.TEXT('long'),
+          allowNull:false,
           validate:{
             isURL:true
           }
       },
       favWorkout: {
-        type: DataTypes.STRING
+        type: DataTypes.STRING,
+        allowNull:false
       },
       signature: {
         type: DataTypes.STRING,
