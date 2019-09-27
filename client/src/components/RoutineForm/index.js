@@ -106,6 +106,7 @@ class RoutineForm extends Component {
             handleChange={this.handleChange}
             values={values}
             submit={()=>this.props.submit(this.state.selectedWorkouts)}
+            infoHandle={this.props.infoHandle}
           />
         )
 

@@ -69,9 +69,9 @@ class Routine extends Component {
                 have a general idea of what you want to do you can use our calendar to make your own workout schedule.
               </h3>
             </div>
-            <h3 className="display-1 underline">Routine Wizard</h3>
+            <h2 className="display-1 underline">Routine Wizard</h2>
             {this.state.muscleGroups && !this.state.selectedRoutine && (
-              <RoutineForm submit={this.setSelectedRoutine} workouts={this.state.workouts} muscleGroups={this.state.muscleGroups} />
+              <RoutineForm infoHandle={this.playVideo} submit={this.setSelectedRoutine} workouts={this.state.workouts} muscleGroups={this.state.muscleGroups} />
             )}
             <div className="row mx-5 justify-content-center my-5">
               {this.state.selectedRoutine && (
