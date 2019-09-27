@@ -15,44 +15,29 @@ class RoutineWorkoutForm extends Component {
     const workouts = values.selectedWorkouts;
 
     return (
-      <div className='container'>
-        <div className='row justify-content-center'>
-          <div className='col-12'>
-            <div className='row text-center justify-content-center'>
-              <div className='col-1'>
-                <p>Remove</p>
-              </div>
-              <div className='col-1'>
-                <p>Info</p>
-              </div>
-              <div className='col-6 col-md-4'>
-                <p>Workout</p>
-              </div>
-              <div className='col-2'>
-                <p>Reps / Carbs</p>
-              </div>
-              <div className='col-2'>
-                <p>Sets</p>
-              </div>
-            </div>
+      <>
+      <div className="tableWrap mx-5 p-5">
+        <table style={{"boxShadow":"black 3px 3px 3px"}}className="table table-dark rounded table-striped">
+  <thead>
+    <tr>
+      <th scope="col-5 underline">Workout</th>
+      <th scope="col-3 underline">Reps/Carbs</th>
+      <th scope="col-3 underline">Sets</th>
+      <th scope="col-1 underline"></th>
+    </tr>
+  </thead>
+  <tbody>
+    
             {workouts &&
               workouts.map((w) => {
                 return (
-                  <div key={w.excercise.workout} className='row text-center justify-content-center'>
-                    <div className='col-1'>
-                      {/* Remove Button */}
-                      <Button className='btn btn-sm btn-dark'>X</Button>
-                    </div>
-                    <div className='col-1'>
-                      {/* Remove Button */}
-                      <Button className='btn btn-sm btn-dark'>Info</Button>
-                    </div>
-                    <div className='col-6 col-md-4'>
-                      {/* Workout Name */}
+                  <tr>
+                    <td>
+                      <i style={{ color: '#167F8F' }} onClick={()=>this.props.infoHandle(w.excercise.videoLink )} className='fa fa-info-circle mx-2' />
                       {w.excercise.workout}
-                      <span style={{ color: 'yellow', marginLeft: '10px' }}>({w.excercise.muscleGroup})</span>
-                    </div>
-                    <div className='col-2'>
+                      <span style={{ color: '#D52323', marginLeft: '10px' }}>({w.excercise.muscleGroup})</span>
+                    </td>
+                    <td>
                       <input
                         type='number'
                         className='form-control'
@@ -63,8 +48,8 @@ class RoutineWorkoutForm extends Component {
                         value={w.excercise.muscleGroup === "Cardio" ? w.cals : w.reps}
                         style={{ width: '50%', minWidth: '4rem', margin: '0 auto' }}
                       />
-                    </div>
-                    <div className='col-2'>
+                    </td>
+                    <td>
                       {w.excercise.muscleGroup !== 'Cardio' && (
                         <input
                           type='number'
@@ -76,18 +61,22 @@ class RoutineWorkoutForm extends Component {
                           style={{ width: '50%', minWidth: '4rem', margin: '0 auto' }}
                         />
                       )}
-                    </div>
-                  </div>
+                    </td>
+                    <td>
+                    <Button className='btn btn-lg btn-danger'><i class="fa fa-trash"></i></Button>
+                    </td>
+                  </tr>
                 )
               })}
-          </div>
-
+  </tbody>
+</table>
+</div>
           <div className='col-12'>
             <Button clickHandle={this.goBack}>Go Back</Button>
             <Button clickHandle={this.props.submit}>Finished</Button>
           </div>
-        </div>
-      </div>
+        
+      </>
     )
   }
 }
