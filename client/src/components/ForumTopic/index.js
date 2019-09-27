@@ -40,7 +40,7 @@ function ForumTopic (props) {
           </div>
           <div className='col-2 text-right py-2 px-0'>
             <i id='comment' className='fa fa-comment mx-2'>
-              {props.comments.length || '1'}
+              {props.comments.length}
             </i>
             <i
               id={props.id}

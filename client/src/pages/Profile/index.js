@@ -9,11 +9,14 @@ import './style.css'
 class Profile extends React.Component {
   state = {
     user: null,
-    profile: null
+    profile: null,
+    errorName:true,
+    errorImage:true,
+    errorExercise:true
   }
   componentDidMount () {
     this.updateProfile()
-    this.setState({errorExcerciseInput:this.props.errorExcerciseInput,errorName:this.props.errorName,errorImage:this.props.errorImage})
+   
   }
 
   removeFavoriteGym = (id) => {
@@ -28,8 +31,42 @@ class Profile extends React.Component {
       this.setState({ user: this.props.user, profile: res }, () => {})
     })
   }
+  test =
+    (event) => {
+      console.log(event.target.value)
+      this.props.profileSubmit(event, (response) => {
+        this.setState({ profile: response })
+      })
+  }
+  usernameChange=(event)=>{
+    if(event.target.value.trim().length>=1){
+      this.setState({errorName:false})
+      this.props.usernameChange(event)
+    }else if(event.target.value.trim().length===0){
+      this.setState({errorName:true})
+    }
+  }
+  imageChange=(event)=>{
+    if(event.target.value.trim().length>=1){
+      this.setState({errorImage:false})
+      this.props.imageChange(event)
+    }else if(event.target.value.trim().length===0){
+      this.setState({errorImage:true})
+    }
+ 
+  }
+  excerciseChange=(event)=>{
+    if(event.target.value.trim().length>=1){
+      this.setState({errorExercise:false})
+      this.props.excerciseChange(event)
+    }else if(event.target.value.trim().length===0){
+      this.setState({errorExercise:true})
+    }
+  }
+
 
   render () {
+    console.log(this.state.errorName)
     let page
     if (this.state.profile) {
       page = (
@@ -102,7 +139,6 @@ class Profile extends React.Component {
           <div className='row d-flex justify-content-center'>
             <h5 className='display-4'>Hello {this.props.user.name || 'there'}!</h5>
           </div>
-
           <form className='text-white font-weight-bold '>
             <div className='row my-3 d-flex justify-content-center'>
               <div className='col-12 col-md-6'>
@@ -110,8 +146,8 @@ class Profile extends React.Component {
                 <input
                   type='text'
                   id='userName'
-                  className={"form-control"}
-                  onChange={this.props.usernameChange}
+                  className={this.state.errorName?`error form-control`:`form-control`}
+                  onChange={this.usernameChange}
                   placeholder='Username'
                 />
               </div>
@@ -122,8 +158,8 @@ class Profile extends React.Component {
                 <input
                   id='imageURL'
                   type='text'
-                  className={"form-control"}
-                  onChange={this.props.imageChange}
+                  className={this.state.errorImage?"error form-control":"form-control"}
+                  onChange={this.imageChange}
                   placeholder='Profile Image Link'
                 />
               </div>
@@ -134,8 +170,8 @@ class Profile extends React.Component {
                 <input
                   id='favExer'
                   type='text'
-                  className={"form-control"}
-                  onChange={this.props.excerciseChange}
+                  className={this.state.errorExercise?"error form-control":"form-control"}
+                  onChange={this.excerciseChange}
                   placeholder='Favorite Movement'
                 />
               </div>
@@ -196,11 +232,9 @@ class Profile extends React.Component {
 
             <div className='row d-flex justify-content-center'>
               <button
-                onClick={(event) => {
-                  this.props.profileSubmit(event, (response) => {
-                    this.setState({ profile: response })
-                  })
-                }}
+                onClick={((event) => {this.test(event)
+                
+                })}
                 className='btn btn-secondary my-3'>
                 Submit
               </button>
