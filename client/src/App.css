@@ -66,3 +66,7 @@ input[type=checkbox]:checked.completed + label {
 .underline{
   text-decoration:underline;
 }
+.error{
+  border: 5px solid #ED2727;
+  opacity: .9;
+}

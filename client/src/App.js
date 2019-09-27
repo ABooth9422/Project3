@@ -24,7 +24,8 @@ class App extends React.Component {
       profileUsernameInput: null,
       profileImageInput: null,
       profileExcerciseInput: null,
-      profileSig: null
+      profileSig: null,
+      errorName:false
 
     }
   }
@@ -61,28 +62,18 @@ class App extends React.Component {
   }
   
 
-  profileUsernameInputChange = (event) => {
-    console.log(event.target.value.length)
 
-    if(event.target.value.length>=1){
-      this.setState({ profileUsernameInput: event.target.value,errorName:false })
-    }
+  profileUsernameInputChange = (event) => {
+      this.setState({ profileUsernameInput: event.target.value})
   }
   profileImageInputChange = (event) => {
-    if(event.target.value.length>=1){
-    this.setState({ profileImageInput: event.target.value,errorImage:false })
-    }
+    this.setState({ profileImageInput: event.target.value})
   }
-  profileExcerciseInputChange = (event) => {
-    if(event.target.value.length>=1){
-    this.setState({ profileExcerciseInput: event.target.value,errorExcerciseInput:false })
-    }
-
+  profileExcerciseInputChange = (event) => { 
+    this.setState({ profileExcerciseInput: event.target.value})
   }
   profileSigChange = (event) => {
-    
     this.setState({ profileSig: event.target.value })
-    
   }
 
 
@@ -96,6 +87,7 @@ class App extends React.Component {
       favWorkout: this.state.profileExcerciseInput,
       signature: this.state.profileSig 
     }
+    console.log(profileObj)
 
     API.createProfile(profileObj)
       .then((response) => {
@@ -169,9 +161,6 @@ class App extends React.Component {
                 excerciseChange={this.profileExcerciseInputChange}
                 profileSubmit={this.submitProfile}
                 sigSelect={this.profileSigChange}
-                errorName={this.errorName}
-                errorImage={this.errorImage}
-                errorExcerciseInput={this.errorExcerciseInput}
               />
             )}
           />
