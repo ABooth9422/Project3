@@ -11,18 +11,19 @@ class Jumbotron extends Component {
             
 <div id="carouselExampleInterval" className="carousel slide" data-ride="carousel">
 <div className="carousel-inner">
+  
   <div className="carousel-item active myJumbotron"data-interval="8000">
   <img src={require('./images/backdrop.jpg')} className="myJumbotron" alt="img-2"/>
-    <img id="jumboLogo"className="d-flex justify-content-start"src={require('./images/gymsense.png')} width="800px"height="250px"alt="logo"></img>
   </div>
   <div className="carousel-item" data-interval="5000">
     <img src={require('./images/kaiju3.jpg')} className="myJumbotron" alt="img-2"/>
-    <img id="jumboLogo"className="d-flex justify-content-start"src={require('./images/gymsense.png')} width="800px"height="250px"alt="logo"></img>
+    {/* <img id="jumboLogo"className="d-flex justify-content-start"src={require('./images/gymsense.png')} width="800px"height="250px"alt="logo"></img> */}
   </div>
   <div className="carousel-item" data-interval="5000">
     <img src={require("./images/kaiju2.jpg")} className="myJumbotron" alt="img-3"/>
-    <img id="jumboLogo"className="d-flex justify-content-start"src={require('./images/gymsense.png')} width="800px"height="250px"alt="logo"></img>
+    {/* <img id="jumboLogo"className="d-flex justify-content-start"src={require('./images/gymsense.png')} width="800px"height="250px"alt="logo"></img> */}
   </div>
+  <embed id="jumboLogo"className="d-flex justify-content-start"src={require('./images/logo.svg')} width="800px"height="250px"alt="logo"></embed>
 </div>
 </div>
 

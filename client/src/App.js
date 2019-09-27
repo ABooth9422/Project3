@@ -39,6 +39,7 @@ class App extends React.Component {
 
   logOut = () => {
     this.setState({ user: null, profile: null })
+    window.location.href="/"
   }
 
   setProfile (id) {
