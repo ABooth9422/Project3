@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "Wow0148407!",
+    "password": "root",
     "database": "gymSenseDB",
     "host": "127.0.0.1",
     "dialect": "mysql",
@@ -16,7 +16,7 @@
     "operatorsAliases": false
   },
   "production": {
-      "use_env_variable": "JAWSDB_URL",
-      "dialect": "mysql"
+    "use_env_variable": "JAWSDB_URL",
+    "dialect": "mysql"
   }
 }
