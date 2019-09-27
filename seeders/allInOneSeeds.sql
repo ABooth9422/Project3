@@ -2,7 +2,7 @@
 INSERT INTO vrehwe9wmkudwfl8.Workouts (muscleGroup, workout, videoLink)
 VALUES ("Chest", "Barbell Bench Press", "ysUTNll8JQ8"),
 ("Chest", "Dumbbell Bench Press", "VmB1G1K7v94"),
-("Chest", "Barbell Incline Bench", "SrqOu55lrYU&t=166s"),
+("Chest", "Barbell Incline Bench", "SrqOu55lrYU"),
 ("Chest", "Dumbbell Incline Bench", "0G2_XV7slIg"),
 ("Chest", "Chest Flyes", "eozdVDA78K0"),
 ("Legs", "Barbell Squat", "1oed-UmAxFs"),

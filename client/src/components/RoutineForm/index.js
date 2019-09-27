@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import RoutineMuscleForm from '../RoutineMuscleForm'
 import RoutineWorkoutForm from '../RoutineWorkoutForm'
-import Button from '../Button'
 
 class RoutineForm extends Component {
   constructor (props) {
@@ -9,7 +8,7 @@ class RoutineForm extends Component {
 
     const selectedMuscles = {}
     props.muscleGroups.forEach((muscle) => {
-    selectedMuscles[muscle] = false
+      selectedMuscles[muscle] = false
 
       this.state = {
         step: 1,
@@ -65,21 +64,17 @@ class RoutineForm extends Component {
 
           do {
             workout.excercise = listOfWorkouts[Math.floor(Math.random() * listOfWorkouts.length)]
-          } while (selectedWorkouts.includes(workout.excercise))
+          } while (selectedWorkouts.map((wO) => wO.excercise.id).includes(workout.excercise.id))
           selectedWorkouts.push(workout)
         }
       }
     }
-    this.setState({ selectedWorkouts })
+    this.setState({ selectedWorkouts }, () => {
+      this.state.selectedWorkouts.forEach((workout) => {
+        console.log(workout.excercise)
+      })
+    })
   }
-
-  // addWorkout (workout) {
-  //   const sWorkouts = Array.from(this.state.selectedWorkouts)
-  //   if (!sWorkouts.includes(workout)) {
-  //     sWorkouts.push(workout)
-  //     this.setState({ selectedWorkouts: sWorkouts })
-  //   }
-  // }
 
   render () {
     const { step } = this.state
@@ -105,7 +100,7 @@ class RoutineForm extends Component {
             prevStep={this.prevStep}
             handleChange={this.handleChange}
             values={values}
-            submit={()=>this.props.submit(this.state.selectedWorkouts)}
+            submit={() => this.props.submit(this.state.selectedWorkouts)}
             infoHandle={this.props.infoHandle}
           />
         )
