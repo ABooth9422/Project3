@@ -21,10 +21,11 @@ class App extends React.Component {
     this.state = {
       user: null,
       profile: null,
-      profileUsernameInput: '',
-      profileImageInput: '',
-      profileExcerciseInput: '',
+      profileUsernameInput: null,
+      profileImageInput: null,
+      profileExcerciseInput: null,
       profileSig: null
+
     }
   }
 
@@ -34,6 +35,7 @@ class App extends React.Component {
   }
 
   logInFailed = (response) => {}
+
 
   logOut = () => {
     this.setState({ user: null, profile: null })
@@ -59,16 +61,27 @@ class App extends React.Component {
   
 
   profileUsernameInputChange = (event) => {
-    this.setState({ profileUsernameInput: event.target.value })
+    console.log(event.target.value.length)
+
+    if(event.target.value.length>=1){
+      this.setState({ profileUsernameInput: event.target.value,errorName:false })
+    }
   }
   profileImageInputChange = (event) => {
-    this.setState({ profileImageInput: event.target.value })
+    if(event.target.value.length>=1){
+    this.setState({ profileImageInput: event.target.value,errorImage:false })
+    }
   }
   profileExcerciseInputChange = (event) => {
-    this.setState({ profileExcerciseInput: event.target.value })
+    if(event.target.value.length>=1){
+    this.setState({ profileExcerciseInput: event.target.value,errorExcerciseInput:false })
+    }
+
   }
   profileSigChange = (event) => {
+    
     this.setState({ profileSig: event.target.value })
+    
   }
 
 
@@ -80,7 +93,7 @@ class App extends React.Component {
       email: this.state.user.email,
       img: this.state.profileImageInput,
       favWorkout: this.state.profileExcerciseInput,
-      signature: this.state.profileSig || 'default'
+      signature: this.state.profileSig 
     }
 
     API.createProfile(profileObj)
@@ -126,6 +139,7 @@ class App extends React.Component {
         </>
       )
     }
+  
 
     if (!this.state.user) {
       routes = (
@@ -154,6 +168,9 @@ class App extends React.Component {
                 excerciseChange={this.profileExcerciseInputChange}
                 profileSubmit={this.submitProfile}
                 sigSelect={this.profileSigChange}
+                errorName={this.errorName}
+                errorImage={this.errorImage}
+                errorExcerciseInput={this.errorExcerciseInput}
               />
             )}
           />

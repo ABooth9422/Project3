@@ -98,4 +98,5 @@ VALUES ("0", "blueostrich887", "hermann.nordeide@example.com", "https://randomus
     ("96", "bigbutterfly692", "anna.harper@example.com", "https://randomuser.me/api/portraits/women/83.jpg", "Bench Press", "default", "2019-09-22 16:18:10", "2019-09-22 16:18:10"),
     ("97", "happypanda524", "jamie.george@example.com", "https://randomuser.me/api/portraits/men/62.jpg", "Bench Press", "default", "2019-09-22 16:18:10", "2019-09-22 16:18:10"),
     ("98", "blackfrog666", "norma.shelton@example.com", "https://randomuser.me/api/portraits/women/71.jpg", "Running", "pinkSig", "2019-09-22 16:18:10", "2019-09-22 16:18:10"),
-    ("99", "yellowfish776", "trijntje.vandenhombergh@example.com", "https://randomuser.me/api/portraits/women/60.jpg", "Eating", "default", "2019-09-22 16:18:10", "2019-09-22 16:18:10");
+    ("99", "yellowfish776", "trijntje.vandenhombergh@example.com", "https://randomuser.me/api/portraits/women/60.jpg", "Eating", "default", "2019-09-22 16:18:10", "2019-09-22 16:18:10"),
+    ("100","d00medDaniel","blah@gmail.com","http://danorlovsky.tech/Images/DanFace.jpeg","Doom","pinkSig","2019-09-27 08:18:10","2019-09-27 08:18:10");

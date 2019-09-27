@@ -13,6 +13,7 @@ class Profile extends React.Component {
   }
   componentDidMount () {
     this.updateProfile()
+    this.setState({errorExcerciseInput:this.props.errorExcerciseInput,errorName:this.props.errorName,errorImage:this.props.errorImage})
   }
 
   removeFavoriteGym = (id) => {
@@ -109,7 +110,7 @@ class Profile extends React.Component {
                 <input
                   type='text'
                   id='userName'
-                  className='form-control'
+                  className={"form-control"}
                   onChange={this.props.usernameChange}
                   placeholder='Username'
                 />
@@ -121,7 +122,7 @@ class Profile extends React.Component {
                 <input
                   id='imageURL'
                   type='text'
-                  className='form-control'
+                  className={"form-control"}
                   onChange={this.props.imageChange}
                   placeholder='Profile Image Link'
                 />
@@ -133,7 +134,7 @@ class Profile extends React.Component {
                 <input
                   id='favExer'
                   type='text'
-                  className='form-control'
+                  className={"form-control"}
                   onChange={this.props.excerciseChange}
                   placeholder='Favorite Movement'
                 />

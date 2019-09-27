@@ -17,9 +17,9 @@ class Forum extends Component {
     this.state = {
       forumTopics: [],
       showAddTopic: false,
-      topicTitleInput: '',
-      topicPostInput: '',
-      commentInput: '',
+      topicTitleInput: null,
+      topicPostInput: null,
+      commentInput: null,
       showComments: false,
       load: true
     }
