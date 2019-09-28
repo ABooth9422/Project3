@@ -50,6 +50,7 @@ class Forum extends Component {
 
   commentForumSubmit = (event) => {
     event.preventDefault()
+    if(this.state.commentInput.trim().length>=1){
     this.setState({comment:false,showAddComment:true})
     
     const commentObj = {
@@ -57,8 +58,7 @@ class Forum extends Component {
       UserId: this.props.profile.id,
       ForumTopicId: this.state.forumTopics[0].id
     }
-    console.log(event.target.value.trim().length)
-    if(this.state.commentInput.trim().length>=1){
+   
     API.createComment(commentObj)
       .then((response) => {
         this.setState({ commentInput: ''})
