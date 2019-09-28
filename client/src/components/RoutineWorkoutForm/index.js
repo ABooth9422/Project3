@@ -9,7 +9,7 @@ class RoutineWorkoutForm extends Component {
   }
 
   render () {
-    const { values, handleChange, handleCheckboxChange } = this.props
+    const { values } = this.props
     const workouts = values.selectedWorkouts
 
     return (
@@ -19,7 +19,7 @@ class RoutineWorkoutForm extends Component {
             <thead>
               <tr>
                 <th scope='col-5 underline'>Workout</th>
-                <th scope='col-3 underline'>Reps/Carbs</th>
+                <th scope='col-3 underline'>Reps/Cals</th>
                 <th scope='col-3 underline'>Sets</th>
                 <th scope='col-1 underline' />
               </tr>
@@ -28,7 +28,7 @@ class RoutineWorkoutForm extends Component {
               {workouts &&
                 workouts.map((w, index) => {
                   return (
-                    <tr>
+                    <tr key={`workout${index}`}>
                       <td>
                         <i
                           style={{ color: '#167F8F' }}
@@ -46,6 +46,7 @@ class RoutineWorkoutForm extends Component {
                           min='5'
                           max='100'
                           step='5'
+                          onChange={this.props.changeReps(index)}
                           value={w.excercise.muscleGroup === 'Cardio' ? w.cals : w.reps}
                           style={{ width: '50%', minWidth: '4rem', margin: '0 auto' }}
                         />
@@ -58,13 +59,14 @@ class RoutineWorkoutForm extends Component {
                             id={`${w.excercise.workout}Sets`}
                             min='1'
                             max='10'
-                            val={w.sets}
+                            value={w.sets}
+                            onChange={this.props.changeSets(index)}
                             style={{ width: '50%', minWidth: '4rem', margin: '0 auto' }}
                           />
                         )}
                       </td>
                       <td>
-                        <Button className='btn btn-lg btn-danger'>
+                        <Button className='btn btn-lg btn-danger' clickHandle={() => this.props.removeWorkout(index)}>
                           <i className='fa fa-trash' />
                         </Button>
                       </td>
@@ -73,6 +75,25 @@ class RoutineWorkoutForm extends Component {
                 })}
             </tbody>
           </table>
+        </div>
+        <div className='col-12'>
+          <div className='form-group' style={{ width: '30%' }}>
+            <label htmlFor='addWorkout'>Add Workout</label>
+            <select
+              className='form-control'
+              id='addWorkout'
+              onChange={this.props.addWorkoutInputChange}
+              value={values.addWorkoutInput}>
+              {this.props.workouts.map((workout, index) => {
+                return (
+                  <option value={workout.id}>
+                    {workout.workout} ({workout.muscleGroup})
+                  </option>
+                )
+              })}
+            </select>
+          </div>
+          <Button clickHandle={this.props.addWorkout}>Add Workout</Button>
         </div>
         <div className='col-12'>
           <Button clickHandle={this.goBack}>Go Back</Button>

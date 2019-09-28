@@ -68,17 +68,20 @@ class Forum extends Component {
       post: this.state.topicPostInput,
       UserId: this.props.profile.id
     }
-    API.createForumTopic(formObj)
-      .then((response) => {
-        console.log(response)
-        this.setState({
-          topicTitleInput: '',
-          topicPostInput: '',
-          showAddTopic: false
+
+    if (formObj.topic.trim().length > 0) {
+      API.createForumTopic(formObj)
+        .then((response) => {
+          console.log(response)
+          this.setState({
+            topicTitleInput: '',
+            topicPostInput: '',
+            showAddTopic: false
+          })
+          this.getAllForumTopics()
         })
-        this.getAllForumTopics()
-      })
-      .catch((err) => console.log(err))
+        .catch((err) => console.log(err))
+    }
   }
 
   getAllForumTopics () {
@@ -166,11 +169,7 @@ class Forum extends Component {
               members. Moderators reserve the right to delete any content deemed unfit for the GymSense forum.
             </h3>
             {this.state.load ? (
-              <Button
-                type='button'
-                onClick={this.toggleShowAddTopic}
-                style={{ marginBottom: '3rem !important' }}
-                >
+              <Button type='button' clickHandle={this.toggleShowAddTopic} style={{ marginBottom: '3rem !important' }}>
                 Add a Forum Topic!
               </Button>
             ) : (
