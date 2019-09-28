@@ -14,14 +14,16 @@ class RoutineWorkoutForm extends Component {
 
     return (
       <>
-        <div className='tableWrap mx-5 p-5'>
+       
+          <div className="row justify-content-center p-5">
+          <div className='col-12 tableWrap black p-5'>
           <table style={{ boxShadow: 'black 3px 3px 3px' }} className='table table-dark rounded table-striped'>
             <thead>
               <tr>
-                <th scope='col-5 underline'>Workout</th>
-                <th scope='col-3 underline'>Reps/Cals</th>
-                <th scope='col-3 underline'>Sets</th>
-                <th scope='col-1 underline' />
+                <th className="underline"scope='col-5'>Workout</th>
+                <th className="underline"scope='col-3'>Reps/Cals</th>
+                <th className="underline"scope='col-3'>Sets</th>
+                <th scope='col-1' />
               </tr>
             </thead>
             <tbody>
@@ -66,7 +68,7 @@ class RoutineWorkoutForm extends Component {
                         )}
                       </td>
                       <td>
-                        <Button className='btn btn-lg btn-danger' clickHandle={() => this.props.removeWorkout(index)}>
+                        <Button className='btn btn-dark my-0 myButton' clickHandle={() => this.props.removeWorkout(index)}>
                           <i className='fa fa-trash' />
                         </Button>
                       </td>
@@ -75,12 +77,12 @@ class RoutineWorkoutForm extends Component {
                 })}
             </tbody>
           </table>
-        </div>
-        <div className='col-12'>
-          <div className='form-group' style={{ width: '30%' }}>
-            <label htmlFor='addWorkout'>Add Workout</label>
+        
+        <div className='row justify-content-center'>
+          <div className='form-group' style={{ width: 'fit-content' }}>
+            <div className="row">
             <select
-              className='form-control'
+              className='form-control grey m-2'
               id='addWorkout'
               onChange={this.props.addWorkoutInputChange}
               value={values.addWorkoutInput}>
@@ -91,14 +93,19 @@ class RoutineWorkoutForm extends Component {
                   </option>
                 )
               })}
+               
             </select>
+            <Button clickHandle={this.props.addWorkout}>Add Workout</Button>
+            </div>
           </div>
-          <Button clickHandle={this.props.addWorkout}>Add Workout</Button>
         </div>
         <div className='col-12'>
           <Button clickHandle={this.goBack}>Go Back</Button>
           <Button clickHandle={this.props.submit}>Finished</Button>
         </div>
+        </div>
+        </div>
+        
       </>
     )
   }

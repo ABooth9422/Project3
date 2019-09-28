@@ -7,7 +7,8 @@ function RoutineCard (props) {
     <>
       <div className='card black text-white p-2 col-md-10 col-12'>
         <div className='card-body'>
-          <h5 className='card-title mb-3'>Your Routine</h5>
+          <h3 style={{"textDecoration":"underline"}}className='card-title mb-3'>Heres your workout!</h3>
+          <h5 class="card-subtitle mb-2 text-muted">Don't forget to check off your progress</h5>
           <hr />
           {props.routine &&
             props.routine.map((r, index) => {
@@ -30,7 +31,7 @@ function RoutineCard (props) {
                       <input
                         className='form-check-input completed'
                         type='checkbox'
-                        style={{ width: '20px', height: '15px' }}
+                        style={{ width: '30px', height: '20px' }}
                       />
                       <label className='form-check-label'>Completed</label>
                     </div>
