@@ -1,6 +1,5 @@
 import React from 'react'
 import './style.css'
-import Routine from '../../pages/Routines'
 
 function RoutineCard (props) {
   return (

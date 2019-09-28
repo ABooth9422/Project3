@@ -60,12 +60,17 @@ class RoutineForm extends Component {
   }
 
   addWorkout = (event) => {
-    const ids = this.state.selectedWorkouts.map((workout) => workout.excercise.id)
+    const { selectedWorkouts, addWorkoutInput } = this.state
+    const ids = selectedWorkouts.map((workout) => workout.excercise.id)
+    console.log(selectedWorkouts)
+    console.log(addWorkoutInput)
+    console.log(ids)
+    console.log(!ids.includes(addWorkoutInput))
 
-    if (!ids.includes(this.state.addWorkoutInput)) {
-      const newSelected = Array.from(this.state.selectedWorkouts)
+    if (!ids.includes(addWorkoutInput)) {
+      const newSelected = Array.from(selectedWorkouts)
       newSelected.push({
-        excercise: this.props.workouts.find((w) => w.id == this.state.addWorkoutInput),
+        excercise: this.props.workouts.find((w) => w.id == addWorkoutInput),
         reps: 10,
         sets: 3,
         cals: 25
