@@ -34,7 +34,7 @@
             stroke-dashoffset:0
         } 
        95%{
-           stroke:none;
+            stroke:none;
           stroke-dashoffset:0;
         } 
         100%{

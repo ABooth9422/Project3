@@ -17,11 +17,14 @@ class Forum extends Component {
     this.state = {
       forumTopics: [],
       showAddTopic: false,
-      topicTitleInput: null,
-      topicPostInput: null,
-      commentInput: null,
+      topicTitleInput: "",
+      topicPostInput: "",
+      commentInput: "",
       showComments: false,
-      load: true
+      load: true,
+      reset:true,
+      showAddComment:false,
+      comment:false
     }
   }
 
@@ -31,7 +34,6 @@ class Forum extends Component {
 
   toggleShowAddTopic = () => {
     this.setState({ showAddTopic: !this.state.showAddTopic })
-    console.log(this.state.showAddTopic)
   }
 
   topicTitleInputChange = (event) => {
@@ -48,17 +50,22 @@ class Forum extends Component {
 
   commentForumSubmit = (event) => {
     event.preventDefault()
+    if(this.state.commentInput.trim().length>=1){
+    this.setState({comment:false,showAddComment:true})
+    
     const commentObj = {
       post: this.state.commentInput,
       UserId: this.props.profile.id,
       ForumTopicId: this.state.forumTopics[0].id
     }
+   
     API.createComment(commentObj)
       .then((response) => {
-        this.setState({ commentInput: '' })
+        this.setState({ commentInput: ''})
         this.getForumTopic(response.data.ForumTopicId)
       })
       .catch((err) => console.log(err))
+    }
   }
 
   topicForumSubmit = (event) => {
@@ -68,19 +75,21 @@ class Forum extends Component {
       post: this.state.topicPostInput,
       UserId: this.props.profile.id
     }
-
-    if (formObj.topic.trim().length > 0) {
-      API.createForumTopic(formObj)
-        .then((response) => {
-          console.log(response)
-          this.setState({
-            topicTitleInput: '',
-            topicPostInput: '',
-            showAddTopic: false
-          })
-          this.getAllForumTopics()
+    console.log(this.state.topicTitleInput.trim().length>=1)
+    console.log(this.state.topicPostInput.trim().length>=1)
+    if(this.state.topicTitleInput.trim().length>=1&&this.state.topicPostInput.trim().length>=1){
+    API.createForumTopic(formObj)
+      .then((response) => {
+        console.log(response)
+        this.setState({
+          topicTitleInput: '',
+          topicPostInput: '',
+          showAddTopic: false
         })
-        .catch((err) => console.log(err))
+        this.getAllForumTopics()
+      })
+      .catch((err) => console.log(err))
+
     }
   }
 
@@ -112,6 +121,7 @@ class Forum extends Component {
     this.setState({
       showComments: false,
       showAddComment: false,
+      comment:false,
       load: true
     })
     this.getAllForumTopics()
@@ -132,6 +142,16 @@ class Forum extends Component {
     })
   }
 
+  toggleComment=()=>{
+    if(this.state.comment){
+      this.setState({comment:false})
+      this.setState({showAddComment:true})
+    }else{
+    this.setState({comment:true})
+    this.setState({showAddComment:false})
+    }
+  }
+
   render () {
     const addTopicForm = this.state.showAddTopic ? (
       <AddTopicForm
@@ -143,14 +163,15 @@ class Forum extends Component {
       />
     ) : null
 
-    const addCommentForm = this.state.showAddComment ? (
+    const addCommentForm = 
+      
       <AddCommentForm
         commentInputChange={this.commentInputChange}
         commentFormSubmit={this.commentForumSubmit}
         value={this.state.commentInput}
         goBack={this.goBack}
       />
-    ) : null
+      
 
     return (
       <>
@@ -204,8 +225,8 @@ class Forum extends Component {
                   />
                 )
               })}
-
-            {addCommentForm}
+            {this.state.showAddComment?<><Button onClick={this.toggleComment}>Add Comment</Button><Button onClick={this.goBack}>Go Back</Button></>:<></>}
+            {this.state.comment?addCommentForm:<></>}
           </Container>
         </Wrapper>
       </>
