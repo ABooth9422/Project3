@@ -79,6 +79,8 @@ class App extends React.Component {
 
   submitProfile = (event, cb) => {
     event.preventDefault()
+    const {profileUsernameInput,profileExcerciseInput,profileImageInput}=this.state
+    if(profileUsernameInput.trim().length>0&&profileExcerciseInput.trim().length>0&&profileImageInput.trim().length>0){
     const profileObj = {
       googleId: this.state.user.googleId,
       name: this.state.profileUsernameInput,
@@ -97,6 +99,7 @@ class App extends React.Component {
       .catch((err) => {
         console.log(err)
       })
+    }
   }
 
   render () {

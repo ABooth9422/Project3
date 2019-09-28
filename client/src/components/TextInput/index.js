@@ -8,10 +8,10 @@ class TextInput extends Component{
     }
 
     textInput=(event)=>{
+        this.props.changeHandle(event)
         if(event.target.value.trim().length>=1){
             console.log(this.state.errorInput)
             this.setState({errorInput:false})
-            this.props.changeHandle(event)
         }else{
             this.setState({errorInput:true})
             console.log(this.state.errorInput)

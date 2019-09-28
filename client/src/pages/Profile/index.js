@@ -39,26 +39,28 @@ class Profile extends React.Component {
       })
   }
   usernameChange=(event)=>{
+    this.props.usernameChange(event)
     if(event.target.value.trim().length>=1){
       this.setState({errorName:false})
-      this.props.usernameChange(event)
     }else if(event.target.value.trim().length===0){
       this.setState({errorName:true})
     }
   }
   imageChange=(event)=>{
+    this.props.imageChange(event)
     if(event.target.value.trim().length>=1){
       this.setState({errorImage:false})
-      this.props.imageChange(event)
+      
     }else if(event.target.value.trim().length===0){
       this.setState({errorImage:true})
     }
  
   }
   excerciseChange=(event)=>{
+    this.props.excerciseChange(event)
     if(event.target.value.trim().length>=1){
       this.setState({errorExercise:false})
-      this.props.excerciseChange(event)
+    
     }else if(event.target.value.trim().length===0){
       this.setState({errorExercise:true})
     }

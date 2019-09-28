@@ -75,8 +75,6 @@ class Forum extends Component {
       post: this.state.topicPostInput,
       UserId: this.props.profile.id
     }
-    console.log(this.state.topicTitleInput.trim().length>=1)
-    console.log(this.state.topicPostInput.trim().length>=1)
     if(this.state.topicTitleInput.trim().length>=1&&this.state.topicPostInput.trim().length>=1){
     API.createForumTopic(formObj)
       .then((response) => {

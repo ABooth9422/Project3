@@ -8,10 +8,10 @@ class TextAreaInput extends Component{
     }
 
     areaInput=(event)=>{
+        this.props.changeHandle(event)
         if(event.target.value.trim().length>=1){
             console.log(this.state.errorArea)
-            this.setState({errorArea:false})
-            this.props.changeHandle(event)
+            this.setState({errorArea:false})    
         }else{
             this.setState({errorArea:true})
             console.log(this.state.errorArea)
