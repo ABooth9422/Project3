@@ -225,7 +225,7 @@ class Forum extends Component {
                   />
                 )
               })}
-            {this.state.showAddComment?<><Button onClick={this.toggleComment}>Add Comment</Button><Button onClick={this.goBack}>Go Back</Button></>:<></>}
+            {this.state.showAddComment?<><Button clickHandle={this.toggleComment}>Add Comment</Button><Button clickHandle={this.goBack}>Go Back</Button></>:<></>}
             {this.state.comment?addCommentForm:<></>}
           </Container>
         </Wrapper>
