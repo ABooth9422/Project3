@@ -30,6 +30,7 @@ class TextInput extends Component{
         </div>
     )
     }
+
 }
 
-export default TextInput;
+export default TextInput

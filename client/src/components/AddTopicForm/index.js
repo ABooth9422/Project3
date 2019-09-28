@@ -6,8 +6,6 @@ import Button from '../Button'
 import './style.css'
 import Container from '../Container'
 
-
-
 class AddTopicForm extends Component{
   
   render(){
@@ -28,6 +26,7 @@ class AddTopicForm extends Component{
     
     )
   }
+
 }
 
-export default AddTopicForm;
+export default AddTopicForm

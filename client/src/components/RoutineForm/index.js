@@ -9,14 +9,15 @@ class RoutineForm extends Component {
     const selectedMuscles = {}
     props.muscleGroups.forEach((muscle) => {
       selectedMuscles[muscle] = false
-
-      this.state = {
-        step: 1,
-        numberOfWorkouts: 1,
-        selectedMuscles: selectedMuscles,
-        selectedWorkouts: []
-      }
     })
+
+    this.state = {
+      step: 1,
+      numberOfWorkouts: 1,
+      selectedMuscles: selectedMuscles,
+      selectedWorkouts: [],
+      addWorkoutInput: 1
+    }
   }
 
   nextStep = () => {
@@ -48,6 +49,32 @@ class RoutineForm extends Component {
     )
   }
 
+  removeWorkout = (index) => {
+    const newSelected = Array.from(this.state.selectedWorkouts)
+    newSelected.splice(index, 1)
+    this.setState({ selectedWorkouts: newSelected })
+  }
+
+  addWorkoutInputChange = (event) => {
+    this.setState({ addWorkoutInput: event.target.value })
+  }
+
+  addWorkout = (event) => {
+    const ids = this.state.selectedWorkouts.map((workout) => workout.excercise.id)
+
+    if (!ids.includes(this.state.addWorkoutInput)) {
+      const newSelected = Array.from(this.state.selectedWorkouts)
+      newSelected.push({
+        excercise: this.props.workouts.find((w) => w.id == this.state.addWorkoutInput),
+        reps: 10,
+        sets: 3,
+        cals: 25
+      })
+
+      this.setState({ selectedWorkouts: newSelected })
+    }
+  }
+
   generateWorkouts () {
     let selectedWorkouts = []
     const { numberOfWorkouts, selectedMuscles } = this.state
@@ -70,16 +97,29 @@ class RoutineForm extends Component {
       }
     }
     this.setState({ selectedWorkouts }, () => {
-      this.state.selectedWorkouts.forEach((workout) => {
-        console.log(workout.excercise)
-      })
+      this.state.selectedWorkouts.forEach((workout) => {})
     })
+  }
+
+  changeReps = (index) => (event) => {
+    const newSelected = Array.from(this.state.selectedWorkouts)
+    newSelected[index].excercise.muscleGroup === 'Cardio'
+      ? (newSelected[index].cals = event.target.value)
+      : (newSelected[index].reps = event.target.value)
+
+    this.setState({ selectedWorkouts: newSelected })
+  }
+
+  changeSets = (index) => (event) => {
+    const newSelected = Array.from(this.state.selectedWorkouts)
+    newSelected[index].sets = event.target.value
+    this.setState({ selectedWorkouts: newSelected })
   }
 
   render () {
     const { step } = this.state
-    const { selectedMuscles, selectedWorkouts, numberOfWorkouts } = this.state
-    const values = { selectedMuscles, selectedWorkouts, numberOfWorkouts }
+    const { selectedMuscles, selectedWorkouts, numberOfWorkouts, addWorkoutInput } = this.state
+    const values = { selectedMuscles, selectedWorkouts, numberOfWorkouts, addWorkoutInput }
 
     switch (step) {
       case 1:
@@ -102,6 +142,12 @@ class RoutineForm extends Component {
             values={values}
             submit={() => this.props.submit(this.state.selectedWorkouts)}
             infoHandle={this.props.infoHandle}
+            changeReps={this.changeReps}
+            changeSets={this.changeSets}
+            removeWorkout={this.removeWorkout}
+            workouts={this.props.workouts}
+            addWorkout={this.addWorkout}
+            addWorkoutInputChange={this.addWorkoutInputChange}
           />
         )
 
