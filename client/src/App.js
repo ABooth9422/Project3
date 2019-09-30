@@ -142,6 +142,8 @@ class App extends React.Component {
         <Switch>
           <Route exact path='/' render={(props) => <Home {...props} home={'home'} />} />
           <Route exact path='/home' render={(props) => <Home {...props} home={'home'} />} />
+          <Route exact path='/contact' component={Contact} />
+          <Route exact path='/about' component={About} />
           <Route component={NoMatch} />
         </Switch>
       )
@@ -167,6 +169,8 @@ class App extends React.Component {
               />
             )}
           />
+          <Route exact path='/contact' component={Contact} />
+          <Route exact path='/about' component={About} />
           <Route component={NoMatch} />
         </Switch>
       )

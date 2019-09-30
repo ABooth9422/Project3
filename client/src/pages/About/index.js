@@ -24,6 +24,7 @@ function About(){
               We will help you find a gym that suits you. Another feature that we have is the ability for you to create your own routine. We will
               give you the tools you need to be able to create a daily routine that you can implement with your schedule.
             </p>
+            <img id="krew"className="rounded img-fluid" style={{"boxShadow":"black 3px 3px 3px"}}width="800px" height="500px"src={require("./images/gymcrew.jpg")} alt="founders"/>
             </div>
             </div>
           </Container>
