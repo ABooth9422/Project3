@@ -34,25 +34,45 @@ This is the homepage where you can view our customers testimonials prior to crea
 ![gymsenseLogin](./images/login2.png)
 ![gymsenseLogin](./images/home.png)
 
+
+
+
 # ```Profile ```
+
 Here is where you will be able to create a profile. This is required for full functionality of the application. After completing the profile you will have access to the full page and when you view your profile you have the opportunity to save your favorite gyms.
 ![gymsenseProfile](./images/profile.png)
 ![gymsenseProfile](./images/profile2.png)
-![gymsenseProfile](./images/profile3.png)
+
+
+
 
 # ```Find a Gym ```
+
 This page will give you the opportunity to search for a gym based on address, zip code or city. Once the information is provided you will be able to click on the gym of your choice and be provided with the the gyms name, location, rating the opportunity to save it to your profile.
 ![gymsenseGym](./images/findgym.png)
 ![gymsenseProfile](./images/findgym2.png)
 
 
 
+
 # ```Routines ```
+
 The routines page is very user friendly! You will have the opportunity to create your own workout with our routine wizard. We will provide you with the major muscle groups and prompt you for which muscle group you want a workout for and the quantity for the movements of that muscle group.
+![gymsenseRoutine](./images/routine1.png)
+![gymsenseRoutine](./images/routine2.png)
+![gymsenseRoutine](./images/routine3.png)
+
 
 
 # ```Topics ```
+
 This page will give you the capability to share a topic that you would like to discuss amongst other GymSense users. We also give you the ability to like topics of your choice. Our topics are sorted by the most likes. 
+![gymsenseRoutine](./images/topics1.png)
+![gymsenseRoutine](./images/topics2.png)
+![gymsenseRoutine](./images/topics3.png)
+![gymsenseRoutine](./images/topics4.png)
+
+
 
 
 
